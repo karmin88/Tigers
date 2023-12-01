@@ -1,0 +1,17 @@
+nav {
+    background-color: #ffefd2;
+}
+
+nav a {
+    font-weight: bold !important;
+    color: #723d00 !important;
+}
+
+nav ul > li > a.active {
+    color: white !important;
+    background-color: #e57e00 !important;
+}
+
+footer p, a, hr {
+    color: #723d00;
+}
