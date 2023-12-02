@@ -30,7 +30,7 @@
                 {% if not login %}
                     <li class="nav-item me-3">
                         <a class="nav-link px-3 {% if "/" in request.path %}active{% endif %}"
-                           aria-current="page" href="{{ url_for('entry') }}">Laman Utara</a>
+                           aria-current="page" href="{{ url_for('entry') }}">Laman Utama</a>
                     </li>
                     <li class="nav-item me-3">
                         <a class="nav-link px-3" href="#">Daftar</a>
@@ -40,7 +40,7 @@
                     </li>
                 {% else %}
                     <li class="nav-item me-3">
-                        <a class="nav-link px-3" aria-current="page" href="#">Laman Utara</a>
+                        <a class="nav-link px-3" aria-current="page" href="#">Laman Utama</a>
                     </li>
                     <li class="nav-item me-3">
                         <a class="nav-link px-3" href="#">Nota</a>
@@ -52,7 +52,7 @@
                         <a class="nav-link px-3" aria-current="page" href="#">Hubungi</a>
                     </li>
                     <li class="nav-item me-3">
-                        <a class="nav-link px-3" href="#">Profile</a>
+                        <a class="nav-link px-3" href="#">Profil</a>
                     </li>
                     <li class="nav-item me-3">
                         <a class="nav-link px-3" href="#">Log Keluar</a>
@@ -76,7 +76,7 @@
                 {% if not login %}
                     <div class="col-md-2">
                         <h6 class="text-uppercase font-weight-bold">
-                            <a href="#!">Laman Utara</a>
+                            <a href="#!">Laman Utama</a>
                         </h6>
                     </div>
 
@@ -94,7 +94,7 @@
                 {% else %}
                     <div class="col-md-2">
                         <h6 class="text-uppercase font-weight-bold">
-                            <a href="#!">Laman Utara</a>
+                            <a href="#!">Laman Utama</a>
                         </h6>
                     </div>
 
