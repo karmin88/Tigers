@@ -1,0 +1,45 @@
+@font-face {
+  font-family: Bryndan_write;
+  src: url(/static/font/Bryndan_Write.ttf);
+}
+
+.add-quiz-form {
+    width: 70%;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.add-quiz-form .form-group {
+    margin-bottom: 20px;
+}
+
+.add-quiz-form .form-group label {
+  font-family:  Bryndan_write;
+    font-weight: bold;
+    color: #723d00;
+    font-size: larger;
+}
+
+.add-quiz-form .form-control {
+    border: 1px solid #e57e00;
+    border-radius: 4px;
+}
+
+.add-quiz-form .btn-primary {
+    background-color: #e57e00;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+  font-family:  Bryndan_write;
+
+}
+
+.add-quiz-form .btn-primary:hover {
+  
+    background-color: #d96c00;
+}

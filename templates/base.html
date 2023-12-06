@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smartiger</title>
+
+    <!-- Vendor Stylesheet -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+</head>
+<body class="d-flex flex-column min-vh-100">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid mx-5 my-2">
+        <a class="navbar-brand me-5" href="#">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="" width="80" height="80">
+            <span>Smartiger</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar link -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav nav-pills mb-2 mb-lg-0 ms-auto">
+                {% if not login %}
+                    <li class="nav-item me-3">
+                        <a class="nav-link px-3 {% if "/" in request.path %}active{% endif %}"
+                           aria-current="page" href="{{ url_for('entry') }}">Laman Utama</a>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a class="nav-link px-3" href="#">Daftar</a>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a class="nav-link px-3" href="#">Log Masuk</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item me-3">
+                        <a class="nav-link px-3" aria-current="page" href="#">Laman Utama</a>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a class="nav-link px-3" href="#">Nota</a>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a class="nav-link px-3" href="#">Kuiz/Penilaian</a>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a class="nav-link px-3" aria-current="page" href="#">Hubungi</a>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a class="nav-link px-3" href="#">Profil</a>
+                    </li>
+                    <li class="nav-item me-3">
+                        <a class="nav-link px-3" href="#">Log Keluar</a>
+                    </li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+{% block content %}{% endblock %}
+
+<!-- Footer -->
+<footer class="mt-auto">
+    <div class="container">
+        <!-- Section: Links -->
+        <hr>
+        <section>
+            <div class="row text-center d-flex justify-content-center py-4">
+                {% if not login %}
+                    <div class="col-md-2">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a href="#!">Laman Utama</a>
+                        </h6>
+                    </div>
+
+                    <div class="col-md-2">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a href="#!">Daftar</a>
+                        </h6>
+                    </div>
+
+                    <div class="col-md-2">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a href="#!">Log Masuk</a>
+                        </h6>
+                    </div>
+                {% else %}
+                    <div class="col-md-2">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a href="#!">Laman Utama</a>
+                        </h6>
+                    </div>
+
+                    <div class="col-md-2">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a href="#!">Nota</a>
+                        </h6>
+                    </div>
+
+                    <div class="col-md-2">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a href="#!">Kuiz/Penilaian</a>
+                        </h6>
+                    </div>
+                    <div class="col-md-2">
+                        <h6 class="text-uppercase font-weight-bold">
+                            <a href="#!">Hubungi</a>
+                        </h6>
+                    </div>
+                {% endif %}
+            </div>
+        </section>
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: #ffefd2">
+        © 2023 Copyright:
+        <a href="#">Smartiger</a>
+    </div>
+</footer>
+
+<!-- Vendor Javascript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</body>
+</html>
