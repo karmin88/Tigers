@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profil</title>
+  <link rel="stylesheet" href="../static/css/profile.css">
+</head>
+<body>
+  <div class="profile-container">
+    <div class="profile-header">
+    </div>
+    <div class="profile-body">
+      <div class="profile-pic">
+        <img src="profile-pic.png" alt="Profile Picture">
+        <button type="button" id="edit-profile-pic">Edit</button>
+      </div>
+      <div class="profile-info">
+        <h1>Nama</h1>
+
+        <div class="profile-info-row">
+          <h2>Email</h2>
+          <input type="email" id="email" placeholder="Email">
+          <button type="button" id="update-email">Kemaskini</button>
+        </div>
+
+        <div class="profile-info-row">
+          <h2>Nombor Telefon</h2>
+          <input type="tel" id="phone-number" placeholder="Nombor Telefon">
+          <button type="button" id="update-phone-number">Kemaskini</button>
+        </div>
+
+        <button type="button" id="change-password">Tukar Kata Kunci</button>
+        <button type="button" id="delete-profile">Padam Profil</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal change-password-modal">
+    <div class="modal-content">
+      <h2>Tukar Kata Kunci</h2>
+
+      <input type="password" id="new-password" placeholder="Kata Laluan Baharu">
+      <input type="password" id="confirm-new-password" placeholder="Sahkan Kata Laluan Baharu">
+
+      <button type="button" id="update-password">Kemaskini</button>
+      <button type="button" id="cancel-update-password">Batal</button>
+    </div>
+  </div>
+
+  <div class="modal delete-profile-modal">
+    <div class="modal-content">
+      <h2>Adakah anda pasti ingin memadam profil anda?</h2>
+
+      <button type="button" id="delete-profile-confirmation">Ya</button>
+      <button type="button" id="cancel-delete-profile">Batal</button>
+    </div>
+  </div>
+
+  <script src="../static/js/profile.js"></script>
+</body>
+</html>
+
+{% endblock %}
