@@ -1,0 +1,29 @@
+.dropzone {
+    transition: background-color 0.25s ease-in;
+}
+
+.dropzone:hover {
+    background-color: lightgray;
+}
+
+.dz-image {
+    border-radius: 0 !important;
+}
+
+.dz-preview {
+    border: 1px lightgray solid;
+    border-radius: 5%;
+}
+
+.collapsible {
+    cursor: pointer;
+}
+
+.dropzone .bi-cloud-arrow-up-fill {
+    transition: font-size 0.15s ease-out;
+}
+
+.dropzone:hover .bi-cloud-arrow-up-fill {
+    font-size: calc(1.5rem + 1.7vw);
+}
+

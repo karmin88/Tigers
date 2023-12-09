@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block vendor_stylesheet %}
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css"/>
+{% endblock %}
+
+{% block custom_stylesheet %}
+    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/css/add-note.css">
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid p-5">
+        <div class="container-fluid d-inline-flex align-items-center pe-0">
+            <h3 class="">Add New Note</h3>
+            <div class="ms-3">
+                <select class="form-select">
+                    <option selected disabled>Select a chapter</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="ms-auto d-inline-flex align-items-center">
+                <button type="button" class="border-0 me-2" id="add-section">
+                    <i class="bi bi-hover bi-plus-square-fill h4 my-0"></i>
+                </button>
+                <button type="button" class="btn btn-secondary me-3">Submit</button>
+                <a href="javascript:history.back()" class="btn btn-warning">Cancel</a>
+            </div>
+        </div>
+        <hr class="my-3">
+        <div class="row" id="section-container">
+        </div>
+    </div>
+
+    <!-- Note section template -->
+    <template id="section-form-template">
+        <form class="col-12 card shadow-sm mt-2">
+            <div class="card-header collapsible d-flex justify-content-between align-items-center">
+                <div class="card-title mt-2 fw-bold">Section</div>
+                <i class="bi bi-collapsible bi-arrows-angle-contract"></i>
+            </div>
+            <div class="card-body row overflow-hidden">
+                <div class="col-md-8 col-sm-12">
+                    <div class="form-group row mb-2">
+                        <label class="col-md-2 col-sm-12 col-form-label">Title</label>
+                        <div class="col-md-10 col-md-10 col-sm-12">
+                            <input type="text" class="form-control  shadow-sm"
+                                   placeholder="Title">
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label class="col-md-2 col-sm-12 col-form-label">Description</label>
+                        <div class="col-md-10 col-sm-12">
+                                <textarea type="password" class="form-control  shadow-sm" rows="10"
+                                          placeholder="Description"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label class="col-md-2 col-sm-12 col-form-label">Attachment</label>
+                        <div class="col-md-10 col-sm-12">
+                            <div class="dropzone border shadow-sm border-1 border-opacity-10 rounded">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container col-md-4 col-sm-12">
+                    <p>PDF preview</p>
+                    <div class="embed-responsive d-flex flex-column w-100 h-100 border border-1 shadow-sm"
+                         style="background-color: #efefef">
+                        <iframe class="embed-responsive-item flex-grow-1" src=""></iframe>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </template>
+{% endblock %}
+{% block vendor_script %}
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+{% endblock %}
+
+{% block custom_script %}
+    <script src="/static/js/add-note.js"></script>
+{% endblock %}
