@@ -1,22 +1,46 @@
 {% extends "base.html" %}
+
 {% block content %}
 <div>
   <link href="/static/css/pd.css" rel="stylesheet" />
   <div class="dashboard-container">
-  <div class="content-row">
-    <div class="text-content">
-      <h1 class="welcome-message">Belajar Matematik <br>Dengan Mudah!!!</h1>
-      <p class="dashboard-description">
-        MIni adalah platform khas bagi pelajar bisu pekak dan<br> mempunyai masalah pendengaran untuk mempelajari <br>matematik dengan mudah dan pantas!!!.
-      </p>
-      <div class="dashboard-buttons">
-        <a href="/" class="dashboard-button">Daftar</a>
-        <a href="/" class="dashboard-button">Log Masuk</a>
+    <div class="content-row">
+      <div class="text-content">
+        <h1 class="welcome-message">Belajar Matematik <br>Dengan Mudah!!!</h1>
+        <p class="dashboard-description">
+          MIni adalah platform khas bagi pelajar bisu pekak dan<br> mempunyai masalah pendengaran untuk mempelajari <br>matematik dengan mudah dan pantas!!!.
+        </p>
+        <div class="dashboard-buttons">
+          <a href="/" class="dashboard-button">Daftar</a>
+          <a href="/" class="dashboard-button">Log Masuk</a>
+        </div>
+      </div>
+      <img src="{{ url_for('static', filename='images/pdi.jpg') }}" alt="Classroom scene" class="dashboard-image">
+    </div>
+  </div>
+
+  <div class="orange-section">
+    <h2 class="features-title">APA YANG TERDAPAT DALAM SMARTIGER?</h2>
+    <p class="features-description">Pelajar boleh melayari nota yang dimuat naik oleh guru-guru dengan lebih efektif, membuat kuiz dan penilaian yang menarik dan berinteraksi dengan guru-guru.</p>
+  </div>
+   <div class="white-section">
+    <div class="features-container">
+      <div class="feature-item">
+        <img src="{{ url_for('static', filename='images/nota.jpg') }}" alt="Nota Khusus" class="feature-image">
+        <h3 class="feature-item-title">Nota Khusus</h3>
+        <p class="feature-item-description">Nota ringkas dan menarik daripada guru-guru</p>
+      </div>
+      <div class="feature-item">
+        <img src="{{ url_for('static', filename='images/kuiz.jpg') }}" alt="Kuiz & Penilaian" class="feature-image">
+        <h3 class="feature-item-title">Kuiz & Penilaian</h3>
+        <p class="feature-item-description">Pelbagai Kuiz & Penilaian telah disediakan</p>
+      </div>
+      <div class="feature-item">
+        <img src="{{ url_for('static', filename='images/Interaksi.jpg') }}" alt="Interaksi Dengan Guru" class="feature-image">
+        <h3 class="feature-item-title">Interaksi Dengan Guru</h3>
+        <p class="feature-item-description">Hubungi guru-guru untuk sebarang pertanyaan</p>
       </div>
     </div>
-    <img src="/static/images/pdi.jpg" alt="Classroom scene" class="dashboard-image">
   </div>
 </div>
-
-
 {% endblock %}
