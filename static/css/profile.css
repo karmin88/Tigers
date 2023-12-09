@@ -1,26 +1,23 @@
+body {
+  display: block;
+  flex-direction: row;
+  justify-content: space-between;
+  min-height: 100vh; /* Set minimum height for full viewport */
+  /* Background Image Styles */
+  background-image: url('../images/background.png');
+  background-size: cover;
+  background-position: center;
+}
+
 .profile-container {
   width: 100%;
-  max-width: 960px;
+  max-width: 1000px;
   margin: 0 auto;
   background-color: #e57e00;
 }
 
-.profile-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #e9a262; /* Replace with color from header */
-}
-
-.profile-header h1 {
-  font-size: 24px;
-  margin: 0;
-  color: #753c03; /* Replace with color for text */
-}
-
-
 .profile-body {
-  display: flex;
+  display: block;
   align-items: center;
 }
 
@@ -49,26 +46,29 @@
 
 .profile-info {
   width: 100%;
-  max-width: 600px;
+  
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-.profile-info h2 {
-  font-size: 18px;
+.profile-pic h1{
+  font-size: 24px;
   margin-bottom: 10px;
   color: #75440f; /* Replace with color for heading */
 }
 
-.profile-info input {
+.profile-info-row input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 1px;
   color: #75440f; /* Replace with text input color */
+  background-color: #f3e0ac;
 }
 
 .profile-info button {
-  background-color: #75440f; /* Replace with button background color */
-  color: #f3e0ac; /* Replace with button text color */
+  background-color: #f3e0ac; /* Replace with button background color */
+  color: #75440f; /* Replace with button text color */
   padding: 5px 10px;
   border: 1px solid #007bff; /* Replace with button border color */
   border-radius: 5px;
@@ -79,18 +79,22 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px; /* Add margin for spacing */
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .profile-info-row h2 {
+  width: 15%;
   margin-right: 10px; /* Adjust spacing between heading and input */
-  font-size: 18px;
+  font-size: 14px;
   margin-bottom: 10px;
   color: #75440f;
-  
+  background-color: #ffefd2 ;
 }
 
 .profile-info-row button {
   margin-left: 10px; /* Adjust spacing between input and button */
+  margin-right: 10px;
 }
 
 /* Modal styles */
@@ -105,6 +109,12 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.modal-content h2{
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #75440f;
+}
+
 .modal-content {
   position: absolute;
   top: 50%;
@@ -116,11 +126,21 @@
   border-radius: 5px;
 }
 
-.modal button {
-  background-color: #75440f /* Replace with button background color */
-  color: #f3e0ac; /* Replace with button text color */
+.modal-content input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  color: #75440f; 
+  background-color: #f3e0ac;
+  margin-top: 10px;
+}
+
+.modal-content button {
+  background-color: #f3e0ac;
+  color: #75440f;
   padding: 5px 10px;
   border: 1px solid #007bff; /* Replace with button border color */
   border-radius: 5px;
-  margin-left: 10px;
+  margin-top: 10px;
 }
