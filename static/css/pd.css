@@ -73,6 +73,63 @@
   height: auto; /* Maintain aspect ratio */
 }
 
+.features-section {
+  text-align: center;
+  padding: 50px;
+  background-color: #ffefd2;
+}
+
+.features-title {
+  font-family: 'More Sugar';
+  font-size: 2rem;
+  color: #763C00;
+  margin-bottom: 20px;
+}
+
+.features-description {
+  margin-bottom: 50px;
+  color: #333;
+}
+
+.features-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.feature-item {
+  background: #FFF5E3;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.feature-image {
+  width: 100px; /* Adjust as necessary */
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.feature-item-title {
+  font-family: 'More Sugar';
+  color: #FD871A;
+  font-size: 1.5rem;
+}
+
+.feature-item-description {
+  color: #763C00;
+}
+.orange-section {
+  background-color: #FFA500; /* Example orange color, adjust as needed */
+  padding: 50px;
+  text-align: center;
+}
+
+.white-section {
+  background-color: #FFFFFF; /* White color */
+  padding: 50px;
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   .content-row {
     flex-direction: column;
@@ -85,5 +142,9 @@
 
   .dashboard-image {
     margin-top: 30px;
+  }
+
+  .features-container {
+    flex-direction: column;
   }
 }
