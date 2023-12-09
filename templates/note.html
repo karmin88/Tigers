@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block custom_stylesheet %}
+    <link rel="stylesheet" href="/static/css/note.css">
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid p-5">
+
+    </div>
+
+    <!-- Note section template -->
+    <template id="note-section-template">
+        <section class="card border-0">
+            <header class="card-header">
+                Section chapter
+            </header>
+            <div class="card-body row border-0">
+                <div class="col-md-6 col-sm-12 mb-3">
+                    Some long description
+                </div>
+                <div class="col-md-6 col-sm-12 mb-3">
+                    <div id="section-carousel" class="carousel carousel-dark border" data-bs-interval="false">
+                        <div class="carousel-inner container-fluid">
+                            <div class="carousel-item active flex-column">
+                                <img src="/static/images/logo.png" class="img-fluid" alt="...">
+                                <div class="carousel-caption">
+                                    <h5>logo.png</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="/static/images/card-bg.png" class="img-fluid" alt="...">
+                                <div class="carousel-caption">
+                                    <h5>card-bg.png</h5>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="/static/images/notes.png" class="img-fluid" alt="...">
+                                <div class="carousel-caption">
+                                    <h5>notes.png</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#section-carousel"
+                                data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#section-carousel"
+                                data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row container-fluid p-0" style="height: 500px!important;">
+                    <div class="embed-responsive w-100 h-100 p-0">
+                        <iframe class="embed-responsive-item w-100 h-100"
+                                src="/static/Chapter%204-Lexical%20and%20Syntax%20Analysis.pdf"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+{% endblock %}

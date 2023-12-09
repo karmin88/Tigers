@@ -1,0 +1,33 @@
+.card {
+    border-radius: 0;
+}
+
+.card-header {
+    border-radius: 0 !important;
+    border-top: 0;
+    border-bottom: 1px solid gainsboro !important;
+    border-left: 4px solid orange !important;
+    background-color: #fff3e1 !important;
+    color: black !important;
+}
+
+.carousel-item > img {
+    height: 500px !important;
+}
+
+.carousel-item {
+    text-align: center;
+}
+
+.carousel-item > img {
+    object-fit: contain;
+}
+
+.carousel-caption {
+    z-index: 10000;
+    position: relative;
+    top: 0;
+    left: 0;
+    text-align: center;
+}
+
