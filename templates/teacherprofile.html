@@ -5,31 +5,32 @@
 <head>
   <title>Profil</title>
   <link rel="stylesheet" href="../static/css/profile.css">
+  <link rel="icon" href="../static/images/logo.png">
 </head>
 <body>
   <div class="profile-container">
-    <div class="profile-header">
-    </div>
     <div class="profile-body">
       <div class="profile-pic">
-        <img src="profile-pic.png" alt="Profile Picture">
-        <button type="button" id="edit-profile-pic">Edit</button>
+          <div class="profile-info-row">
+            <img src="profile-pic.png" alt="Profile Picture">
+            <button type="button" id="edit-profile-pic">Edit</button>
+            <h1>Nama</h1>
+        </div>
       </div>
       <div class="profile-info">
-        <h1>Nama</h1>
 
         <div class="profile-info-row">
-          <h2>Email</h2>
+          <h2>Email: </h2>
           <input type="email" id="email" placeholder="Email">
           <button type="button" id="update-email">Kemaskini</button>
         </div>
 
         <div class="profile-info-row">
-          <h2>Nombor Telefon</h2>
+          <h2>Nombor Telefon: </h2>
           <input type="tel" id="phone-number" placeholder="Nombor Telefon">
           <button type="button" id="update-phone-number">Kemaskini</button>
         </div>
-
+        
         <button type="button" id="change-password">Tukar Kata Kunci</button>
         <button type="button" id="delete-profile">Padam Profil</button>
       </div>
