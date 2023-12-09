@@ -1,0 +1,37 @@
+.scroll-area {
+    overflow-y: auto;
+    height: 600px !important;
+}
+
+.list-group-item {
+    border-left: 4px solid transparent !important;
+}
+
+.list-group-item.active {
+    border-top: 0;
+    border-bottom: 1px solid gainsboro !important;
+    border-left: 4px solid orange !important;
+    background-color: #fff3e1 !important;
+    color: black !important;
+}
+
+.card {
+    padding-right: 100px !important;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+    transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+}
+
+.card-note {
+    background-image: url('/static/images/card-bg.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 110px;
+}
+
+
+

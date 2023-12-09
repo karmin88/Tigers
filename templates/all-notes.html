@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block custom_stylesheet %}
+    <link rel="stylesheet" href="/static/css/all-notes.css">
+    <link rel="stylesheet" href="/static/css/common.css">
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white p-4 scroll-area col-md-3 col-sm-12"
+             id="list-tab" role="tablist">
+
+            <div class="list-group list-group-flush border-bottom">
+                <a href="#list-all"
+                   class="list-group-item list-group-item-action list-group-item-light active py-3 lh-tight"
+                   data-bs-toggle="list" role="tab">
+                    <div class="d-flex w-100 align-items-center justify-content-between">
+                        <strong class="mb-1">All</strong>
+                    </div>
+                    <div class="col-11 mb-1 small">Some placeholder content in a paragraph below the heading and date.
+                    </div>
+                </a>
+                <a href="#list-1" class="list-group-item list-group-item-action list-group-item-light py-3 lh-tight"
+                   data-bs-toggle="list" role="tab">
+                    <div class="d-flex w-100 align-items-center justify-content-between">
+                        <strong class="mb-1">List group item heading</strong>
+                    </div>
+                    <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.
+                    </div>
+                </a>
+                <a href="#list-2" class="list-group-item list-group-item-action list-group-item-light py-3 lh-tight"
+                   data-bs-toggle="list" role="tab">
+                    <div class="d-flex w-100 align-items-center justify-content-between">
+                        <strong class="mb-1">List group item heading</strong>
+                    </div>
+                    <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.
+                    </div>
+                </a>
+                <a href="#list-3" class="list-group-item list-group-item-action list-group-item-light py-3 lh-tight"
+                   data-bs-toggle="list" role="tab">
+                    <div class="d-flex w-100 align-items-center justify-content-between">
+                        <strong class="mb-1">List group item heading</strong>
+                    </div>
+                    <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-9 col-sm-12">
+            <div class="row container pt-4 pb-1 border-bottom">
+                <ol class="breadcrumb col-7">
+                    <li class="breadcrumb-item"><a href="#"><i class="bi bi-house-door-fill"></i></a></li>
+                    <li class="breadcrumb-item"><a href="#" class="text-hover-underline">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#" class="text-hover-underline">Library</a></li>
+                </ol>
+                <a href="#" class="col-1 align-self-center h4 mb-3">
+                    <i class="bi bi-hover bi-plus-square-fill float-end"></i>
+                </a>
+                <form class="col-3">
+                    <div class="input-group">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-warning" type="submit">Search</button>
+                    </div>
+                </form>
+            </div>
+            <div class="tab-content row container pt-3 px-0">
+                <div class="tab-pane fade show active" id="list-all" role="tabpanel">
+                    <div class="card card-note col-md-4 col-sm-6">
+                        <div class="card-body">
+                            <div class="row d-flex align-items-center">
+                                <img class="col-md-3" src="/static/images/notes.png" alt="note icon">
+                                <div class="col-md-9">
+                                    <h5 class="card-title">Garis Lurus</h5>
+                                    <h6 class="card-subtitle text-muted">derrick saw wei</h6>
+                                </div>
+                            </div>
+                            <hr>
+                            <p class="card-text text-multi-truncate" style="font-size: 10pt">
+                                Some quick example text to build on the card title and make up the bulk
+                                of the card's content.
+                            </p>
+                            <a href="#" class="card-link stretched-link d-none"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="list-1" role="tabpanel">
+
+                </div>
+                <div class="tab-pane fade" id="list-2" role="tabpanel">2</div>
+                <div class="tab-pane fade" id="list-3" role="tabpanel">3</div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
