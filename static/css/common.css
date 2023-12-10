@@ -31,6 +31,10 @@ body {
     text-overflow: ellipsis;
 }
 
+.bi {
+    vertical-align: 0.125em;
+}
+
 .bi-hover {
     transition: font-size 0.15s ease-out;
 }
