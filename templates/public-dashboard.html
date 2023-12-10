@@ -1,70 +1,82 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="container-fluid px-0" id="hero"
-         style="background: linear-gradient(to right, rgb(254, 253, 112) 1.7%, rgb(248, 143, 111))">
-        <div class="row container-fluid p-5 pb-0 d-flex justify-content-end">
-            <div class="col-md-6 col-sm-12 container ps-5">
-                <span class="text-darkorange" style="font-size: 40pt">Belajar Matematik <br> Dengar Mudah !!!</span>
-                <p class="mt-4">
-                    Ini adalah platform khas bagi pelajar bisu pekak dan mempunyai masalah pendengaran untuk mempelajari
-                    matematik dengan mudah dan pantas!!!.
-                </p>
-                <div class="container-fluid row d-flex mt-5">
-                    <a href="{{ url_for('sign_up') }}" class="btn btn-warning text-darkorange col-md-6 col-sm-12 me-4 mb-4"
-                            style="width: 150px">
-                        <span class="fs-4">Daftar</span></a>
-                    <a href="{{ url_for('login') }}" class="btn btn-warning col-md-6 col-sm-12 mb-4 text-darkorange"
-                            style="width: 150px"><span
-                            class="fs-4">Log Masuk</span></a>
+    <div id="hero">
+        <div class="container-fluid px-0" id="hero"
+             style="background: linear-gradient(to right, rgb(254, 253, 112) 1.7%, rgb(248, 143, 111))">
+            <div class="row container-fluid p-5 pb-0 d-flex justify-content-end">
+                <div class="col-md-6 col-sm-12 container ps-5" data-aos="fade-right" data-aos-duration="1500">
+                    <span class="text-darkorange" style="font-size: 40pt">Belajar Matematik <br> Dengar Mudah !!!</span>
+                    <p class="mt-4">
+                        Ini adalah platform khas bagi pelajar bisu pekak dan mempunyai masalah pendengaran untuk
+                        mempelajari
+                        matematik dengan mudah dan pantas!!!.
+                    </p>
+                    <div class="container-fluid row d-flex mt-5">
+                        <a href="{{ url_for('sign_up') }}"
+                           class="btn btn-warning text-darkorange col-md-6 col-sm-12 me-4 mb-4"
+                           style="width: 150px">
+                            <span class="fs-4">Daftar</span></a>
+                        <a href="{{ url_for('login') }}" class="btn btn-warning col-md-6 col-sm-12 mb-4 text-darkorange"
+                           style="width: 150px"><span
+                                class="fs-4">Log Masuk</span></a>
+                    </div>
+                </div>
+                <div class="col-md-6 d-md-flex d-sm-none container-fluid justify-content-center"
+                     style="margin-bottom: -5%">
+                    <img src="/static/images/students.png" class="img-fluid object-fit-contain"
+                         alt="students.png" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="750">
                 </div>
             </div>
-            <div class="col-md-6 d-md-flex d-sm-none container-fluid justify-content-center" style="margin-bottom: -5%">
-                <img src="/static/images/students.png" class="img-fluid object-fit-contain" alt="students.png">
-            </div>
+            <svg viewBox="0 7 100 10" data-aos="fade-up" data-aos-duration="1500">
+                <path fill="#e57e00" opacity="0.5" d="M0 30 V15 Q30 3 60 15 V30z"/>
+                <path fill="#e57e00" d="M0 30 V12 Q30 17 55 12 T100 11 V30z"/>
+            </svg>
         </div>
-        <svg viewBox="0 7 100 10">
-            <path fill="#e57e00" opacity="0.5" d="M0 30 V15 Q30 3 60 15 V30z"/>
-            <path fill="#e57e00" d="M0 30 V12 Q30 17 55 12 T100 11 V30z"/>
-        </svg>
+        <div data-aos="fade-up" data-aos-duration="1500" data-aos-offset="-200">
+            <svg id="wave" style="transform:rotate(180deg); transition: 0.3s" viewBox="0 0 1440 230" version="1.1"
+                 xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0">
+                        <stop stop-color="#e57e00" offset="0%"></stop>
+                        <stop stop-color="rgba(255, 179, 11, 1)" offset="100%"></stop>
+                    </linearGradient>
+                </defs>
+                <path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)"
+                      d="M0,69L80,92C160,115,320,161,480,168.7C640,176,800,146,960,141.8C1120,138,1280,161,1440,176.3C1600,192,1760,199,1920,203.2C2080,207,2240,207,2400,203.2C2560,199,2720,192,2880,176.3C3040,161,3200,138,3360,141.8C3520,146,3680,176,3840,164.8C4000,153,4160,100,4320,72.8C4480,46,4640,46,4800,53.7C4960,61,5120,77,5280,95.8C5440,115,5600,138,5760,141.8C5920,146,6080,130,6240,122.7C6400,115,6560,115,6720,99.7C6880,84,7040,54,7200,69C7360,84,7520,146,7680,172.5C7840,199,8000,192,8160,172.5C8320,153,8480,123,8640,103.5C8800,84,8960,77,9120,72.8C9280,69,9440,69,9600,88.2C9760,107,9920,146,10080,157.2C10240,169,10400,153,10560,149.5C10720,146,10880,153,11040,164.8C11200,176,11360,192,11440,199.3L11520,207L11520,230L11440,230C11360,230,11200,230,11040,230C10880,230,10720,230,10560,230C10400,230,10240,230,10080,230C9920,230,9760,230,9600,230C9440,230,9280,230,9120,230C8960,230,8800,230,8640,230C8480,230,8320,230,8160,230C8000,230,7840,230,7680,230C7520,230,7360,230,7200,230C7040,230,6880,230,6720,230C6560,230,6400,230,6240,230C6080,230,5920,230,5760,230C5600,230,5440,230,5280,230C5120,230,4960,230,4800,230C4640,230,4480,230,4320,230C4160,230,4000,230,3840,230C3680,230,3520,230,3360,230C3200,230,3040,230,2880,230C2720,230,2560,230,2400,230C2240,230,2080,230,1920,230C1760,230,1600,230,1440,230C1280,230,1120,230,960,230C800,230,640,230,480,230C320,230,160,230,80,230L0,230Z"></path>
+            </svg>
+        </div>
     </div>
-    <svg id="wave" style="transform:rotate(180deg); transition: 0.3s" viewBox="0 0 1440 230" version="1.1"
-         xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0">
-                <stop stop-color="#e57e00" offset="0%"></stop>
-                <stop stop-color="rgba(255, 179, 11, 1)" offset="100%"></stop>
-            </linearGradient>
-        </defs>
-        <path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)"
-              d="M0,69L80,92C160,115,320,161,480,168.7C640,176,800,146,960,141.8C1120,138,1280,161,1440,176.3C1600,192,1760,199,1920,203.2C2080,207,2240,207,2400,203.2C2560,199,2720,192,2880,176.3C3040,161,3200,138,3360,141.8C3520,146,3680,176,3840,164.8C4000,153,4160,100,4320,72.8C4480,46,4640,46,4800,53.7C4960,61,5120,77,5280,95.8C5440,115,5600,138,5760,141.8C5920,146,6080,130,6240,122.7C6400,115,6560,115,6720,99.7C6880,84,7040,54,7200,69C7360,84,7520,146,7680,172.5C7840,199,8000,192,8160,172.5C8320,153,8480,123,8640,103.5C8800,84,8960,77,9120,72.8C9280,69,9440,69,9600,88.2C9760,107,9920,146,10080,157.2C10240,169,10400,153,10560,149.5C10720,146,10880,153,11040,164.8C11200,176,11360,192,11440,199.3L11520,207L11520,230L11440,230C11360,230,11200,230,11040,230C10880,230,10720,230,10560,230C10400,230,10240,230,10080,230C9920,230,9760,230,9600,230C9440,230,9280,230,9120,230C8960,230,8800,230,8640,230C8480,230,8320,230,8160,230C8000,230,7840,230,7680,230C7520,230,7360,230,7200,230C7040,230,6880,230,6720,230C6560,230,6400,230,6240,230C6080,230,5920,230,5760,230C5600,230,5440,230,5280,230C5120,230,4960,230,4800,230C4640,230,4480,230,4320,230C4160,230,4000,230,3840,230C3680,230,3520,230,3360,230C3200,230,3040,230,2880,230C2720,230,2560,230,2400,230C2240,230,2080,230,1920,230C1760,230,1600,230,1440,230C1280,230,1120,230,960,230C800,230,640,230,480,230C320,230,160,230,80,230L0,230Z"></path>
-    </svg>
-    <div class="container-fluid">
+
+    <div class="container-fluid" data-aos="fade-up" data-aos-duration="2500">
         <h1 class="mb-5 text-center text-darkorange">APA YANG TERDAPAT DALAM SMARTIGER?</h1>
         <p class="mb-2 text-center text-darkorange">Pelajar boleh melayari nota yang dimuat naik oleh guru-guru dengan
             lebih effektif, membuat kuiz dan
             penilaian yang menarik dan berinteraksi dengan guru-guru.
         </p>
         <div class="row justify-content-center container-fluid px-5 column-gap-4" style="margin-top: 180px">
-            <div class="col-md-3 col-sm-12 mb-sm-5 mt-md-0  mt-sm-5 card bg-lightorange border-2" style="padding-top:100px">
+            <div class="col-md-3 col-sm-12 mb-sm-5 mt-md-0  mt-sm-5 card bg-lightorange border-2"
+                 style="padding-top:100px">
                 <div class="card-body text-center position-relative ">
                     <img src="/static/images/note.png" class="img-fluid position-absolute" alt="note.png"
                          width="180"
                          height="180" style="bottom: 100%; left: 25%">
-                    <div class="card-title h1 text-orange">Nota Khusus</div>
+                    <div class="card-title h1 text-orange">Nota <br> Khusus</div>
                     <div class="card-text text-darkorange">Nota ringkas dan menarik daripada guru-guru</div>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-12 mb-sm-5 mt-md-0 mt-sm-5 card bg-lightorange border-2" style="padding-top:100px">
+            <div class="col-md-3 col-sm-12 mb-sm-5 mt-md-0 mt-sm-5 card bg-lightorange border-2"
+                 style="padding-top:100px">
                 <div class="card-body text-center position-relative ">
                     <img src="/static/images/quiz.png" class="img-fluid position-absolute" alt="note.png"
                          width="180"
                          height="180" style="bottom: 100%; left: 25%">
-                    <div class="card-title h1 text-orange">Kuiz & Penilaian</div>
+                    <div class="card-title h1 text-orange">Kuiz & <br>Penilaian</div>
                     <div class="card-text text-darkorange">Pelbagai Kuiz & Penilaian telah disediakan</div>
                 </div>
             </div>
-               <div class="col-md-3 col-sm-12 mb-sm-5 mt-md-0 mt-sm-5 card bg-lightorange border-2" style="padding-top:100px">
+            <div class="col-md-3 col-sm-12 mb-sm-5 mt-md-0 mt-sm-5 card bg-lightorange border-2"
+                 style="padding-top:100px">
                 <div class="card-body text-center position-relative ">
                     <img src="/static/images/chat.png" class="img-fluid position-absolute" alt="note.png"
                          width="180"
