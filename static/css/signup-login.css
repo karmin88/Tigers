@@ -1,0 +1,306 @@
+@import url('https://fonts.cdnfonts.com/css/bubblegum-sans');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css');
+@import url('https://unpkg.com/aos@2.3.1/dist/aos.css');
+
+root {
+    --beige: #ffefd2;
+    --choco: #723d00;
+    --orange: #e57e00;
+    --white: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    display: grid;
+    height: 100%;
+    width: 100%;
+    place-items: center;
+    font-family: 'Bubblegum Sans', sans-serif;
+    position: relative;
+    /* Set position to relative for stacking context */
+
+    /* Background Image Styles */
+    background-size: cover;
+    background-image: url('/static/images/background.png');
+}
+
+
+::selection {
+    background: #723d00;
+    color: #fff;
+}
+
+.wrapper {
+    width: 40vw;
+    border-radius: 2%;
+    text-align: center;
+    margin: 0 auto;
+    /*background-color: rgba(255, 255, 255, 0.3);*/
+    background: rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        width: 70vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .wrapper {
+        width: 90vw;
+    }
+}
+
+@media (max-width: 320px) {
+    .wrapper {
+        width: 95vw;
+    }
+}
+
+.wrapper .title {
+    font-size: 4vw;
+    /* 5% of the viewport width */
+    font-weight: 400;
+    text-align: center;
+    line-height: 100px;
+    background: linear-gradient(to top, rgb(251, 250, 81) 1.7%, rgb(248, 143, 111));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    user-select: none;
+    border-radius: 15px 15px 0 0;
+}
+
+
+.wrapper .radio-btn {
+    width: 60%;
+    font-size: 1vw;
+    background-color: #ffe9ce;
+    border-radius: 300px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.radio-btn span {
+    font-weight: 600;
+    /* Add any styles you want */
+}
+
+.radio-btn input[type="radio"] {
+    width: 10px;
+    /* Set the width */
+
+    height: 10px;
+    margin: 5px;
+    /* Set the height */
+}
+
+.wrapper form {
+    padding: 3% 10%;
+}
+
+.wrapper form .field {
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+}
+
+.wrapper form .field .btn:hover {
+    color: #723d00   !important;
+    opacity: 80%;
+}
+
+.wrapper form .field input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    font-size: 17px;
+    padding-left: 20px;
+    border: 1px solid orange;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.wrapper form .field input:focus,
+form .field input:valid {
+    border-color: #723d00;
+}
+
+.wrapper form .field label {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    color: rgba(246, 191, 86, 0.84);
+    font-weight: 400;
+    font-size: 17px;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+form .field input:focus ~ label,
+form .field input:valid ~ label {
+    top: 0%;
+    font-size: 16px;
+    color: orange;
+    background: #fff;
+    border-radius: 400px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+    padding: 5px 20px;
+    transform: translateY(-50%);
+}
+
+.field input[type="submit"] {
+    /* Your existing styles for the button */
+    background-color: #311d06;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    /* Add a smooth transition effect */
+
+}
+
+.field input[type="submit"]:hover {
+    background-color: #311d06;
+    /* Change the background color on hover */
+}
+
+form .content {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+form .content .checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form .content input {
+    accent-color: #723d00;
+    width: 15px;
+    height: 15px;
+    background: red;
+}
+
+form .content label {
+    color: #723d00;
+    user-select: none;
+    padding-left: 5px;
+}
+
+form .content .pass-link {
+    color: "";
+}
+
+form .field input[type="submit"] {
+    color: #fff;
+    border: none;
+    padding-left: 0;
+    margin-top: -10px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    /*background: linear-gradient(-135deg, #c850c0, #4158d0);*/
+    background: linear-gradient(to right, rgb(254, 253, 112) 1.7%, rgb(248, 143, 111));
+    transition: all 0.3s ease;
+}
+
+form .field input[type="submit"]:active {
+    transform: scale(0.95);
+}
+
+form .signup-link {
+    color: #723d00;
+    margin-top: 20px;
+    text-align: center;
+}
+
+form .pass-link a,
+form .signup-link a {
+    color: orange;
+}
+
+form .pass-link a:hover,
+form .signup-link a:hover {
+    text-decoration: underline;
+    color: #c36703;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.l-radio {
+    padding: 6px;
+    border-radius: 50px;
+    display: inline-flex;
+    cursor: pointer;
+    transition: background .2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.l-radio:hover,
+.l-radio:focus-within {
+    background: orange;
+}
+
+.l-radio:hover p {
+    color: white !important;
+}
+
+.l-radio p {
+    color: #723d00;
+}
+
+.l-radio input {
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background: none;
+    border: 0;
+    box-shadow: inset 0 0 0 1.5px #c17d02;
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    transition: box-shadow 150ms cubic-bezier(.95, .15, .5, 1.25);
+    pointer-events: none;
+}
+
+.l-radio input:focus {
+    color: white;
+    outline: none;
+}
+
+.l-radio input:checked {
+    box-shadow: inset 0 0 0 6px #723d00;
+}
+
+.l-radio span {
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 20px;
+    padding: 0 8px;
+}

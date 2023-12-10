@@ -1,68 +1,74 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
 <head>
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Pembukaan Akaun</title>
-   <link rel="stylesheet" href="../static/css/style.css">
-   <link rel="icon" href="../static/images/logo.png">
-
-   <!-- Google Fonts -->
-   <link
-      href="https://fonts.googleapis.com/css2?family=Acme&family=Grandstander&family=Lilita+One&family=Philosopher:wght@400;700&family=Titan+One&display=swap"
-      rel="stylesheet">
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembukaan Akaun</title>
+    <link rel="stylesheet" href="../static/css/signup-login.css">
+        <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="icon" href="../static/images/logo.png">
 </head>
 
 <body>
-   <div class="wrapper">
-      <div class="title">
-         Pembukaan Akaun
-      </div>
+<a href="/" class="btn btn-light rounded-circle shadow btn-bottom-right">
+    <i class="h5 bi bi-house-fill text-darkorange"></i>
+</a>
+<div class="wrapper shadow" data-aos="fade-right" data-aos-duration="1000">
+    <div class="title mt-3">
+        Pembukaan Akaun
+    </div>
 
-      <!-- Inserted radio buttons -->
+    <!-- Inserted radio buttons -->
 
-      <div class="radio-btn">
+    <div class="radio-btn d-flex align-items-center justify-content-center">
 
-         <span>Daftar sebagai:</span>
-         <label for="f-option" class="l-radio">
+        <span class="fw-bold" style="color: orange">Daftar sebagai:</span>
+        <label for="f-option" class="l-radio ms-3  my-2  pe-3">
             <input type="radio" id="f-option" name="selector" tabindex="1">
-            <p>Guru</p>
-         </label>
-         <label for="s-option" class="l-radio">
+            <p class="mb-0 align-self-center fw-normal">Guru</p>
+        </label>
+        <label for="s-option" class="l-radio ms-2 my-2 pe-3">
             <input type="radio" id="s-option" name="selector" tabindex="2">
-            <p>Pelajar</p>
-         </label>
+            <p class="mb-0 align-self-center fw-normal">Pelajar</p>
+        </label>
 
-      </div>
-      <form action="#">
-         <div class="field">
+    </div>
+    <form action="#">
+        <div class="field">
             <input type="text" required>
             <label>Nama</label>
-         </div>
-         <div class="field">
-            <input type="text" required>
+        </div>
+        <div class="field">
+            <input type="text" autocomplete="username" required>
             <label>Emel</label>
-         </div>
-         <div class="field">
-            <input type="password" required>
+        </div>
+        <div class="field">
+            <input type="password" autocomplete="new-password" required>
             <label>Kata Laluan</label>
-         </div>
-         <div class="field">
-            <input type="password" required>
+        </div>
+        <div class="field">
+            <input type="password" autocomplete="new-password" required>
             <label>Pengesahan Kata Laluan</label>
-         </div>
+        </div>
 
 
-         <div class="field">
-            <input type="submit" value="Daftar">
-         </div>
-         <div class="signup-link">
-            Sudah ada akaun? <a href="../templates/login.html">Log masuk</a>
-         </div>
-      </form>
-   </div>
+        <div class="field">
+            <input class="btn" type="submit" value="Daftar">
+        </div>
+        <div class="signup-link">
+            Sudah ada akaun? <a href="/login">Log masuk</a>
+        </div>
+    </form>
+</div>
 </body>
-
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+    document.querySelectorAll('img')
+    .forEach((img) =>
+        img.addEventListener('load', () =>
+            AOS.refresh()
+        )
+    );
+</script>
 </html>
