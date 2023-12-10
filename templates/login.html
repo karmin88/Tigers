@@ -12,6 +12,9 @@
 </head>
 
 <body>
+
+{% include "flash-message.html" %}
+
 <a href="/" class="btn btn-light rounded-circle shadow btn-bottom-right">
     <i class="h5 bi bi-house-fill text-darkorange"></i>
 </a>
@@ -20,32 +23,32 @@
         Log Masuk Akaun
     </div>
 
-    <!-- Inserted radio buttons -->
-    <div class="radio-btn d-flex align-items-center justify-content-center">
-        <span class="fw-bold" style="color:orange">Masuk sebagai:</span>
-        <label for="f-option" class="l-radio ms-3  my-2  pe-3">
-            <input type="radio" id="f-option" name="selector" tabindex="1">
-            <p class="mb-0 align-self-center fw-normal">Guru</p>
-        </label>
-        <label for="s-option" class="l-radio">
-            <input type="radio" id="s-option" name="selector" tabindex="2">
-            <p class="mb-0 align-self-center fw-normal">Pelajar</p>
-        </label>
+    <form action="/login" method="POST" autocomplete="off">
+        <!-- Inserted radio buttons -->
+        <div class="radio-btn d-flex align-items-center justify-content-center">
+            <span class="fw-bold" style="color:orange">Masuk sebagai:</span>
+            <label for="f-option" class="l-radio ms-3  my-2  pe-3">
+                <input type="radio" id="f-option" name="role" value="teacher" tabindex="1" required>
+                <p class="mb-0 align-self-center fw-normal">Guru</p>
+            </label>
+            <label for="s-option" class="l-radio">
+                <input type="radio" id="s-option" name="role" value="student" tabindex="2">
+                <p class="mb-0 align-self-center fw-normal">Pelajar</p>
+            </label>
 
-    </div>
+        </div>
 
-    <form action="#">
         <div class="field">
-            <input type="text" required>
+            <input type="email" name="email" placeholder="Emel" required>
             <label>Emel</label>
         </div>
         <div class="field">
-            <input type="password" required autocomplete="new-password">
+            <input type="password" name="password" placeholder="Kata Laluan" required>
             <label>Kata Laluan</label>
         </div>
         <div class="content d-flex justify-content-between px-3">
             <div class="checkbox">
-                <input type="checkbox" id="remember-me">
+                <input type="checkbox" name="remember">
                 <label for="remember-me">Ingat akaun saya</label>
             </div>
             <div class="pass-link">
@@ -60,7 +63,9 @@
         </div>
     </form>
 </div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="/static/js/aos-init.js"></script>
+<script src="/static/js/flash-message.js"></script>
 </body>
 </html>
