@@ -1,42 +1,28 @@
 <style>
     .fixed-header {
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
+        top: -10%; /* Start above the viewport */
+        left: 50%;
+        transform: translateX(-50%);
+        width: min-content;
         z-index: 1000;
     }
 
     .alert {
+        white-space: nowrap;
+        padding: 10px 100px 10px 100px;
         text-align: center;
-     }
+    }
 </style>
 
 <div class="fixed-header" id="flask-message-header">
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             {% for category, message in messages %}
-                <div class="flash-fade alert alert-{{ category }}" role="alert">
+                <div class="alert alert-{{ category }}" role="alert">
                     {{ message }}
                 </div>
             {% endfor %}
         {% endif %}
     {% endwith %}
 </div>
-
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Add a script to fade out flash messages after a few seconds
-        var flashMessages = document.querySelectorAll('.flash-fade');
-        flashMessages.forEach(function (message) {
-            setTimeout(function () {
-                message.style.opacity = '0';
-                message.style.transition = 'opacity 1s ease-in-out';
-                setTimeout(function () {
-                    message.style.display = 'none';
-                }, 1000);
-            }, 3000); // Adjust the time (in milliseconds) the message should stay visible
-        });
-    });
-</script>
