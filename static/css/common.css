@@ -53,8 +53,7 @@ body {
     bottom: 3%;
 }
 
-svg {
-    z-index: 99;
+.svg-block {
     background-size: cover;
     width: 100%;
     display: block;
