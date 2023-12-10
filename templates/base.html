@@ -7,19 +7,22 @@
     <!-- Vendor Stylesheet -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="https://fonts.cdnfonts.com/css/bubblegum-sans" rel="stylesheet">
+
     {% block vendor_stylesheet %} {% endblock %}
 
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/common.css">
     {% block custom_stylesheet %} {% endblock %}
 </head>
 <body class="d-flex flex-column min-vh-100">
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container-fluid mx-5 my-2">
-        <a class="navbar-brand me-5" href="#">
-            <img src="static/images/logo.png" alt="" width="80" height="80">
-            <span>Smartiger</span>
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid mx-5">
+        <a class="navbar-brand d-flex align-content-center me-5" href="#">
+            <img src="static/images/logo.png" alt="" width="40" height="40">
+            <h3 class="fw-bold align-self-center mb-0 ms-3 text-darkorange">Smartiger</h3>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent"
@@ -32,14 +35,14 @@
             <ul class="navbar-nav nav-pills mb-2 mb-lg-0 ms-auto">
                 {% if not login %}
                     <li class="nav-item me-3">
-                        <a class="nav-link px-3 {% if "/" in request.path %}active{% endif %}"
-                           aria-current="page" href="{{ url_for('entry') }}">Laman Utama</a>
+                        <a class="nav-link px-3 {% if "/" in request.path %}fw-normal active{% endif %}"
+                           aria-current="page" href="{{ url_for('index') }}">Laman Utama</a>
                     </li>
-                    <li class="nav-item me-3">
-                        <a class="nav-link px-3" href="#">Daftar</a>
+                    <li class="nav-item me-3 {% if "/" in request.path %}fw-normal active{% endif %}">
+                        <a class="nav-link px-3" href="{{ url_for('sign_up') }}">Daftar</a>
                     </li>
-                    <li class="nav-item me-3">
-                        <a class="nav-link px-3" href="#">Log Masuk</a>
+                    <li class="nav-item me-3 {% if "/" in request.path %}fw-normal active{% endif %}">
+                        <a class="nav-link px-3" href={{ url_for('login') }}">Log Masuk</a>
                     </li>
                 {% else %}
                     <li class="nav-item me-3">
@@ -70,60 +73,59 @@
 {% block content %}{% endblock %}
 
 <!-- Footer -->
-<footer class="mt-auto">
-    <div class="container">
+<footer class="mt-auto pe-0 me-0">
+    <div class="container-fluid pe-0 me-0">
         <!-- Section: Links -->
         <hr>
-        <section>
-            <div class="row text-center d-flex justify-content-center py-4">
-                {% if not login %}
-                    <div class="col-md-2">
-                        <h6 class="text-uppercase font-weight-bold">
-                            <a href="#!">Laman Utama</a>
-                        </h6>
-                    </div>
+        <div class="row container-fluid text-center d-flex justify-content-center py-4 pe-0 me-0">
+            {% if not login %}
+                <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a href="#!">Laman Utama</a>
+                    </h6>
+                </div>
 
-                    <div class="col-md-2">
-                        <h6 class="text-uppercase font-weight-bold">
-                            <a href="#!">Daftar</a>
-                        </h6>
-                    </div>
+                <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a href="#!">Daftar</a>
+                    </h6>
+                </div>
 
-                    <div class="col-md-2">
-                        <h6 class="text-uppercase font-weight-bold">
-                            <a href="#!">Log Masuk</a>
-                        </h6>
-                    </div>
-                {% else %}
-                    <div class="col-md-2">
-                        <h6 class="text-uppercase font-weight-bold">
-                            <a href="#!">Laman Utama</a>
-                        </h6>
-                    </div>
+                <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a href="#!">Log Masuk</a>
+                    </h6>
+                </div>
+            {% else %}
+                <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a href="#!">Laman Utama</a>
+                    </h6>
+                </div>
 
-                    <div class="col-md-2">
-                        <h6 class="text-uppercase font-weight-bold">
-                            <a href="#!">Nota</a>
-                        </h6>
-                    </div>
+                <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a href="#!">Nota</a>
+                    </h6>
+                </div>
 
-                    <div class="col-md-2">
-                        <h6 class="text-uppercase font-weight-bold">
-                            <a href="#!">Kuiz/Penilaian</a>
-                        </h6>
-                    </div>
-                    <div class="col-md-2">
-                        <h6 class="text-uppercase font-weight-bold">
-                            <a href="#!">Hubungi</a>
-                        </h6>
-                    </div>
-                {% endif %}
-            </div>
-        </section>
+                <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a href="#!">Kuiz/Penilaian</a>
+                    </h6>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="text-uppercase font-weight-bold">
+                        <a href="#!">Hubungi</a>
+                    </h6>
+                </div>
+            {% endif %}
+        </div>
     </div>
 
     <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: #ffefd2">
+    <div class="text-center p-3"
+         style="background: linear-gradient(to right, rgb(254, 253, 112) 1.7%, rgb(248, 143, 111))">
         © 2023 Copyright:
         <a href="#">Smartiger</a>
     </div>
