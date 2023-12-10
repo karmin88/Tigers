@@ -18,6 +18,9 @@
     {% block custom_stylesheet %} {% endblock %}
 </head>
 <body class="d-flex flex-column min-vh-100">
+
+{% include "flash-message.html" %}
+
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg">
     <div class="container-fluid mx-5">
@@ -133,14 +136,7 @@
 
 <!-- Custom Javascript -->
 {% block custom_script %} {% endblock %}
-<script>
-    AOS.init();
-    document.querySelectorAll('img')
-    .forEach((img) =>
-        img.addEventListener('load', () =>
-            AOS.refresh()
-        )
-    );
-</script>
+<script src="/static/js/aos-init.js"></script>
+<script src="/static/js/flash-message.js"></script>
 </body>
 </html>
