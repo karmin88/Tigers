@@ -1,16 +1,10 @@
-
 nav {
-    background: linear-gradient(to right, rgb(254, 253, 112) 1.7%, rgb(248, 143, 111))
+    background: linear-gradient(to right, rgb(254, 253, 112) 1.7%, rgb(248, 143, 111));
 }
 
 nav a {
     font-weight: bold !important;
     color:  #723d00 !important;
-}
-
-nav ul > li > a.active {
-    color: white !important;
-    background-color: #e57e00 !important;
 }
 
 footer p, a, hr {
