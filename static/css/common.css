@@ -11,6 +11,10 @@ body {
     background-color: #fff4e1 !important;
 }
 
+.bg-darkorange {
+    background-color: #723d00 !important;
+}
+
 .text-darkorange {
     color: #723d00 !important;
 }
@@ -41,6 +45,12 @@ body {
 
 .text-hover-underline:hover {
     text-decoration: underline !important;
+}
+
+.btn-bottom-right {
+    position: absolute;
+    right: 3%;
+    bottom: 3%;
 }
 
 svg {
