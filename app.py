@@ -1,23 +1,15 @@
-from flask import Flask, render_template
+import secrets
 
-app = Flask(__name__)
+from flask import Flask
+from flask_mysqldb import MySQL
 
+app = Flask(__name__, static_folder='static', template_folder='templates')
 
-@app.route('/')
-def index():
-    login = False
-    return render_template('public-dashboard.html', login=login)
+app.secret_key = secrets.token_hex(32)
 
+# Database connection setup
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_DB'] = 'skig3013_project'
 
-@app.route('/login')
-def login():
-    return render_template('login.html')
-
-
-@app.route('/sign_up')
-def sign_up():
-    return render_template('signup.html')
-
-
-if __name__ == '__main__':
-    app.run()
+mysql = MySQL(app)
