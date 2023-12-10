@@ -1,3 +1,24 @@
+body {
+    font-family: 'Bubblegum Sans', sans-serif;
+}
+
+
+.bg-orange {
+    background-color: #e57e00 !important;
+}
+
+.bg-lightorange {
+    background-color: #fff4e1 !important;
+}
+
+.text-darkorange {
+    color: #723d00 !important;
+}
+
+.text-orange {
+    color: #e57e00 !important;;
+}
+
 .text-multi-truncate {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -15,9 +36,16 @@
 }
 
 .text-hover-underline {
-    text-decoration: none!important;
+    text-decoration: none !important;
 }
 
 .text-hover-underline:hover {
-    text-decoration: underline!important;
+    text-decoration: underline !important;
+}
+
+svg {
+    z-index: 99;
+    background-size: cover;
+    width: 100%;
+    display: block;
 }
