@@ -84,7 +84,7 @@ body {
     background-color: #ffe9ce;
     border-radius: 300px;
     margin: auto;
-    margin-top: 20px;
+    margin-bottom: 50px !important;
 }
 
 .radio-btn span {
@@ -113,7 +113,7 @@ body {
 }
 
 .wrapper form .field .btn:hover {
-    color: #723d00   !important;
+    color: #723d00 !important;
     opacity: 80%;
 }
 
@@ -134,6 +134,7 @@ form .field input:valid {
 }
 
 .wrapper form .field label {
+    visibility: hidden;
     position: absolute;
     top: 50%;
     left: 20px;
@@ -145,9 +146,19 @@ form .field input:valid {
     transition: all 0.3s ease;
 }
 
-form .field input:focus ~ label,
-form .field input:valid ~ label {
-    top: 0%;
+::placeholder {
+    visibility: visible;
+    color: rgba(246, 191, 86, 0.9);
+}
+
+form .field input:focus::placeholder {
+    visibility: hidden;
+}
+
+form .field input:focus ~ label {
+    font-weight: bold;
+    visibility: visible;
+    top: 0;
     font-size: 16px;
     color: orange;
     background: #fff;
@@ -226,12 +237,14 @@ form .field input[type="submit"]:active {
 
 form .signup-link {
     color: #723d00;
+    margin-bottom: 15px;
     margin-top: 20px;
     text-align: center;
 }
 
 form .pass-link a,
 form .signup-link a {
+    display: inline;
     color: orange;
 }
 
