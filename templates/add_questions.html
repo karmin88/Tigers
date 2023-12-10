@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="content">
+<link href="/static/css/add_questions.css" rel="stylesheet" />
+    <form class="form-questions" action="{{ url_for('add_questions', quiz_id=quiz_id, question_count=question_count) }}" method="post">
+        {% for i in range(question_count) %}
+        <div class="form-group">
+            <label for="questionText{{ i }}">Question {{ i+1 }}:</label>
+            <input type="text" class="form-control" id="questionText{{ i }}" name="question_text_{{ i }}" required>
+
+            <label for="optionA{{ i }}">Option A:</label>
+            <input type="text" class="form-control" id="optionA{{ i }}" name="option_a_{{ i }}" required>
+
+            <label for="optionB{{ i }}">Option B:</label>
+            <input type="text" class="form-control" id="optionB{{ i }}" name="option_b_{{ i }}" required>
+
+            <label for="optionC{{ i }}">Option C:</label>
+            <input type="text" class="form-control" id="optionC{{ i }}" name="option_c_{{ i }}" required>
+
+            <label for="optionD{{ i }}">Option D:</label>
+            <input type="text" class="form-control" id="optionD{{ i }}" name="option_d_{{ i }}" required>
+
+            <label for="correctAnswer{{ i }}">Correct Answer:</label>
+            <select class="form-control" id="correctAnswer{{ i }}" name="correct_answer_{{ i }}" required>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+            </select>
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Add Questions</button>
+    </form>
+</div>
+{% endblock %}
