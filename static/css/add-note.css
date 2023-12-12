@@ -1,3 +1,12 @@
+:root {
+  scroll-behavior: auto!important;
+}
+
+label, form, .form-select, .form-control {
+    color: #723d00 !important;
+}
+
+
 .dropzone {
     transition: background-color 0.25s ease-in;
 }
