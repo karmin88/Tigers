@@ -3,10 +3,27 @@ nav {
 }
 
 nav a {
-    font-weight: bold !important;
-    color:  #723d00 !important;
+    font-weight: bold;
+    color: #723d00 !important;
+}
+
+a.active {
+    font-weight: normal;
+    color: white !important;
+    background-color: #e57e00 !important;
 }
 
 footer p, a, hr {
     color: #723d00;
 }
+
+a:hover {
+    cursor: pointer;
+    opacity: 90%;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #e57e00;
+    box-shadow: 0 0 0 0.2rem #fae6c4;
+}
+
