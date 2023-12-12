@@ -7,69 +7,97 @@
 {% block custom_stylesheet %}
     <link rel="stylesheet" href="/static/css/common.css">
     <link rel="stylesheet" href="/static/css/add-note.css">
+    <link rel="stylesheet" href="/static/css/hero.css">
 {% endblock %}
 
 {% block content %}
-    <div class="container-fluid p-5">
-        <div class="container-fluid d-inline-flex align-items-center pe-0">
-            <h3 class="">Add New Note</h3>
-            <div class="ms-3">
-                <select class="form-select">
-                    <option selected disabled>Select a chapter</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </div>
-            <div class="ms-auto d-inline-flex align-items-center">
-                <button type="button" class="border-0 me-2" id="add-section">
-                    <i class="bi bi-hover bi-plus-square-fill h4 my-0"></i>
-                </button>
-                <button type="button" class="btn btn-secondary me-3">Submit</button>
-                <a href="javascript:history.back()" class="btn btn-warning">Cancel</a>
+    <section id="hero" class="hero hero-curve-left mb-5 pb-4">
+        <div class="container">
+            <div class="row gy-5 mb-3" data-aos="fade-right" data-aos-duration="1500">
+                <div class="row col-md-6 col-sm-12 order-md-1 container-fluid">
+                    <img src="/static/images/add-note.png" class="img-fluid object-fit-contain"
+                         alt="add-note.png"
+                         data-aos="zoom-out"
+                         data-aos-delay="100">
+                </div>
+                <div class="row col-md-6 col-sm-12 order-md-0 d-flex flex-column justify-content-center text-center text-lg-start">
+                    <h2 class="text-darkorange h1">Selamat Datang ke <br>Halaman Catatan</h2>
+                    <p class="mb-5 h5">
+                        Kongsi pengetahuan anda dengan menjatuhkan nota bermakna untuk membantu yang lain.
+                    </p>
+                </div>
             </div>
         </div>
-        <hr class="my-3">
-        <div class="row" id="section-container">
+    </section>
+    <div class="container-fluid p-0 d-flex flex-column" style="padding: 0 7% 0 7%" data-aos="fade-up"
+         data-aos-duration="1500" data-aos-offset="-200">
+        <div class="card mx-5 border-0">
+            <div class="card-header text-center shadow-sm rounded-0 border-left-orange"
+                 style="background-color: #f6e2c0 "><h1
+                    class="text-darkorange fw-bold pt-2">Tambah Nota Baru</h1></div>
+            <div class="card-body py-5">
+                <div class="d-flex align-items-center justify-content-between" data-aos="fade-up"
+                     data-aos-duration="1500">
+                    <div class="my-1 shadow-sm">
+                        <select class="form-select" id="selected-chap" required>
+                            <option selected disabled>Pilih satu bab</option>
+                            <option value="1">Satu</option>
+                            <option value="2">Dua</option>
+                            <option value="3">Tiga</option>
+                        </select>
+                    </div>
+                    <div class="ms-auto d-flex align-items-center">
+                        <button type="button" class="border-0 me-2" id="add-section">
+                            <i class="bi bi-hover bi-plus-square-fill h4 my-0 text-warning bg-lightorange"></i>
+                        </button>
+                        <a type="submit" class="btn btn-secondary bg-orange" id="submit-note">Hantar</a>
+                    </div>
+                </div>
+                <hr class="my-3">
+                <div class="row container-fluid mx-0 px-0" id="section-container" data-aos="fade-up"
+                     data-aos-duration="1500">
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Note section template -->
     <template id="section-form-template">
-        <form class="col-12 card shadow-sm mt-2">
-            <div class="card-header collapsible d-flex justify-content-between align-items-center">
-                <div class="card-title mt-2 fw-bold">Section</div>
+        <form class="section-form col-12 card shadow-sm mt-2 mb-4  bg-lightorange">
+            <a><i class="close h5 bi bi-x-circle-fill bi-hover text-danger top-right"></i></a>
+            <div class="card-header collapsible d-flex justify-content-between align-items-center py-3">
+                <div class="card-title fw-bold mb-0">Bahagian</div>
                 <i class="bi bi-collapsible bi-arrows-angle-contract"></i>
             </div>
             <div class="card-body row overflow-hidden">
                 <div class="col-md-8 col-sm-12">
                     <div class="form-group row mb-2">
-                        <label class="col-md-2 col-sm-12 col-form-label">Title</label>
+                        <label class="col-md-2 col-sm-12 col-form-label">Tajuk</label>
                         <div class="col-md-10 col-md-10 col-sm-12">
-                            <input type="text" class="form-control  shadow-sm"
-                                   placeholder="Title">
+                            <input type="text" class="form-control shadow-sm" name="title"
+                                   placeholder="Tajuk" required>
                         </div>
                     </div>
                     <div class="form-group row mb-2">
-                        <label class="col-md-2 col-sm-12 col-form-label">Description</label>
+                        <label class="col-md-2 col-sm-12 col-form-label">Deskripsi</label>
                         <div class="col-md-10 col-sm-12">
-                                <textarea type="password" class="form-control  shadow-sm" rows="10"
-                                          placeholder="Description"></textarea>
+                                <textarea type="password" class="form-control  shadow-sm" rows="10" name="description"
+                                          placeholder="Deskripsi" required></textarea>
                         </div>
                     </div>
                     <div class="form-group row mb-2">
-                        <label class="col-md-2 col-sm-12 col-form-label">Attachment</label>
+                        <label class="col-md-2 col-sm-12 col-form-label">Lampiran</label>
                         <div class="col-md-10 col-sm-12">
                             <div class="dropzone border shadow-sm border-1 border-opacity-10 rounded">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="container col-md-4 col-sm-12">
-                    <p>PDF preview</p>
-                    <div class="embed-responsive d-flex flex-column w-100 h-100 border border-1 shadow-sm"
-                         style="background-color: #efefef">
-                        <iframe class="embed-responsive-item flex-grow-1" src=""></iframe>
+                <div class="container-fluid col-md-4 col-sm-12 mb-2 rounded-1 d-flex flex-column"
+                     style="min-height: 400px">
+                    <p>Pratonton PDF</p>
+                    <div class="embed-responsive w-100 h-100 border border-1 rounded-1 overflow-hidden shadow-sm bg-white">
+                        <iframe class="embed-responsive-item w-100 h-100" src=""></iframe>
                     </div>
                 </div>
             </div>
