@@ -37,6 +37,27 @@ body {
     color: #723d00 !important;
 }
 
+
+.link-hover-underlined {
+    text-decoration: none ! important;
+}
+
+.link-hover-underlined:hover {
+    text-decoration: underline !important;
+}
+
+.link-hover-border-bottom {
+    border-bottom: none;
+}
+
+.link-hover-border-bottom:hover {
+    border-bottom: 1px solid;
+}
+
+.text-lightorange {
+    color: #fff4e1 !important;
+}
+
 .border-darkorange {
     border-color: rgba(114, 61, 0, 0.5) !important;
 }
@@ -70,7 +91,14 @@ body {
 }
 
 .border-left-orange {
-    border-left: 7px solid orange;
+    border-radius: 0!important;
+    border-left: 7px solid #e57e00;
+}
+
+
+.border-left-orange {
+    border-radius: 0!important;
+    border-left: 7px solid #e57e00;
 }
 
 .text-hover-underline:hover {
