@@ -1,18 +1,5 @@
-.card {
-    border-radius: 0;
-}
-
-.card-header {
-    border-radius: 0 !important;
-    border-top: 0;
-    border-bottom: 1px solid gainsboro !important;
-    border-left: 4px solid orange !important;
-    background-color: #fff3e1 !important;
-    color: black !important;
-}
-
 .carousel-item > img {
-    height: 500px !important;
+    height: 400px !important;
 }
 
 .carousel-item {
@@ -29,5 +16,9 @@
     top: 0;
     left: 0;
     text-align: center;
+}
+
+.carousel-caption .rounded-pill {
+    width: min-content;
 }
 
