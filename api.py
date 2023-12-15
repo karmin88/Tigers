@@ -3,21 +3,23 @@ from functools import wraps
 from pathlib import Path
 from uuid import uuid4
 
-from flask import render_template, flash, request, session, redirect, url_for
+from flask import render_template, flash, request, session, redirect, url_for, send_from_directory
 from werkzeug.utils import secure_filename
 
 from app import app
-from database import find_user, add_user, add_note, add_note_section, add_section_file
+from database import find_user, add_user, add_note, add_note_section, add_section_file, get_notes, get_section_files
 
 
-def login_required(role):
+def login_required(role=None):
     def decorator(f):
         @wraps(f)
         def decorated_function(*args, **kwargs):
             user = session.get('user', None)
             if user:
-                user_role = user['role']
-                if user and user_role == role:
+                if role:
+                    if role == user['role']:
+                        return f(*args, **kwargs)
+                else:
                     return f(*args, **kwargs)
             return redirect(url_for('login'))
 
@@ -136,7 +138,29 @@ def teacher_note():
 @login_required(role='student')
 def student_note():
     user = session.get('user', None)
-    return render_template('all-notes.html', user=user)
+    return render_template('all-notes.html', user=user, notes=get_notes())
+
+
+@app.route('/view_note/<int:note_id>')
+@app.route('/view_note/<int:section_no>/<int:note_id>')
+@login_required()
+def view_note(section_no=None, note_id=None):
+    user = session.get('user', None)
+    note = get_notes(id=note_id)
+    list_section_files = {}
+    for section_id in note['section_ids']:
+        sections_files = get_section_files(section_id)
+        list_section_files[section_id] = [[f['uuid_filename'] for f in sections_files],
+                                          [f['original_filename'] for f in sections_files]]
+    print(list_section_files)
+    return render_template('note.html', user=user, note=get_notes(id=note_id), section_no=section_no,
+                           sections_files=list_section_files)
+
+
+@app.route('/request_file/<string:uploader_id>/<string:filename>')
+@login_required()
+def request_file(uploader_id, filename):
+    return send_from_directory(os.path.join(app.config['UPLOAD_FOLDER'], f"user_{uploader_id}"), filename)
 
 
 def make_unique(string):
