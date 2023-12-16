@@ -1,63 +1,67 @@
 {% extends "base.html" %}
 
 {% block custom_stylesheet %}
-    <link rel="stylesheet" href="/static/css/note.css">
-    <link rel="stylesheet" href="/static/css/all-notes.css">
+  <link rel="stylesheet" href="/static/css/note.css">
+  <link rel="stylesheet" href="/static/css/all-notes.css">
 {% endblock %}
 
 {% block content %}
-    <div class="container-fluid px-0 bg-linear-gradient-orange-toright shadow border border-top border-black border-opacity-25">
-        <div class="container p-5 pb-2">
-            {% for i in range(note.sections | length) %}
-                <section class="card rounded-2 mb-4 shadow-lg bg-lightorange">
-                    <header class="card-header h4 border-left-orange bg-white">
-                        Section {{ note.sections[i] }}
-                    </header>
-                    <div class="card-body row border-0 mx-3">
-                        <div class="col-md-6 col-sm-12 p-4 mb-3 lh-base rounded-1 border border-2 shadow bg-white">
-                            {{ note.section_descriptions[i] }}
+  <div class="container-fluid px-0 bg-linear-gradient-orange-toright shadow border border-top border-black border-opacity-25">
+    <div class="container p-5 pb-2">
+      {% for i in range(note.sections | length) %}
+        <section class="card rounded-2 mb-4 shadow-lg bg-lightorange">
+          <header class="card-header h4 border-left-orange bg-white">
+            Section {{ note.sections[i] }}
+          </header>
+          <div class="card-body border-0 mx-3">
+            <div class="container p-4 lh-base rounded-1 border border-2 shadow bg-white">
+              {{ note.section_descriptions[i] | safe }}
+            </div>
+            {% set uuid_img_files, uuid_pdf = sections_files[note.section_ids[i]][0] | partition_pdf %}
+            {% set ori_img_files, ori_pdf  = sections_files[note.section_ids[i]][1] | partition_pdf %}
+            {% if uuid_img_files | length  > 0 %}
+              <div class="container mb-3 px-0">
+                <div id="section-carousel-{{ i }}"
+                     class="carousel carousel-dark border  border-black  border-opacity-25 bg-lightorange border-1 shadow"
+                     data-bs-interval="false">
+                  <div class="carousel-inner container-fluid">
+                    {% for j in range(uuid_img_files | length) %}
+                      <div class="carousel-item {% if loop.index0 == 0 %}active{% endif %} flex-column" style="padding-left: 10%; padding-right: 10%">
+                        <img src="{{ url_for('request_file', uploader_id=note.user_id, filename=uuid_img_files[j]) }}"
+                             class="img-fluid" alt="{{ ori_img_files[j] }}">
+                        <div class="carousel-caption d-flex justify-content-center">
+                          <h5 class="bg-orange rounded-pill px-3 py-2 text-white">{{ ori_img_files[j] }}</h5>
                         </div>
-                        <div class="col-md-6 col-sm-12 mb-3 container-fluid px-0">
-                            <div id="section-carousel-{{ i }}"
-                                 class="carousel carousel-dark border  border-black  border-opacity-25 bg-lightorange border-1 shadow"
-                                 data-bs-interval="false">
-                                <div class="carousel-inner container-fluid">
-                                    {% set uuid_img_files, uuid_pdf = sections_files[note.section_ids[i]][0] | partition_pdf %}
-                                    {% set ori_img_files, ori_pdf  = sections_files[note.section_ids[i]][1] | partition_pdf %}
-                                    {% for j in range(uuid_img_files | length) %}
-                                        <div class="carousel-item {% if loop.index0 == 0 %}active{% endif %} flex-column px-5">
-                                            <img src="{{ url_for('request_file', uploader_id=note.user_id, filename=uuid_img_files[j]) }}"
-                                                 class="img-fluid" alt="{{ ori_img_files[j] }}">
-                                            <div class="carousel-caption d-flex justify-content-center">
-                                                <h5 class="bg-orange rounded-pill px-3 py-2 text-white">{{ ori_img_files[j] }}</h5>
-                                            </div>
-                                        </div>
-                                    {% endfor %}
-                                </div>
-                                <button class="carousel-control-prev" type="button"
-                                        data-bs-target="#section-carousel-{{ i }}"
-                                        data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button"
-                                        data-bs-target="#section-carousel-{{ i }}"
-                                        data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="container-fluid px-0 rounded-1 overflow-hidden" style="height: 500px!important;">
-                            <div class="embed-responsive w-100 h-100 p-0">
-                                {% set uuid_img, uuid_pdf = sections_files[note.section_ids[i]][0] | partition_pdf %}
-                                <iframe class="embed-responsive-item w-100 h-100"
-                                        src="{{ url_for('request_file', uploader_id= note.user_id, filename = uuid_pdf[0]) }}"></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            {% endfor %}
-        </div>
+                      </div>
+                    {% endfor %}
+                  </div>
+                  <button class="carousel-control-prev" type="button"
+                          data-bs-target="#section-carousel-{{ i }}"
+                          data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button"
+                          data-bs-target="#section-carousel-{{ i }}"
+                          data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+              </div>
+            {% endif %}
+            {% if uuid_pdf | length  > 0 %}
+              <div class="container-fluid px-0 rounded-1 overflow-hidden" style="height: 500px!important;">
+                <div class="embed-responsive w-100 h-100 p-0">
+                  {% set uuid_img, uuid_pdf = sections_files[note.section_ids[i]][0] | partition_pdf %}
+                  <iframe class="embed-responsive-item w-100 h-100"
+                          src="{{ url_for('request_file', uploader_id= note.user_id, filename = uuid_pdf[0]) }}"></iframe>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </section>
+      {% endfor %}
     </div>
+  </div>
 {% endblock %}
