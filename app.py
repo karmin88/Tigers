@@ -6,7 +6,7 @@ from jinja2 import Environment
 app = Flask(__name__, static_folder='static', template_folder='templates')
 
 app.secret_key = secrets.token_hex(32)
-app.config['PERMANENT_SESSION_LIFETIME'] = 120
+app.config['PERMANENT_SESSION_LIFETIME'] = 1200
 
 # Database connection setup
 app.config['MYSQL_HOST'] = 'localhost'
@@ -18,7 +18,6 @@ mysql = MySQL(app)
 app.config['ALLOWED_EXTENSIONS'] = ['pdf', 'png', 'jpg', 'jpeg']
 app.config['UPLOAD_FOLDER'] = 'notes'
 app.config['MAX_CONTENT_LENGTH'] = 30 * 1000 * 1000
-
 
 def partition_pdf(value):
     others = []
