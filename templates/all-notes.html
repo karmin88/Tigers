@@ -1,120 +1,111 @@
 {% extends "base.html" %}
 
 {% block custom_stylesheet %}
-    <link rel="stylesheet" href="/static/css/all-notes.css">
-    <link rel="stylesheet" href="/static/css/common.css">
-    <link rel="stylesheet" href="/static/css/hero.css">
+  <link rel="stylesheet" href="/static/css/all-notes.css">
+  <link rel="stylesheet" href="/static/css/common.css">
+  <link rel="stylesheet" href="/static/css/hero.css">
 {% endblock %}
 
 {% block content %}
-<div class="row container-fluid mx-0 px-0">
+  <div class="row container-fluid mx-0 px-0">
     <section id="hero" class="hero hero-curve-right mb-5 pb-4">
-        <div class="container">
-            <div class="row gy-5 mb-3" data-aos="fade-right" data-aos-duration="1500">
-                <div class="row col-md-6 col-sm-12 order-md-1 container-fluid">
-                    <img src="/static/images/add-note.png" class="img-fluid object-fit-contain"
-                         alt="add-note.png"
-                         data-aos="zoom-out"
-                         data-aos-delay="100">
-                </div>
-                <div class="row col-md-6 col-sm-12 order-md-0 d-flex flex-column justify-content-center text-center text-lg-start">
-                    <h2 class="text-darkorange h1">Selamat Datang ke <br>Halaman Catatan</h2>
-                    <p class="mb-5 h5">
-                        Kongsi pengetahuan anda dengan menjatuhkan nota bermakna untuk membantu yang lain.
-                    </p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row gy-5 mb-3" data-aos="fade-right" data-aos-duration="1000">
+          <div class="row col-md-6 col-sm-12 order-md-1 container-fluid">
+            <img src="/static/images/add-note.png" class="img-fluid object-fit-contain" alt="add-note.png"
+                 data-aos="zoom-out" data-aos-delay="100">
+          </div>
+          <div class="row col-md-6 col-sm-12 order-md-0 d-flex flex-column justify-content-center text-center text-lg-start">
+            <h2 class="text-darkorange h1">Selamat Datang ke <br>Halaman Catatan</h2>
+            <p class="mb-5 h5">Kongsi pengetahuan anda dengan menjatuhkan nota bermakna untuk membantu yang lain.</p>
+          </div>
         </div>
+      </div>
     </section>
-    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white overflow-y-auto col-md-3 col-sm-12"
-         style="height: 550px">
-
-        <div class="list-group list-group-flush border-bottom m-4">
-            <a href="javascript:filter(all)"
-               class="list-group-item list-group-item-action list-group-item-light active py-3 lh-tight">
-                <div class="d-flex w-100 align-items-center justify-content-between">
-                    <strong class="mb-1">All</strong>
-                </div>
-                <div class="col-11 mb-1 small">Some placeholder content in a paragraph below the heading and date.
-                </div>
-            </a>
-            <a href="javascript:filter(1)"
-               class="list-group-item list-group-item-action list-group-item-light py-3 lh-tight">
-                <div class="d-flex w-100 align-items-center justify-content-between">
-                    <strong class="mb-1">List group item heading</strong>
-                </div>
-                <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.
-                </div>
-            </a>
-            <a href="javascript:filter(2)"
-               class="list-group-item list-group-item-action list-group-item-light py-3 lh-tight">
-                <div class="d-flex w-100 align-items-center justify-content-between">
-                    <strong class="mb-1">List group item heading</strong>
-                </div>
-                <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.
-                </div>
-            </a>
-            <a href="javascript:filter(3)"
-               class="list-group-item list-group-item-action list-group-item-light py-3 lh-tight">
-                <div class="d-flex w-100 align-items-center justify-content-between">
-                    <strong class="mb-1">List group item heading</strong>
-                </div>
-                <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.
-                </div>
-            </a>
-            <div class="lh-tight card border-1 shadow-sm mt-3">
-                <div class="card-header">
-                    <strong class="mb-1">List group item heading</strong>
-                </div>
-                <div class="card-body col-10 small">
-                    <div>Test your knowledge of the skills in this course.</div>
-                    <a href="/" class="text-decoration-none link-hover-border-bottom strong border-3"
-                       style="font-size: 14pt;">Start Quiz Challenge</a>
-                </div>
-            </div>
+    <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white overflow-y-scroll col-md-3 col-sm-12 mb-2">
+      <div class="list-group list-group-flush border-bottom mx-4">
+        <button onclick="filterNotesByChapter(); setActiveFromGroup(this); setBreadcrumb()"
+                class="list-group-item list-group-item-action list-group-item-light active py-3 lh-tight">
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1">All Chapter</strong>
+          </div>
+          <div class="col-11 mb-1 small">Some placeholder content in a paragraph below the heading and date.
+          </div>
+        </button>
+        <button onclick="filterNotesByChapter(1); setActiveFromGroup(this); setBreadcrumb(1)"
+                class="list-group-item list-group-item-action list-group-item-light py-3 lh-tight">
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1">Chapter 1</strong>
+          </div>
+          <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.
+          </div>
+        </button>
+        <button onclick="filterNotesByChapter(2); setActiveFromGroup(this); setBreadcrumb(2)"
+                class="list-group-item list-group-item-action list-group-item-light py-3 lh-tight">
+          <div class="d-flex w-100 align-items-center justify-content-between">
+            <strong class="mb-1">Chapter 2</strong>
+          </div>
+          <div class="col-10 mb-1 small">Some placeholder content in a paragraph below the heading and date.
+          </div>
+        </button>
+        <div class="lh-tight card border-1 shadow-sm mt-3">
+          <div class="card-header">
+            <strong class="mb-1">List group item heading</strong>
+          </div>
+          <div class="card-body col-10 small">
+            <div>Test your knowledge of the skills in this course.</div>
+            <a href="/" class="text-decoration-none link-hover-border-bottom strong border-3 fs-5">Start
+              Quiz Challenge</a>
+          </div>
         </div>
+      </div>
     </div>
 
-    <div class="col-md-9 col-sm-12 ps-0" style="padding-right: 6%;">
-        <div class="row container py-2 px-5  border-bottom flex-row justify-content-between align-items-center">
-            <ol class="breadcrumb col-7 my-0 ms-2">
-                <li class="breadcrumb-item"><a href="#"><i class="bi bi-house-door-fill"></i></a></li>
-                <li class="breadcrumb-item"><a href="#" class="text-hover-underline">Home</a></li>
-                <li class="breadcrumb-item"><a href="#" class="text-hover-underline">Library</a></li>
-            </ol>
-            <form class="col-3 pe-0">
-                <div class="input-group">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-warning" type="submit">Search</button>
-                </div>
-            </form>
-        </div>
-        <div class="container-fluid pt-3  overflow-x-hidden overflow-y-auto px-5" style="height: 500px"
-             id="list-all">
-            {% for note in notes %}
-            <div class="card card-hover mb-3">
-                <div class="card-header my-1 d-flex flex-row align-items-center">
-                    <div class="rounded-circle bg-orange py-2 px-2" style="width: min-content">
-                        <img src="/static/images/notes.png" alt="note.pngs"
-                             width="28" height="28">
-                    </div>
-                    <span class="ms-3 fs-5 text-darkorange">Chapter {{ note.chapter }}</span>
-                    <span class="ms-3 text-muted pt-1" style="font-size: 9pt">at {{ note.uploaded_date }}</span>
-                    <span class="ms-auto text-muted">by {{ note.username }}</span>
-                </div>
-                <div class="card-body">
-                    <div class="d-grid" style="grid-template-columns: repeat(2, auto);grid-auto-flow: row">
-                        {% for i in range(note.sections | length) %}
-                            <a  href="{{ url_for('view_note', section_no=note.sections[i], note_id=note.id) }}"
-                               class="mb-2 link-hover-underlined text-darkorange opacity-75"
-                               style="z-index: 2;"> {{ note.section_titles[i] }}</a>
-                        {% endfor %}
-                    </div>
-                </div>
-                <a href="{{ url_for('view_note', section_no=None, note_id=note.id) }}" class="card-link stretched-link"></a>
-                    </div>
+    <div class="col-md-9 col-sm-12 px-5" id="note-container">
+      <div class="container py-2 border-bottom d-flex flex-row justify-content-between align-items-center">
+        <ol class="breadcrumb my-0 me-auto">
+          <li class="breadcrumb-item"><a href="/student_dashboard"><i class="bi bi-house-door-fill"></i></a></li>
+          <li class="breadcrumb-item"><a href="#" class="text-hover-underline">Notes</a></li>
+          <li class="breadcrumb-item"><a id="current-chapter" href="" class="text-hover-underline"></a></li>
+        </ol>
+        <form class="pe-0" onsubmit="filterNotesBySearch(event)">
+          <div class="input-group">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search" id="filter-value">
+            <button class="btn btn-warning" type="submit">Search</button>
+          </div>
+        </form>
+      </div>
+      <div class="container-fluid pt-3 overflow-auto px-5" style="height: 500px" id="list-note">
+        {% for note in notes %}
+          <div class="note card card-hover mb-2" id="note-{{ loop.index }}" data-chapter="{{ note.chapter }}"
+               data-content="{{ note.section_titles }} {{ note.username }}">
+            <div class="card-header my-1 d-flex flex-row align-items-center">
+              <div class="rounded-circle bg-orange py-2 px-2">
+                <img src="/static/images/notes.png" alt="note.pngs" width="28" height="28">
+              </div>
+              <span class="ms-3 fs-5 text-darkorange">Chapter {{ note.chapter }}</span>
+              <span class="ms-3 text-muted pt-1 small">at {{ note.uploaded_date }}</span>
+              <span class="ms-auto text-muted">by {{ note.username }}</span>
+            </div>
+            <div class="card-body">
+              <div class="d-grid" style="grid-template-columns: repeat(2, auto);grid-auto-flow: row">
+                {% for i in range(note.sections | length) %}
+                  <a href="{{ url_for('view_note', section_no=note.sections[i], note_id=note.id) }}"
+                     class="mb-2 link-hover-underlined text-darkorange opacity-75"
+                     style="z-index: 2;"> {{ note.section_titles[i] }}</a>
                 {% endfor %}
+              </div>
             </div>
-        </div>
+            <a href="{{ url_for('view_note', section_no=None, note_id=note.id) }}" class="card-link stretched-link"></a>
+          </div>
+        {% endfor %}
+      </div>
     </div>
+  </div>
+{% endblock %}
+{% block vendor_script %}
+  <script defer src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+{% endblock %}
+{% block custom_script %}
+  <script defer src="/js/all-notes.js"></script>
 {% endblock %}
