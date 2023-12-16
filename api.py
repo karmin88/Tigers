@@ -4,10 +4,13 @@ from pathlib import Path
 from uuid import uuid4
 
 from flask import render_template, flash, request, session, redirect, url_for, send_from_directory
+from flask_minify import Minify, decorators as minify_decorators
 from werkzeug.utils import secure_filename
 
 from app import app
 from database import find_user, add_user, add_note, add_note_section, add_section_file, get_notes, get_section_files
+
+Minify(app=app, passive=True)
 
 
 def login_required(role=None):
@@ -34,12 +37,14 @@ def before_request():
 
 
 @app.route('/logout')
+@minify_decorators.minify(html=True, js=True, cssless=True)
 def logout():
     session.pop('user', None)
     return redirect(url_for('index'))
 
 
 @app.route('/')
+@minify_decorators.minify(html=True, js=True, cssless=True)
 def index():
     if not session.permanent:
         session.pop('user', None)
@@ -47,6 +52,7 @@ def index():
 
 
 @app.route('/login', methods=['GET', 'POST'])
+@minify_decorators.minify(html=True, js=True, cssless=True)
 def login():
     if not session.permanent:
         session.pop('user', None)
@@ -70,6 +76,7 @@ def login():
 
 
 @app.route('/sign_up', methods=['GET', 'POST'])
+@minify_decorators.minify(html=True, js=True, cssless=True)
 def sign_up():
     if not session.permanent:
         session.pop('user', None)
@@ -96,6 +103,7 @@ def sign_up():
 
 @app.route('/teacher_dashboard')
 @login_required(role='teacher')
+@minify_decorators.minify(html=True, js=True, cssless=True)
 def teacher_dashboard():
     user = session.get('user', None)
     return render_template('teacher-dashboard.html', user=user)
@@ -103,6 +111,7 @@ def teacher_dashboard():
 
 @app.route('/student_dashboard')
 @login_required(role='student')
+@minify_decorators.minify(html=True, js=True, cssless=True)
 def student_dashboard():
     user = session.get('user', None)
     return render_template('student-dashboard.html', user=user)
@@ -135,6 +144,7 @@ def teacher_note():
 
 
 @app.route('/student_note')
+@minify_decorators.minify(html=True, js=True, cssless=True)
 @login_required(role='student')
 def student_note():
     user = session.get('user', None)
@@ -143,6 +153,7 @@ def student_note():
 
 @app.route('/view_note/<int:note_id>')
 @app.route('/view_note/<int:section_no>/<int:note_id>')
+@minify_decorators.minify(html=True, js=True, cssless=True)
 @login_required()
 def view_note(section_no=None, note_id=None):
     user = session.get('user', None)
@@ -152,7 +163,6 @@ def view_note(section_no=None, note_id=None):
         sections_files = get_section_files(section_id)
         list_section_files[section_id] = [[f['uuid_filename'] for f in sections_files],
                                           [f['original_filename'] for f in sections_files]]
-    print(list_section_files)
     return render_template('note.html', user=user, note=get_notes(id=note_id), section_no=section_no,
                            sections_files=list_section_files)
 
