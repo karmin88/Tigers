@@ -14,6 +14,7 @@ body {
 }
 
 .bg-linear-gradient-orange-toright {
+    /*#fefd70 #f88f6f*/
     background: linear-gradient(to right, rgb(254, 253, 112) 1.7%, rgb(248, 143, 111))
 }
 

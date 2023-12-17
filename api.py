@@ -173,6 +173,21 @@ def request_file(uploader_id, filename):
     return send_from_directory(os.path.join(app.config['UPLOAD_FOLDER'], f"user_{uploader_id}"), filename)
 
 
+@app.route('/profile')
+@minify_decorators.minify(html=True, js=True, cssless=True)
+@login_required()
+def profile():
+    user = session.get('user', None)
+    return render_template('profile.html', user=user)
+
+
+@app.route('/chatroom')
+@minify_decorators.minify(html=True, js=True, cssless=True)
+@login_required()
+def chatroom():
+    return render_template('chatroom.html')
+
+
 def make_unique(string):
     ident = uuid4().__str__()
     return f"{ident}-{string}"

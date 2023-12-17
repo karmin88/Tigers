@@ -19,6 +19,7 @@ app.config['ALLOWED_EXTENSIONS'] = ['pdf', 'png', 'jpg', 'jpeg']
 app.config['UPLOAD_FOLDER'] = 'notes'
 app.config['MAX_CONTENT_LENGTH'] = 30 * 1000 * 1000
 
+
 def partition_pdf(value):
     others = []
     pdfs = []
