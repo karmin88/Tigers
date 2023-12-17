@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container mt-4">
+        <h2 class="mb-3">Add Questions</h2>
+        <form action="{{ url_for('add_questions', quiz_id=quiz_id, question_count=question_count) }}" method="post">
+            {% for i in range(question_count) %}
+                <div class="mb-3 border p-3 rounded">
+                    <h4>Question {{ i + 1 }}:</h4>
+
+                    <div class="form-group mb-2">
+                        <label for="questionText{{ i }}" class="form-label">Question Text:</label>
+                        <input type="text" class="form-control" id="questionText{{ i }}" name="question_text_{{ i }}"
+                               required>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="optionA{{ i }}" class="form-label">Option A:</label>
+                            <input type="text" class="form-control" id="optionA{{ i }}" name="option_a_{{ i }}"
+                                   required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="optionB{{ i }}" class="form-label">Option B:</label>
+                            <input type="text" class="form-control" id="optionB{{ i }}" name="option_b_{{ i }}"
+                                   required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="optionC{{ i }}" class="form-label">Option C:</label>
+                            <input type="text" class="form-control" id="optionC{{ i }}" name="option_c_{{ i }}"
+                                   required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="optionD{{ i }}" class="form-label">Option D:</label>
+                            <input type="text" class="form-control" id="optionD{{ i }}" name="option_d_{{ i }}"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label for="correctAnswer{{ i }}" class="form-label">Correct Answer:</label>
+                        <select class="form-control" id="correctAnswer{{ i }}" name="correct_answer_{{ i }}" required>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                        </select>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class="d-flex justify-content-center mt-4">
+                <button type="submit" class="btn btn-primary">Add Questions</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

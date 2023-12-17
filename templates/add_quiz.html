@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+    <link href="/static/css/add_quiz.css" rel="stylesheet"/>
+    <form class="add-quiz-form" action="/add_quiz" method="post">
+        <div class="form-group">
+            <label for="quizTitle">Quiz Title:</label>
+            <input type="text" class="form-control" id="quizTitle" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="questionCount">Number of Questions:</label>
+            <input type="number" class="form-control" id="questionCount" name="question_count" min="1" required>
+        </div>
+        <!-- Placeholder for question inputs will be added by JavaScript -->
+        <div id="questionInputs"></div>
+        <button type="submit" class="btn btn-primary">Add Quiz</button>
+    </form>
+    <!--
+    <script>
+        document.querySelector('.add-quiz-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const title = document.getElementById('quizTitle').value;
+            const questionCount = document.getElementById('questionCount').value;
+            window.location.href = `/add_questions?title=${title}&question_count=${questionCount}`;
+        });
+    </script>
+    -->
+
+{% endblock %}

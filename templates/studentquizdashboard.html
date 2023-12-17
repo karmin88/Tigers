@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+  <link href="/static/css/studentquizdashboard.css" rel="stylesheet" />
+  <div class="home-container">
+    <!-- Header Section -->
+    <div class="header-section">
+      <div class="header-title">
+        <span class="home-text">Kuiz/Penilaian</span>
+      </div>
+      <div class="header-controls">
+        <select class="home-select" onchange="location = this.value;">
+          <option value="{{ url_for('student_quiz_dashboard', sort_by='title') }}" {% if sort_by == 'title' %}selected{% endif %}>Title</option>
+          <option value="{{ url_for('student_quiz_dashboard', sort_by='questions') }}" {% if sort_by == 'questions' %}selected{% endif %}>Question Count</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Quizzes Display -->
+    <div class="home-steps">
+      <div class="home-container3">
+        {% for quiz in quizzes %}
+        <!-- Quiz Card -->
+        <div class="home-step">
+          <h1 class="home-text04">{{ quiz.title }}</h1>
+          <span class="home-text05">{{ quiz.question_count }} soalan</span>
+          <div class="w3-light-orange w3-round-xlarge">
+            <div class="w3-container w3-yellow w3-round-xlarge" style="width:{{ quiz.progress }}%;">{{ quiz.progress }}%</div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

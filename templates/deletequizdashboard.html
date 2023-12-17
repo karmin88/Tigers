@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="header-container">
+        <link href="/static/css/deletequiz.css" rel="stylesheet"/>
+        <h1 class="header-title">Kuiz/Penilaian</h1>
+        <div class="header-buttons">
+            <a href="/add_quiz" class="btn btn-orange">Tambah Kuiz</a>
+            <a href="/delete_quizdashboard" class="btn btn-orange">Padam Kuiz</a>
+            <a href="/edit_quizdashboard" class="btn btn-orange">Edit Kuiz</a>
+            <div class="dropdown">
+                <button class="btn btn-orange dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    Sort By
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <a class="dropdown-item" href="{{ url_for('delete_quiz_dashboard', sort_by='title') }}">Title</a>
+                    <a class="dropdown-item" href="{{ url_for('delete_quiz_dashboard', sort_by='questions') }}">Question
+                        Count</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div id="flash-messages">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <div class="quiz-section">
+        {% for quiz in quizzes %}
+            <div class="quiz-card">
+                <div class="card-content">
+                    <h2 class="chapter-title">{{ quiz.title }}</h2>
+                    <p class="completion-status">Jumlah pelajar selesai menjawab: ...</p>
+                </div>
+                <div class="question-count">{{ quiz.question_count }} soalan</div>
+                <form action="{{ url_for('delete_quiz', quiz_id=quiz.id) }}" method="post">
+                    <button type="submit" class="btn btn-delete"
+                            onclick="return confirm('Are you sure you want to delete this quiz?');">
+                        Delete
+                    </button>
+                </form>
+
+            </div>
+        {% endfor %}
+    </div>
+    <style>
+        #flash-messages {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .alert {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeOut 5s ease-in-out forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const flashMessages = document.getElementById('flash-messages');
+            if (flashMessages) {
+                setTimeout(() => {
+                    flashMessages.style.display = 'none';
+                }, 5000);
+            }
+        });
+    </script>
+{% endblock %}

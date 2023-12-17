@@ -1,0 +1,51 @@
+@font-face {
+  font-family: Bryndan_write;
+  src: url(/static/font/Bryndan_Write.ttf);
+}
+.form-questions {
+    width: 80%;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-questions .form-group {
+    margin-bottom: 25px;
+    padding: 15px;
+    border: 1px solid #e57e00;
+    border-radius: 5px;
+    background-color: #ffefd2;
+}
+
+.form-questions .form-group label {
+  font-family:  Bryndan_write;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #723d00;
+    font-size: larger;
+}
+
+.form-questions .form-control {
+    border: 1px solid #723d00;
+    border-radius: 4px;
+}
+
+.form-questions .btn-primary {
+    background-color: #e57e00;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    font-family:  Bryndan_write;
+}
+
+.form-questions .btn-primary:hover {
+    background-color: #d96c00;
+}

@@ -1,0 +1,169 @@
+@font-face {
+  font-family: Bryndan_write;
+  src: url(/static/font/Bryndan_Write.ttf);
+}
+
+@font-face {
+  font-family: More Sugar;
+  src: url(/static/font/more-sugar.regular.ttf);
+}
+
+/* General styles */
+body {
+  font-family: 'Bryndan_write';
+  background-color: #f9f9f9;
+}
+
+/* Flex container for quiz cards */
+.home-container3 {
+  display: flex;
+  justify-content: center; /* Center items in the container */
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  gap: 20px; /* Space between cards */
+}
+
+/* Style for each quiz card */
+.home-step {
+  background-color: #fff7e6;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: calc(33.333% - 20px); /* Adjust width for three cards in a row */
+  margin: 10px 0; /* Vertical spacing between cards */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+  text-align: center; /* Center text */
+}
+
+/* Images inside the card */
+.chapter-image {
+  max-width: 120px; /* Adjust as necessary */
+  margin-bottom: 15px;
+}
+
+/* Title */
+.home-text {
+  font-size: 1.25rem; /* Adjust font size as necessary */
+  color: #763C00; /* Adjust to match your color scheme */
+  font-family: 'More Sugar';
+}
+
+/* Title of the quiz/chapter */
+.home-text04 {
+  font-size: 1.25rem; /* Adjust font size as necessary */
+  color: #723d00; /* Adjust to match your color scheme */
+  margin: 10px 0;
+}
+
+/* Number of questions */
+.home-text05 {
+  font-size: 1rem;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+/* Progress bar container */
+.w3-light-orange {
+  border-radius: 20px;
+  background-color: #C46E1E;
+  width: 100%; /* Full width of the card */
+  height: 24px; /* Adjust height as necessary */
+  margin: 10px 0;
+}
+
+/* Progress bar */
+.w3-container {
+  height: 100%;
+  background-color: #f1c40f; /* Progress bar color */
+  text-align: center;
+  line-height: 24px; /* Same as the height of the progress bar container */
+  color: white;
+}
+.w3-green, .w3-orange, .w3-yellow {
+  transition: width 0.6s ease; /* Smooth transition for bar width changes */
+}
+
+/* Adjustments for very small screens */
+@media (max-width: 991px) {
+  .home-step {
+    width: calc(50% - 20px); /* Two cards per row on medium screens */
+  }
+}
+
+@media (max-width: 767px) {
+  .home-step {
+    width: 100%; /* One card per row on small screens */
+  }
+}
+
+/* Add additional global styles as needed */
+/* Base layout styles */
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.header-title {
+  /* This can grow as needed */
+  flex-grow: 1;
+  font-size: 1.5rem; /* Adjust size as needed */
+  color: #723d00; /* Or any other color */
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adjust the gap between the select and progress bar as needed */
+}
+
+.home-select {
+  /* Style as needed, possibly with a background color or borders */
+}
+
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+  background-color: #ff9800; /* Orange background for the progress bar */
+  border-radius: 10px;
+  padding: 3px; /* Adjust as needed */
+  height: 20px; /* Or as needed */
+  width: 100px;
+}
+
+.progress-bar {
+  background-color: #C46E1E; /* Darker shade for the progress itself */
+  border-radius: 7px;
+  width: 60%; /* Adjust based on actual progress */
+  text-align: center;
+  color: white; /* Text color inside the progress bar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.select-progress-text {
+  margin-left: auto;
+  padding-right: 10px; /* Adjust as needed */
+}
+
+@media (max-width: 767px) {
+  /* Adjustments for mobile views */
+  .header-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .header-controls {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .progress-bar-container {
+    width: auto; /* Adjust to take the necessary space */
+  }
+}
