@@ -17,67 +17,73 @@
   {% block custom_stylesheet %} {% endblock %}
 </head>
 <body class="d-flex flex-column min-vh-100">
-
-{% include "flash-message.html" %}
-
-<!-- Navbar -->
-<div class="container-fluid px-0">
-  <nav class="navbar navbar-expand-lg sticky-top bg-transparent shadow-sm">
-    <div class="container-fluid mx-5">
-      <a class="navbar-brand d-flex align-content-center me-5" href="/">
-        <img src="/static/images/logo.png" alt="" width="40" height="40">
-        <h3 class="fw-bold align-self-center mb-0 ms-3 text-darkorange">Smartiger</h3>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Navbar link -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav nav-pills mb-2 mb-lg-0 ms-auto">
-          {% if not user %}
-            <li class="nav-item me-3">
-              <a class="nav-link px-3" href="{{ url_for('sign_up') }}">Daftar</a>
-            </li>
-            <li class="nav-item me-3">
-              <a class="nav-link px-3 fw-normal bg-orange text-white" href="{{ url_for('login') }}">
-                Log Masuk
-                <i class="ms-1 bi bi-box-arrow-in-right" style="vertical-align: 0.12em"></i></a>
-            </li>
-          {% else %}
-            <li class="nav-item me-3">
-              <a class="nav-link px-3 {% if '/{}_dashboard'.format(user.role) in request.path %}active{% endif %}"
-                 href="{{ '/{}_dashboard'.format(user.role) }}">Laman Utama</a>
-            </li>
-            <li class="nav-item me-3">
-              <a class="nav-link px-3 {% if '/{}_note'.format(user.role) in request.path %}active{% endif %}"
-                 href="{{ '/{}_note'.format(user.role) }}">Nota</a>
-            </li>
-            <li class="nav-item me-3">
-              <a class="nav-link px-3 {% if "todo" in request.path %}active{% endif %}"
-                 href="#">Kuiz/Penilaian</a>
-            </li>
-            <li class="nav-item me-3">
-              <a class="nav-link px-3 {% if "/chatroom" in request.path %}active{% endif %}" aria-current="page"
-                 href="/chatroom">Hubungi</a>
-            </li>
-            <li class="nav-item me-3">
-              <a class="nav-link px-3 {% if "/profile" in request.path %}active{% endif %}" href="/profile">Profil</a>
-            </li>
-            <li class="nav-item me-3">
-              <a class="nav-link px-3 {% if "todo" in request.path %}active{% endif %}" href="/logout">Log
-                Keluar</a>
-            </li>
-          {% endif %}
-        </ul>
-
-      </div>
-    </div>
-  </nav>
+<div class="preloader-container" id="preloader">
+  <div class="loader">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 </div>
+{% include "flash-message.html" %}
+{% block background %} {% endblock %}
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+  <div class="container-fluid mx-5">
+    <a class="navbar-brand d-flex align-content-center me-5" href="/">
+      <img src="/static/images/logo.png" alt="" width="40" height="40">
+      <h3 class="fw-bold align-self-center mb-0 ms-3 text-darkorange">Smartiger</h3>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar link -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav nav-pills mb-2 mb-lg-0 ms-auto">
+        {% if not user %}
+          <li class="nav-item me-3">
+            <a class="nav-link px-3" href="{{ url_for('sign_up') }}">Daftar</a>
+          </li>
+          <li class="nav-item me-3">
+            <a class="nav-link px-3 fw-normal bg-orange text-white" href="{{ url_for('login') }}">
+              Log Masuk
+              <i class="ms-1 bi bi-box-arrow-in-right" style="vertical-align: 0.12em"></i></a>
+          </li>
+        {% else %}
+          <li class="nav-item me-lg-3">
+            <a class="nav-link px-3 {% if '/{}_dashboard'.format(user.role) in request.path %}active{% endif %}"
+               href="{{ '/{}_dashboard'.format(user.role) }}">Laman Utama</a>
+          </li>
+          <li class="nav-item me-lg-3">
+            <a class="nav-link px-3 {% if '/{}_note'.format(user.role) in request.path %}active{% endif %}"
+               href="{{ '/{}_note'.format(user.role) }}">Nota</a>
+          </li>
+          <li class="nav-item me-lg-3">
+            <a class="nav-link px-3 {% if "todo" in request.path %}active{% endif %}"
+               href="#">Kuiz/Penilaian</a>
+          </li>
+          <li class="nav-item me-lg-3">
+            <a class="nav-link px-3 {% if "/chatroom" in request.path %}active{% endif %}" aria-current="page"
+               href="/chatroom">Hubungi</a>
+          </li>
+          <li class="nav-item me-lg-3">
+            <a class="nav-link px-3 {% if "/profile" in request.path %}active{% endif %}" href="/profile">Profil</a>
+          </li>
+          <li class="nav-item me-lg-3">
+            <a class="nav-link px-3 {% if "todo" in request.path %}active{% endif %}" href="/logout">Log
+              Keluar</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
 {% block content %}{% endblock %}
+
 
 <div class="container">
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top border-darkorange">
@@ -121,5 +127,18 @@
 {% block custom_script %} {% endblock %}
 <script defer src="/static/js/aos-init.js"></script>
 <script defer src="/static/js/flash-message.js"></script>
+<script src="/static/js/preload.js"></script>
+<script>
+  var navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 0) {
+      navbar.classList.add('bg-white');
+      navbar.classList.add('shadow-sm');
+    } else {
+      navbar.classList.remove('bg-white');
+      navbar.classList.remove('shadow-sm');
+    }
+  });
+</script>
 </body>
 </html>
