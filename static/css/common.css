@@ -113,6 +113,7 @@ body {
 }
 
 .top-right {
+    z-index: 999;
     position: absolute;
     top: -12px;
     right: -8px;
