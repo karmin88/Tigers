@@ -8,7 +8,9 @@ from flask_minify import Minify, decorators as minify_decorators
 from werkzeug.utils import secure_filename
 
 from app import app
-from database import find_user, add_user, add_note, add_note_section, add_section_file, get_notes, get_section_files
+from database import find_user, add_user, add_note, add_note_section, add_section_file, get_notes, get_section_files, \
+    get_avatar, get_profile, set_profile, add_experience, add_tag, get_table_increment, get_experience, \
+    delete_experience
 
 Minify(app=app, passive=True)
 
@@ -145,7 +147,7 @@ def teacher_note():
 
 @app.route('/student_note')
 @minify_decorators.minify(html=True, js=True, cssless=True)
-@login_required(role='student')
+@login_required()
 def student_note():
     user = session.get('user', None)
     return render_template('all-notes.html', user=user, notes=get_notes())
@@ -174,11 +176,48 @@ def request_file(uploader_id, filename):
 
 
 @app.route('/profile')
+@app.route('/profile/<string:user_id>')
 @minify_decorators.minify(html=True, js=True, cssless=True)
 @login_required()
-def profile():
+def profile(user_id=None):
+    user = session.get('user', None) if not user_id else find_user(id=user_id)
+    avatars = get_avatar()
+    profile = get_profile(user_id if user_id else user['id'])
+    experiences = get_experience(user['id'])
+    return render_template('profile.html', user=user if not user_id else None, avatars=avatars, profile=profile, experiences=experiences)
+
+
+@app.route('/edit_profile', methods=['POST'])
+@login_required()
+def edit_profile():
     user = session.get('user', None)
-    return render_template('profile.html', user=user)
+    data = request.form.to_dict().popitem()
+    print(data)
+    type = data[0]
+    value = data[1]
+    set_profile(user['id'], type, value)
+    return 'success'
+
+
+@app.route('/new_experience', methods=['POST'])
+@login_required('teacher')
+def new_experience():
+    user = session.get('user', None)
+    image_url = request.form.get('image_url')
+    title = request.form.get('title')
+    description = request.form.get('description')
+    tags = request.form.getlist('tag')
+    experience_id = get_table_increment('skig3013_project', 'experience')
+    add_experience(image_url, title, description, user['id'])
+    for tag in tags:
+        add_tag(tag, experience_id)
+    return 'success'
+
+
+@app.route('/remove_experience', methods=['POST'])
+def remove_experience():
+    delete_experience(request.form.get('id'))
+    return 'success'
 
 
 @app.route('/chatroom')
