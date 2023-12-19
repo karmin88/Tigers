@@ -10,11 +10,35 @@
   <link rel="stylesheet" href="/static/css/hero.css">
 {% endblock %}
 
+{% block background %}
+  <svg class="hero-svg" xmlns="http://www.w3.org/2000/svg" version="1.1"
+       width="1440" height="1200" preserveAspectRatio="none"
+       viewBox="0 0 1440 1100">
+    <g mask="url(&quot;#SvgjsMask1850&quot;)" fill="none">
+      <rect width="1440" height="1200" x="0" y="0" fill="url(&quot;#SvgjsLinearGradient1851&quot;)"></rect>
+      <path d="M 0,321 C 96,295.8 288,211 480,195 C 672,179 768,279.4 960,241 C 1152,202.6 1344,50.6 1440,3L1440 1200L0 1200z"
+            fill="rgba(111, 98, 160, 0)"></path>
+      <path d="M 0,461 C 288,497.4 1152,606.6 1440,643L1440 1200L0 1200z" fill="rgba(97, 65, 65, 0)"></path>
+      <path d="M 0,950 C 96,974.2 288,1084 480,1071 C 672,1058 768,889.4 960,885 C 1152,880.6 1344,1016.2 1440,1049L1440 1200L0 1200z"
+            fill="rgba(255, 255, 255, 1)"></path>
+    </g>
+    <defs>
+      <mask id="SvgjsMask1850">
+        <rect width="1440" height="1200" fill="#ffffff"></rect>
+      </mask>
+      <linearGradient x1="0%" y1="50%" x2="100%" y2="50%" gradientUnits="userSpaceOnUse" id="SvgjsLinearGradient1851">
+        <stop stop-color="rgba(254, 253, 112, 1)" offset="0"></stop>
+        <stop stop-color="rgba(248, 143, 111, 1)" offset="0.97"></stop>
+      </linearGradient>
+    </defs>
+  </svg>
+{% endblock %}
+
 {% block content %}
-  <section id="hero" class="hero hero-curve-left mb-5 pb-4">
-    <div class="container">
+  <section id="hero" class="hero mb-5 pb-4">
+    <div class="container mt-5">
       <div class="row gy-5 mb-3" data-aos="fade-right" data-aos-duration="1500">
-        <div class="row col-md-6 col-sm-12 order-md-1 container-fluid">
+        <div class="row col-md-6 d-lg-block d-sm-none order-md-1 container-fluid">
           <img src="/static/images/add-note.png" class="img-fluid object-fit-contain"
                alt="add-note.png"
                data-aos="zoom-out"
@@ -22,15 +46,17 @@
         </div>
         <div class="row col-md-6 col-sm-12 order-md-0 d-flex flex-column justify-content-center text-center text-lg-start">
           <h2 class="text-darkorange h1">Selamat Datang ke <br>Halaman Catatan</h2>
-          <p class="mb-5 h5">
+          <p class="mb-5h5">
             Kongsi pengetahuan anda dengan menjatuhkan nota bermakna untuk membantu yang lain.
           </p>
+          <a href="/student_note" class="btn btn-warning bg-orange text-white mb-5 align-self-lg-start align-self-sm-center" style="width: 300px">
+            Lihat Semua Catatan</a>
         </div>
       </div>
     </div>
   </section>
-  <div class="container-fluid p-0 d-flex flex-column" style="padding: 0 7% 0 7%" data-aos="fade-up"
-       data-aos-duration="1500" data-aos-offset="-200">
+  <div class="container-fluid p-0 d-flex flex-column" style="padding: 0 7% 0 7%; margin-top: 120px" data-aos="fade-up"
+       data-aos-duration="1500">
     <div class="card mx-5 border-0">
       <div class="card-header text-center shadow-sm rounded-0 border-left-orange"
            style="background-color: #f6e2c0 "><h1
@@ -47,9 +73,7 @@
             </select>
           </div>
           <div class="ms-auto d-flex align-items-center">
-            <button type="button" class="border-0 me-2" id="add-section">
-              <i class="bi bi-hover bi-plus-square-fill h4 my-0 text-warning bg-lightorange"></i>
-            </button>
+            <i class="bi bi-hover bi-plus-square-fill h4 my-0 text-warning me-2" id="add-section"></i>
             <a type="submit" class="btn btn-secondary bg-orange" id="submit-note">Hantar</a>
           </div>
         </div>
@@ -63,7 +87,7 @@
 
   <!-- Note section template -->
   <template id="section-form-template">
-    <form class="section-form col-12 card shadow-sm mt-2 mb-4  bg-lightorange">
+    <form class="section-form col-12 card shadow-sm mt-2 mb-4 bg-lightorange px-0">
       <a><i class="close h5 bi bi-x-circle-fill bi-hover text-danger top-right"></i></a>
       <div class="card-header collapsible d-flex justify-content-between align-items-center py-3">
         <div class="card-title fw-bold mb-0">Bahagian</div>
@@ -81,7 +105,7 @@
           <div class="form-group row mb-2">
             <label class="col-md-2 col-sm-12 col-form-label">Deskripsi</label>
             <div class="col-md-10 col-sm-12">
-              <textarea type="password" class="form-control  shadow-sm" name="description"
+              <textarea type="password" class="form-control shadow-sm" name="description"
                         placeholder="Deskripsi"></textarea>
             </div>
           </div>

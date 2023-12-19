@@ -90,40 +90,47 @@ const tinyMCEConfig = {
 function addSection(skipScroll = false) {
   const newSection = $('#section-form-template').contents().clone(true, true);
   const container = $('#section-container');
-  container.append(newSection);
   const dropzone = newSection.find('.dropzone');
+  container.append(newSection);
+  newSection.hide();
+  document.body.style.cursor = 'wait';
   dropzone.dropzone(dropzoneConfig);
-  tinymce.init(tinyMCEConfig);
-
-  newSection.find('.close').on('click', function(evt) {
-    const currentForm = $(this).closest('form');
-    const prevForm = currentForm.prev();
-    currentForm.remove();
-    window.scrollTo({
-      top: prevForm.get(0).getBoundingClientRect().top + window.pageYOffset -
-          25,
-      behavior: 'smooth',
+  tinymce.init(tinyMCEConfig).then(function() {
+    document.body.style.cursor = 'default';
+    newSection.show();
+    newSection.find('.close').on('click', function(evt) {
+      if (document.getElementById('section-container').children.length > 1) {
+        const currentForm = $(this).closest('form');
+        const prevForm = currentForm.prev();
+        currentForm.remove();
+        window.scrollTo({
+          top: prevForm.get(0).getBoundingClientRect().top +
+              window.pageYOffset -
+              80,
+          behavior: 'smooth',
+        });
+      }
     });
-  });
-
-  newSection.find('.collapsible').on('click', function() {
-    const collapseIcon = $(this).children('.bi-collapsible');
-    if (collapseIcon.hasClass('bi-arrows-angle-contract')) {
-      collapseIcon.addClass('bi-arrows-angle-expand');
-      collapseIcon.removeClass('bi-arrows-angle-contract');
-    } else {
-      collapseIcon.removeClass('bi-arrows-angle-expand');
-      collapseIcon.addClass('bi-arrows-angle-contract');
+    newSection.find('.collapsible').on('click', function() {
+      const collapseIcon = $(this).children('.bi-collapsible');
+      if (collapseIcon.hasClass('bi-arrows-angle-contract')) {
+        collapseIcon.addClass('bi-arrows-angle-expand');
+        collapseIcon.removeClass('bi-arrows-angle-contract');
+      } else {
+        collapseIcon.removeClass('bi-arrows-angle-expand');
+        collapseIcon.addClass('bi-arrows-angle-contract');
+      }
+      $(this).siblings('.card-body').slideToggle('fast');
+    });
+    if (skipScroll) {
+      window.scrollTo({
+        top: newSection.get(1).getBoundingClientRect().top +
+            window.pageYOffset -
+            80,
+        behavior: 'smooth',
+      });
     }
-    $(this).siblings('.card-body').slideToggle('fast');
   });
-  if (skipScroll) {
-    window.scrollTo({
-      top: newSection.get(1).getBoundingClientRect().top + window.pageYOffset -
-          25,
-      behavior: 'smooth',
-    });
-  }
 }
 
 $(document).ready(function() {
@@ -153,9 +160,6 @@ $(document).ready(function() {
     allSectionFormData.append('total_section', forms.length);
     allSectionFormData.append('chapter', selectedChap.val());
     forms.each(function() {
-      for (ent of new FormData(this).entries()) {
-        console.log(ent)
-      }
       for (value of new FormData(this).values()) {
         allSectionFormData.append(`s${counter}_data`, value);
       }
@@ -170,6 +174,12 @@ $(document).ready(function() {
       data: allSectionFormData,
       contentType: false,
       processData: false,
-    }).then(window.location.reload());
+    }).then(() => window.location.reload());
+  });
+});
+
+window.addEventListener('load', () => {
+  document.querySelectorAll('.hero-svg path').forEach(function(path) {
+    path.classList.add('animate');
   });
 });
