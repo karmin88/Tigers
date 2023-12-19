@@ -5,7 +5,8 @@ from flask_mysqldb import MySQL
 from jinja2 import Environment
 app = Flask(__name__, static_folder='static', template_folder='templates')
 
-app.secret_key = secrets.token_hex(32)
+# app.secret_key = secrets.token_hex(32)
+app.secret_key = 'skig'
 app.config['PERMANENT_SESSION_LIFETIME'] = 1200
 
 # Database connection setup
