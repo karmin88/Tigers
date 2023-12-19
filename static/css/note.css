@@ -22,3 +22,18 @@
     width: min-content;
 }
 
+.hero-svg path{
+  stroke-dasharray: 0;
+  stroke-dashoffset: 0;
+}
+
+.hero-svg path.animate {
+  animation: pathDraw 10s ease forwards;
+}
+
+@keyframes pathDraw {
+  to {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+  }
+}
