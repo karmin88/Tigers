@@ -1,0 +1,130 @@
+@font-face {
+  font-family: Bryndan_write;
+  src: url(/static/font/Bryndan_Write.ttf);
+}
+
+@font-face {
+  font-family: More Sugar;
+  src: url(/static/font/more-sugar.regular.ttf);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+}
+
+.header-title {
+    font-family: More Sugar;
+    margin: 0;
+    color: #723d00;
+    font-size: 1.5rem; /* Adjust the size as needed */
+}
+
+.header-buttons {
+    font-family:  Bryndan_write;
+    display: flex;
+    gap: 10px; /* Adjust the gap between buttons as needed */
+}
+
+.btn-orange {
+    background-color: #e57e00; /* Orange color */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px; /* Rounded corners */
+    cursor: pointer;
+    /* You might want to add :hover styles */
+}
+
+.btn-orange:hover {
+    background-color: #d64c00; /* A darker orange for hover state */
+}
+
+/* Style for the dropdown button */
+.dropdown-toggle {
+    background-color: #e57e00; /* Orange color */
+    color: white;
+    border-radius: 20px; /* Rounded corners */
+    /* Other styles as needed */
+}
+
+/* Dropdown menu styles */
+.dropdown-menu {
+    /* Add styles for your dropdown menu */
+}
+
+.quiz-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between cards */
+    align-items: center; /* Center the cards vertically */
+    justify-content: center; /* Center the cards horizontally if there is extra space */
+    padding: 30px;
+}
+
+.quiz-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff7e6; /* Light yellow background */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Simple shadow for depth */
+    padding: 30px;
+    margin-bottom: 20px; /* Space between cards if stacked */
+    width: 800px; 
+    margin: auto; /* This centers the card in the flex container */
+}
+
+.card-content {
+    flex-grow: 1; /* Allows the left content to grow */
+}
+
+.chapter-title {
+  font-family:  Bryndan_write;
+    font-size: 1.25rem;
+    color: #723d00; /* Dark brown color */
+    margin-bottom: 5px;
+}
+
+.completion-status {
+  font-family:  Bryndan_write;
+    font-size: 1rem;
+    color: #888; /* Grey text for the completion status */
+}
+
+.question-count {
+    background-color: #C46E1E; /* Orange background for the question count bubble */
+    color: #fff; /* White text */
+    padding: 10px 20px;
+    border-radius: 20px; /* Rounded edges for the bubble */
+    font-family:  Bryndan_write;
+    font-size: 1rem;
+    white-space: nowrap; /* Keeps the text in a single line */
+}
+
+/* Make sure you have proper responsive styles for smaller screens */
+@media (max-width: 767px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .header-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+    .btn-orange {
+        width: 100%; /* Full-width buttons on smaller screens */
+    }
+    .quiz-card {
+        flex-direction: column; /* Stack elements on small screens */
+        width: 100%; /* Full width on smaller screens */
+    }
+    
+    .question-count {
+        align-self: center; /* Center the question count on small screens */
+        margin-top: 10px; /* Add some space above the question count on small screens */
+    }
+}

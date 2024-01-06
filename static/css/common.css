@@ -1,10 +1,29 @@
+@import url('https://fonts.cdnfonts.com/css/bubblegum-sans');
+@import url('https://fonts.cdnfonts.com/css/more-sugar');
+
 body {
     font-family: 'Bubblegum Sans', sans-serif;
 }
 
+.tilde {
+    font-family: 'More Sugar', sans-serif;
+}
 
 .bg-orange {
     background-color: #e57e00 !important;
+}
+
+.bg-linear-gradient-orange-toright {
+    /*#fefd70 #f88f6f*/
+    background: linear-gradient(to right, rgb(254, 253, 112) 1.7%, rgb(248, 143, 111))
+}
+
+.bg-linear-gradient-orange-totop {
+    background: linear-gradient(to top, rgb(254, 253, 112) 1.7%, rgb(248, 143, 111))
+}
+
+.bg-linear-gradient-orange-tobottom {
+    background: linear-gradient(to bottom, rgb(254, 253, 112) 1.7%, rgb(248, 143, 111))
 }
 
 .bg-lightorange {
@@ -17,6 +36,31 @@ body {
 
 .text-darkorange {
     color: #723d00 !important;
+}
+
+
+.link-hover-underlined {
+    text-decoration: none ! important;
+}
+
+.link-hover-underlined:hover {
+    text-decoration: underline !important;
+}
+
+.link-hover-border-bottom {
+    border-bottom: none;
+}
+
+.link-hover-border-bottom:hover {
+    border-bottom: 1px solid;
+}
+
+.text-lightorange {
+    color: #fff4e1 !important;
+}
+
+.border-darkorange {
+    border-color: rgba(114, 61, 0, 0.5) !important;
 }
 
 .text-orange {
@@ -47,6 +91,17 @@ body {
     text-decoration: none !important;
 }
 
+.border-left-orange {
+    border-radius: 0!important;
+    border-left: 7px solid #e57e00;
+}
+
+
+.border-left-orange {
+    border-radius: 0!important;
+    border-left: 7px solid #e57e00;
+}
+
 .text-hover-underline:hover {
     text-decoration: underline !important;
 }
@@ -55,6 +110,13 @@ body {
     position: absolute;
     right: 3%;
     bottom: 3%;
+}
+
+.top-right {
+    z-index: 999;
+    position: absolute;
+    top: -12px;
+    right: -8px;
 }
 
 .svg-block {
