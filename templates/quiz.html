@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smartiger</title>
+  <link href="https://fonts.cdnfonts.com/css/open-sans" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+  <link rel="stylesheet" href="/static/css/quiz.css">
+</head>
+<body>
+<!--<div class="preloader-container" id="preloader">-->
+<!--  <div class="loader"><span></span><span></span><span></span><span></span></div>-->
+<!--</div>-->
+<style>.fixed-header {
+  position: fixed;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min-content;
+  z-index: 10000
+}
+
+.alert {
+  white-space: nowrap;
+  padding: 10px 100px 10px 100px;
+  text-align: center
+
+}
+</style>
+<div class="fixed-header" id="flask-message-header"></div>
+<nav class="navbar navbar-dark navbar-expand-lg position-absolute w-100 z-3" id="navbar">
+  <div class="container my-1"><a class="navbar-brand d-flex align-items-center" href="#"><img
+        src="/static/images/logo.png" class="mt-1" alt="logo.png" height="55"><img src="/static/images/logo-text.png"
+                                                                                   class="ms-3" height="50"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"><span class="navbar-toggler-icon"></span></button>
+    <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasNavbar"
+         aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header ps-4 pt-3">
+        <div class="offcanvas-title" id="offcanvasNavbarLabel"><img src="/static/images/logo-text.png" class="ms-3"
+                                                                    height="50"></div>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body border-lg-top-0 border-md-top px-5 pt-3">
+        <ul class="navbar-nav flex-grow-1 d-flex align-items-center justify-content-lg-end pe-3">
+          <li class="nav-item"><a class="nav-link link-light " href="/">Laman Utama</a></li>
+          <li class="nav-item"><a class="nav-link link-light " href="/list_note">Bahan</a></li>
+          <li class="nav-item"><a class="nav-link link-light active" href="/list_quiz">Penilaian</a></li>
+          <li class="nav-item"><a class="nav-link link-light " href="/custom_note">Nota</a></li>
+          <li class="nav-item"><a class="nav-link link-light " href="/profile">Profil</a></li>
+          <li class="nav-item"><a class="nav-link link-light" href="/logout">Log Keluar</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid px-0 mb-5">
+  <div id="hero">
+    <div class="hero-image"></div>
+    <div class="overlay"></div>
+    <div class="row container-fluid h-100 d-flex text-light justify-content-center align-items-center mx-0 pt-5">
+      <div class="col-lg-8 col-md-10 col-sm-12 px-md-0 px-sm-0 text-center mt-5">
+        <div class="h1 display-3" style="font-weight: 900" data-aos="fade-right" data-aos-duration="1000"
+             data-aos-delay="1000">Nota
+        </div>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb fw-semibold justify-content-center">
+            <li class="breadcrumb-item d-inline-block" data-aos="zoom-in" data-aos-duration="1000"
+                data-aos-delay="1000"><a href="/"> Laman Utama </a></li>
+            <li class="breadcrumb-item active text-white" data-aos="zoom-in" data-aos-duration="1100"
+                data-aos-delay="1000">
+              <a href="/list_quiz">
+                Penilaian
+              </a>
+            </li>
+            <li class="breadcrumb-item active text-white" data-aos="zoom-in" data-aos-duration="1200"
+                data-aos-delay="1000"> Quiz
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="section-title mb-3">{{quiz.title}}</div>
+  <div>
+    <section class="position-relative" id="quiz-section">
+      <div class="form-check form-switch d-flex justify-content-end mb-2 align-items-center">
+        <input class="form-check-input" type="checkbox" role="switch" id="strict" checked>
+        <label class="form-check-label mx-2 text-white fw-bold" for="strict">Mod Ketat
+        </label>
+        <i class="bi bi-info-circle-fill ms-2 text-white bi-hover-md" id="info-strict" data-bs-toggle="tooltip"
+           data-bs-placement="top"
+           title="Penyerahan pertama di bawah mod ketat akan direkodkan untuk menilai prestasi."></i>
+      </div>
+      <div class="swiper mySwiper shadow-lg">
+        {% if user.role == 'student' %}
+        {% endif %}
+        <button type="submit" class="btn btn-orange" id="strict-submit">Hantar</button>
+        <div class="swiper-wrapper">
+          {% for question in quiz.questions %}
+          <form class="swiper-slide">
+            <div class="card h-100" style="max-height: min-content">
+              {% if question.image_path != 'NULL' %}
+              <img src="{{ url_for('request_file', folder='quiz', uploader_id=quiz.user_id, filename=question.image_path) }}"
+                   class="py-3 card-img card-img-top border-bottom img-fluid object-fit-contain px-5"
+                   style="min-height: 300px; height: 300px">
+              {% else %}
+              <div class="card-img card-img-top border-bottom d-flex justify-content-center align-items-center"
+                   style="max-height: 300px; height: 300px">
+                <div>Tiada imej untuk soalan ini</div>
+              </div>
+              {% endif %}
+              <div class="card-body px-5 py-3 text-start">
+                <div class="text-orange mb-2 text-decoration-underline fw-bold">Soalan {{ loop.index }}</div>
+                <div class="fw-semibold">{{ question.question }}</div>
+                <ol class="list-unstyled fw-semibold">
+                  {% for option in question.options %}
+                  <li class="ms-3 my-2">
+                    <input required type="radio"
+                           class="form-check-input {% if loop.index0 == question.answer  %}answer{% endif %}"
+                           name="selection">
+                    <label class="form-check-label ms-3  {% if loop.index0 == question.answer  %}answer{% endif %}"
+                           style="font-size: 14px">{{ option }}</label>
+                  </li>
+                  {% endfor %}
+                </ol>
+              </div>
+            </div>
+          </form>
+          {% endfor %}
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div class="modal fade" tabindex="-1" id="result-modal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-orange fw-bold">Keputusan Ujian</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">Dari <strong class="text-orange">{{ quiz.questions | length }}</strong>
+          soalan, anda menjawab dengan betul pada <strong id="correct" class="text-orange"></strong> soalan.</div>
+        <div class="mb-3">Markah keseluruhan: <strong class="text-orange" id="score"></strong></div>
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped" role="progressbar" id="scorebar"
+               aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-orange" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mt-auto bg-navbar text-white">
+  <div class="container py-4">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center"><p class="col-md-4 mb-0 fw-semibold">
+      &copy; 2023 Smar<span class="text-orange">T</span>iger, Inc</p><a href="/"
+                                                                        class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"><img
+          src="/static/images/logo.png" alt="logo.png" width="45" height="45"></a>
+      <ul class="nav col-md-4 justify-content-end">
+        <li class="nav-item"><a href="/" class="nav-link px-2">Laman Utama</a></li>
+        <li class="nav-item"><a href="/list_note" class="nav-link px-2">Bahan</a></li>
+        <li class="nav-item"><a href="/list_quiz" class="nav-link px-2">Penilaian</a></li>
+        <li class="nav-item"><a href="/custom_note" class="nav-link px-2">Nota</a></li>
+        <li class="nav-item"><a href="/profile" class="nav-link px-2">Profil</a></li>
+      </ul>
+    </footer>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="/static/js/base.js"></script>
+<script src="/static/js/quiz.js"></script>
+</body>
+</html>

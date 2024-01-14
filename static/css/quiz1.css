@@ -1,0 +1,223 @@
+#hero {
+  height: 78vh;
+}
+
+.mySwiper {
+  height: 80vh;
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background: url("/static/images/flashcard.png") no-repeat fixed;
+  background-size: cover;
+  position: relative;
+
+  &:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    top: 0;
+    left: 0;
+  }
+}
+
+
+.flashcards .swiper-slide {
+  width: 40%;
+  height: 100%;
+}
+
+.card-flip > div {
+  backface-visibility: hidden;
+  transition: transform 300ms;
+  transition-timing-function: linear;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: flex;
+}
+
+.card-front {
+  background-color: var(--color-maroon);
+  transform: rotateX(0deg);
+}
+
+.card-back {
+  background-color: var(--color-maroon);
+  transform: rotateX(180deg);
+  position: absolute;
+  top: 0;
+}
+
+.card-flip.flipped .card-front {
+  transform: rotateX(-180deg);
+}
+
+.card-flip.flipped .card-back {
+  transform: rotateX(0deg);
+}
+
+.swiper-pagination-bullet-active {
+  color: #fff !important;
+  background: var(--color-maroon) !important;
+}
+
+#match-section {
+  position: relative;
+  padding-inline: 200px;
+  padding-bottom: 50px;
+  padding-top: 60px;
+  height: 80vh;
+  background: url("/static/images/matching-bg.png") no-repeat fixed;
+  background-size: cover;
+  z-index: 1;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+}
+
+#match-section .card {
+  height: 180px;
+  cursor: pointer;
+  border-radius: 1rem;
+  box-shadow: var(--bs-box-shadow-sm) !important;
+  background-color: var(--color-maroon);
+  color: white;
+}
+
+#match-section .card.answer {
+  background-color: #742332;
+}
+
+.section-overlay {
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(123, 56, 68, 0.84);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  transition: 0.4s ease;
+}
+
+.section-overlay.hide {
+  opacity: 0;
+}
+
+#timer {
+  position: absolute;
+  top: 8px;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  width: 100%;
+}
+
+.card-match {
+  transition: opacity 1s ease;
+}
+
+.card-match.hide {
+  opacity: 0;
+}
+
+.card-match.selected {
+  transition: 0.4s ease;
+  background-color: var(--color-orange) !important;
+}
+
+.animate-wrong {
+  background-color: #cc0101 !important;
+  animation: incorrect 0.4s forwards ease-in;
+}
+
+@keyframes incorrect {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+#match-result {
+  position: absolute !important;
+  top: 0 !important;
+  width: 100%;
+  height: 100%;
+}
+
+#confetti {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .1);
+}
+
+#quiz-timer {
+  width: 15%;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+}
+
+.quiz {
+  padding: 0;
+  height: 50vh;
+}
+
+
+.quiz .swiper-slide .content {
+  padding: 5%;
+}
+
+#result-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+#next {
+  z-index: 2;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+body.modal-open {
+  padding: 0 !important;
+}
+
+.ques-image {
+  height: 50vh;
+}

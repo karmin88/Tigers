@@ -1,0 +1,640 @@
+{% extends "base.html" %}
+{% block vendor_stylesheet %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+{% endblock %}
+{% block custom_stylesheet %}
+<link rel="stylesheet" href="/static/css/quiz1.css">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0 mb-5">
+  <div id="hero">
+    <div class="hero-image"></div>
+    <div class="overlay"></div>
+    <div class="row container-fluid h-100 d-flex text-light justify-content-center align-items-center mx-0 pt-5">
+      <div class="col-lg-8 col-md-10 col-sm-12 px-md-0 px-sm-0 text-center mt-5">
+        <div class="h1 display-3" style="font-weight: 900" data-aos="fade-right" data-aos-duration="1000"
+             data-aos-delay="1000">Nota
+        </div>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb fw-semibold justify-content-center">
+            <li class="breadcrumb-item d-inline-block" data-aos="zoom-in" data-aos-duration="1000"
+                data-aos-delay="1000">
+              <a href="/">
+                Laman Utama
+              </a>
+            </li>
+            <li class="breadcrumb-item d-inline-block" data-aos="zoom-in" data-aos-duration="1100"
+                data-aos-delay="1000">
+              <a href="/list_quiz">
+                Penilaian
+              </a>
+            </li>
+            <li class="breadcrumb-item active text-white" data-aos="zoom-in" data-aos-duration="1200"
+                data-aos-delay="1000">
+              Bab 3
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<main>
+  <div class="bg-maroon py-5 mt-5">
+    <div class="container text-white text-start fw-bolder fs-1 ">
+      Kad Kilat
+    </div>
+  </div>
+  <div class="swiper mySwiper flashcards">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide rounded-2 overflow-hidden">
+        <div class="card card-flip h-100 border-0 bg-transparent">
+          <div class="card-front text-white bg-maroon">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <h3 class="card-title fw-semibold fs-2 text-center">Apakah definisi garis lurus dalam geometri?</h3>
+            </div>
+          </div>
+          <div class="card-back text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <p class="card-text">Garis lurus ialah setiap siri titik yang terletak dalam satu arah yang sama tanpa
+                membelok.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide rounded-2 overflow-hidden">
+        <div class="card card-flip h-100 border-0 bg-transparent">
+          <div class="card-front text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <div class="card-title fw-semibold fs-2 text-center">
+                Apakah ciri-ciri garis lurus?
+              </div>
+            </div>
+          </div>
+          <div class="card-back text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <p class="card-text">Garis lurus tidak mempunyai sudut, dan setiap sebahagian daripada garis itu adalah
+                terus dan tidak bengkok.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide rounded-2 overflow-hidden">
+        <div class="card card-flip h-100 border-0 bg-transparent">
+          <div class="card-front text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <div class="card-title fw-semibold fs-2 text-center">
+                Bagaimana menyatakan persamaan matematik untuk garis lurus?
+              </div>
+            </div>
+          </div>
+          <div class="card-back text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <p class="card-text">Persamaan garis lurus biasanya dinyatakan sebagai \(y = mx + c\), di mana \(m\) ialah
+                kecerunan dan \(c\) ialah keanjalan.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide rounded-2 overflow-hidden">
+        <div class="card card-flip h-100 border-0 bg-transparent">
+          <div class="card-front text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <h3 class="card-title fw-semibold fs-2 text-center">Bagaimana menentukan kecerunan dari dua titik pada
+                garis lurus?</h3>
+            </div>
+          </div>
+          <div class="card-back text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <p class="card-text">Kecerunan (m) boleh dihitung dengan menggunakan formula: \( m = \frac{y_{2} -
+                y_{1}}{x_{2} - x_{1}} \).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide rounded-2 overflow-hidden">
+        <div class="card card-flip h-100 border-0 bg-transparent">
+          <div class="card-front text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <h3 class="card-title fw-semibold fs-2 text-center">Apakah bentuk persamaan umum garis lurus?</h3>
+            </div>
+          </div>
+          <div class="card-back text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <p class="card-text">Bentuk persamaan umum garis lurus adalah \( Ax + By = C \), di mana \( A,\: B,
+                \text{dan}\: C\) adalah konstanta.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide rounded-2 overflow-hidden">
+        <div class="card card-flip h-100 border-0 bg-transparent">
+          <div class="card-front text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <h3 class="card-title fw-semibold fs-2 text-center">Apa itu keanjalan dalam persamaan garis lurus?</h3>
+            </div>
+          </div>
+          <div class="card-back text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <p class="card-text">Kejajaran \( (c) \) adalah titik di mana garis memotong paksi \(y)\), iaitu titik di
+                mana \( x= 0\) dalam persamaan \( y = mx + c\)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide rounded-2 overflow-hidden">
+        <div class="card card-flip h-100 border-0 bg-transparent">
+          <div class="card-front text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <h3 class="card-title fw-semibold fs-2 text-center">Bagaimana menentukan persamaan garis lurus jika
+                diberikan dua titik?</h3>
+            </div>
+          </div>
+          <div class="card-back text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <p class="card-text">Guna formula kecerunan untuk mendapatkan \(m\), kemudian gunakan salah satu titik dan
+                \(m\) dalam persamaan \(y = mx + c \) untuk mencari \(c\).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+
+  <div class="bg-maroon py-5">
+    <div class="container text-white text-start fw-bolder fs-1 ">
+      Ujian Padanan
+    </div>
+  </div>
+  <div class="position-relative">
+    <canvas id="confetti"></canvas>
+    <div class="modal fade" tabindex="-1" data-bs-backdrop="false" data-bs-keyboard="false" id="match-result">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Keputusan ujian</h5>
+          </div>
+          <div class="modal-body">
+            <p>Anda telah menghabiskan <span id="match-time" class="text-orange"></span> saat untuk menyelesaikan ujian.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-orange" id="retry" onclick="window.location.reload()">Cuba lagi
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="match-section" style="height: min-content">
+      <div class="section-overlay">
+        <img src="/static/images/matching.png" class="img-fluid mb-5" width="200"
+             style="rotate: -10deg; translate: -17px 0;">
+        <div class="fs-1 text-white mb-3">Sedia untuk menguji diri anda?</div>
+        <div class="fs-4 text-white mb-5">Padankan semua istilah dengan jawapan mereka secepat yang anda boleh</div>
+        <button type="button" class="btn-orange btn fs-4 px-4 py-2" id="start">Mula</button>
+      </div>
+      <div id="timer" class="fs-4 text-white">
+        <div class=" bg-maroon rounded-pill d-flex align-items-center justify-content-center px-4">
+          <i class="bi bi-clock text-white"></i>
+          <span id="timer-value" class="ms-2">0.00</span><span>s</span>
+        </div>
+      </div>
+      <div class="row gy-2 gx-2 text-center fs-4" id="card-wrapper">
+        <div class="col-lg-3">
+          <div class="card card-body d-flex justify-content-center align-items-center card-match" data-key="1">
+            Persamaan garis lurus
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card card-body answer d-flex justify-content-center align-items-center card-match" data-key="1">
+            y = mx + c
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="card card-body d-flex justify-content-center align-items-center card-match" data-key="2">
+            Kecerunan garis lurus
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card card-body answer d-flex justify-content-center align-items-center card-match" data-key="2">
+            \( m = \frac{y_{2} - y_{1}}{x_{2} - x_{1}} \)
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="card card-body d-flex justify-content-center align-items-center card-match" data-key="3">
+            Graf selari
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card card-body answer d-flex justify-content-center align-items-center card-match" data-key="3">
+            \( m_{1} = m_{2} \)
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card card-body d-flex justify-content-center align-items-center card-match" data-key="4">
+            \( y = m \times (0) + c \)
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card card-body answer d-flex justify-content-center align-items-center card-match" data-key="4">
+            Pintasan-y
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="card card-body d-flex justify-content-center align-items-center card-match" data-key="5">
+            <input type="hidden" value="5" name="key">
+            \( y = 5x + 25 \)
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card card-body answer d-flex justify-content-center align-items-center card-match" data-key="5">
+            Pintasan-x : -5
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="card card-body d-flex justify-content-center align-items-center card-match" data-key="6">
+            Persamaan umum garis lurus
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card card-body answer d-flex justify-content-center align-items-center card-match" data-key="6">
+            \( Ax + By = C\)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-maroon py-5">
+    <div class="container text-white text-start fw-bolder fs-1 ">
+      Kuiz
+    </div>
+  </div>
+  <div class="swiper mySwiper quiz shadow position-relative">
+    <div class="modal fade" tabindex="-1" id="result-modal" data-bs-backdrop="false" data-bs-keyboard="false">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-orange fw-bold">Keputusan Ujian</h5>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">Dari <strong class="text-orange">10</strong>
+              soalan, anda menjawab dengan betul pada <strong id="correct" class="text-orange"></strong> soalan.
+            </div>
+            <div class="mb-3">Markah keseluruhan: <strong class="text-orange" id="score"></strong></div>
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped" role="progressbar" id="scorebar"
+                   aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-orange" data-bs-dismiss="modal" onclick="window.location.reload()">Cuba
+              lagi
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-orange" id="next">Seterusnya</button>
+    <div class="section-overlay">
+      <div class="fs-1 text-white mb-3">Sedia untuk menguji diri anda?</div>
+      <div class="fs-4 text-white mb-5">Jawab setiap soalan dalam tempoh 30 saat untuk merangsang ujian masa terhad
+      </div>
+      <button type="button" class="btn-orange btn fs-4 px-4 py-2" id="start-quiz">Mula</button>
+    </div>
+    <div id="quiz-timer" class="d-flex align-items-center">
+      <i class="bi bi-clock text-orange"></i>
+      <div class="ms-2 progress w-100">
+        <div class="progress-bar" role="progressbar"></div>
+      </div>
+    </div>
+    <div class="swiper-wrapper">
+      <form class="swiper-slide">
+        <div class="row gx-0 h-100 w-100 bg-light">
+          <div class="col-lg-6">
+            <figure class="d-flex justify-content-center">
+              <img src="/static/images/quiz-bab-9-q1.png" class="img-fluid ques-image">
+            </figure>
+          </div>
+          <div class="col-lg-6 h-100 border-start">
+            <div class="content">
+              <div class="text-orange text-decoration-underline mb-2">Soalan 1</div>
+              <div class="fw-bold fs-4 mb-3 text-maroon">Nyatakan yang manakah jarak mengufuk?</div>
+              <ol class="list-unstyled text-orange ms-2">
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  AB
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2 answer" name="selection"></span>
+                  BC
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  CA
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  AC
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form class="swiper-slide">
+        <div class="row gx-0 h-100 w-100 bg-light">
+          <div class="col-lg-12 h-100 border-start">
+            <div class="content">
+              <div class="text-orange text-decoration-underline mb-2">Soalan 2</div>
+              <div class="fw-bold fs-4 mb-3 text-maroon">\( y = 2x -5 \:\text{dan}\:2y = 4x - 3 \)</div>
+              <ol class="list-unstyled text-orange ms-2">
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2 answer" name="selection"></span>
+                  Selari
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  Tidak Selari
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form class="swiper-slide">
+        <div class="row gx-0 h-100 w-100 bg-light">
+          <div class="col-lg-6">
+            <figure class="d-flex justify-content-center">
+              <img src="/static/images/quiz-bab-9-q2.png" class="img-fluid ques-image">
+            </figure>
+          </div>
+          <div class="col-lg-6 h-100 border-start">
+            <div class="content">
+              <div class="text-orange text-decoration-underline mb-2">Soalan 3</div>
+              <div class="fw-bold fs-4 mb-3 text-maroon">Cari kecerunan garis lurus AB</div>
+              <ol class="list-unstyled text-orange ms-2">
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  \( \frac{11}{4} \)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2 answer" name="selection"></span>
+                  \( \frac{4}{11} \)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  \( \frac{1}{10} \)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  \( \frac{10}{4} \)
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form class="swiper-slide">
+        <div class="row gx-0 h-100 w-100 bg-light">
+          <div class="col-lg-12 h-100 border-start">
+            <div class="content">
+              <div class="text-orange text-decoration-underline mb-2">Soalan 4</div>
+              <div class="fw-bold fs-4 mb-3 text-maroon">Titik \( (3,4) \) dilalui persamaan garis ...</div>
+              <ol class="list-unstyled text-orange ms-2">
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  \( 4x + 2y = -4 \)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  \( 4x - 2y = -4 \)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  \( 4x + 2y = 4 \)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2 answer" name="selection"></span>
+                  \( 4x - 2y = 4 \)
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form class="swiper-slide">
+        <div class="row gx-0 h-100 w-100 bg-light">
+          <div class="col-lg-12 h-100 border-start">
+            <div class="content">
+              <div class="text-orange text-decoration-underline mb-2">Soalan 5</div>
+              <div class="fw-bold fs-4 mb-3 text-maroon">Persamaan garis yang melalui titik \((1,2)\) dan \((3,4)\)
+                adalah ....
+              </div>
+              <ol class="list-unstyled text-orange ms-2">
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  \( y = -x + 1 \)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  \( y = 2x - 1 \)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  \( y = -2x - 1 \)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2 answer" name="selection"></span>
+                  \( y = x + 1 \)
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form class="swiper-slide">
+        <div class="row gx-0 h-100 w-100 bg-light">
+          <div class="col-lg-12 h-100 border-start">
+            <div class="content">
+              <div class="text-orange text-decoration-underline mb-2">Soalan 6</div>
+              <div class="fw-bold fs-4 mb-3 text-maroon">Tentukan kecerunan dan pintasan-y bagi garis lurus \(y = 2x –
+                7\)
+              </div>
+              <ol class="list-unstyled text-orange ms-2">
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  kecerunan = \(7\) ; pintasan \(-y = 2\)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  kecerunan = \(2\) ; pintasan \(-y = 7\)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2 answer" name="selection"></span>
+                  kecerunan = \(2\) ; pintasan \(-y = -7\)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  kecerunan = \(-7\) ; pintasan \(-y = 2\)
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form class="swiper-slide">
+        <div class="row gx-0 h-100 w-100 bg-light">
+          <div class="col-lg-12 h-100 border-start">
+            <div class="content">
+              <div class="text-orange text-decoration-underline mb-2">Soalan 7</div>
+              <div class="fw-bold fs-4 mb-3 text-maroon">Tentukan yang manakah pasangan garis lurus berikut adalah
+                selari.
+              </div>
+              <ol class="list-unstyled text-orange ms-2">
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2 answer" name="selection"></span>
+                  \( 3y =-6x + 3\:;\:y + 2x = 14\)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  \( 2x + 3y = 3 \:;\:2x + 6y = 12\)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  \( y = 3x + 1\:;\:2x + 6y = 5\)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  \( y = -3x 4\:;\:9x + 2y = 12\)
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form class="swiper-slide">
+        <div class="row gx-0 h-100 w-100 bg-light">
+          <div class="col-lg-6">
+            <figure class="d-flex justify-content-center">
+              <img src="/static/images/quiz-bab-9-3.png" class="img-fluid ques-image">
+            </figure>
+          </div>
+          <div class="col-lg-6 h-100 border-start">
+            <div class="content">
+              <div class="text-orange text-decoration-underline mb-2">Soalan 8</div>
+              <div class="fw-bold fs-4 mb-3 text-maroon">Nyatakan nilai k dan h bagi graf garis lurus</div>
+              <ol class="list-unstyled text-orange ms-2">
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  \( k = 7,\: h=-3 \)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  \( k = -7,\: h=-3 \)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  \( k = 3,\: h=7 \)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2 answer" name="selection"></span>
+                  \( k = 7,\: h=3 \)
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form class="swiper-slide">
+        <div class="row gx-0 h-100 w-100 bg-light">
+          <div class="col-lg-12 h-100 border-start">
+            <div class="content">
+              <div class="text-orange text-decoration-underline mb-2">Soalan 9</div>
+              <div class="fw-bold fs-4 mb-3 text-maroon">Tukarkan persamaan garis lurus \( \frac{x}{4} + \frac{y}{2} = 1
+                \) kepada bentuk \( ax+by=c\)
+              </div>
+              <ol class="list-unstyled text-orange ms-2">
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2 answer" name="selection"></span>
+                  \( x + 2y = 4 \)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                   \( x + 2y = 1 \)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                   \( x + 4y = 1 \)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                   \( x + 4y = 4 \)
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form class="swiper-slide">
+        <div class="row gx-0 h-100 w-100 bg-light">
+          <div class="col-lg-6">
+            <figure class="d-flex justify-content-center">
+              <img src="/static/images/quiz-bab-9-4.png" class="img-fluid ques-image">
+            </figure>
+          </div>
+          <div class="col-lg-6 h-100 border-start">
+            <div class="content">
+              <div class="text-orange text-decoration-underline mb-2">Soalan 10</div>
+              <div class="fw-bold fs-4 mb-3 text-maroon">Rajah sebelah menunjukkan satu gris lurus yang dilukus pada
+                satah Cartes. Tentukan koordinat titik P dan titik Q yang mungkin.
+              </div>
+              <ol class="list-unstyled text-orange ms-2">
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2 answer" name="selection"></span>
+                  Titik P \((2,6)\) Titik Q \((5,12)\)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  Titik P \((3,5)\) Titik Q \((9,8)\)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  Titik P \((1,4)\) Titik Q \((5,8)\)
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  Titik P \((4,4)\) Titik Q \((8,14)\)
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+{% endblock %}
+
+{% block vendor_script %}
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+{% endblock %}
+{% block custom_script %}
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+    },
+  };
+</script>
+<script src="/static/js/quiz1.js"></script>
+{% endblock %}

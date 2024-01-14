@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log Masuk Akaun</title>
+  <link href="https://fonts.cdnfonts.com/css/open-sans" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/login-signup.css">
+  <style>
+  </style>
+</head>
+
+<body>
+
+{% include "flash-message.html" %}
+<main id="page" data-aos="fade-right">
+  <a href="/" class="bg-white rounded-circle shadow-lg p-2" id="home">
+    <i class="text-orange h3 bi bi-house-up-fill"></i>
+  </a>
+  <div id="signup-container" class="row container-fluid px-0 mx-0 h-100 text-light">
+    <div class="col-lg-8 col-md-12 px-0 order-lg-1 container-img">
+      <div class="overlay"></div>
+      <img src="/static/images/signup.png" class="img-fluid w-100 h-100" alt="quiz">
+    </div>
+    <div class="col-lg-4 col-md-12 container content h-100 position-relative overflow-hidden order-lg-0">
+      <div class="h4 fw-lightbold w-100 mt-5 mb-4">
+        Mendaftar Untuk
+        <div class="fw-semibold h1 display-3">Smar<span class="text-orange">T</span>iger</div>
+      </div>
+      <form action="/sign_up" method="POST" class="d-block w-100 mb-4" autocomplete="off">
+        <div class="row mb-4">
+          <div class="col-4 flip-img-container d-flex justify-content-center align-items-center">
+            <div class="flip-img" id="flip-img">
+              <div class="flip-img-front">
+                <img src="/static/images/teacher.png" alt="teacher" class="rounded-circle p-1 bg-transparent"
+                     height="110" width="90">
+              </div>
+              <div class="flip-img-back">
+                <img src="/static/images/student.png" alt="student" class="rounded-circle p-1 bg-transparent"
+                     height="110" width="90">
+              </div>
+            </div>
+          </div>
+          <div class="col-8 d-flex align-items-center justify-content-start container mt-1">
+            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+              <input type="radio" class="btn-check teacher" id="teacher1" name="role" autocomplete="off"
+                     data-target="flip-img" value="teacher" checked>
+              <label class="btn btn-outline-light" for="teacher1" style="width: 80px">Guru</label>
+
+              <input type="radio" class="btn-check student" id="student1" name="role" autocomplete="off"
+                     data-target="flip-img" value="student">
+              <label class="btn btn-outline-light" for="student1" style="width: 80px">Pelajar</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group mt-5">
+          <input type="email" name="email" class="w-100 ps-5 border-0 border-bottom bg-transparent" placeholder="Emel">
+          <span class="input-prepend-icon"><i class="h5 bi bi-envelope-at-fill"></i></span>
+        </div>
+        <div class="form-group">
+          <input type="text" name="username" class="w-100 ps-5 border-0 border-bottom bg-transparent"
+                 placeholder="Nama pengguna">
+          <span class="input-prepend-icon"><i class="h5 bi bi-person-fill"></i></span>
+        </div>
+        <div class="form-group">
+          <input type="password" name="password" class="w-100 ps-5 border-0 border-bottom bg-transparent"
+                 placeholder="Kata Kunci"
+                 autocomplete="new-password">
+          <span class="input-prepend-icon"><i class="h5 bi bi-lock-fill"></i></span>
+        </div>
+        <button type="submit" class="float-end btn btn-orange border-dark border-opacity-10 shadow">
+          Hantar
+        </button>
+      </form>
+      <a href="/login" class="container-toggle left overflow-hidden shadow border border-light border-opacity-10">
+        <div class="bg-orange d-flex justify-content-center p-1 ps-2"><i class="bi bi-arrow-left text-light"></i></div>
+        <span class="my-2 ms-3 me-2">Log Masuk</span>
+      </a>
+    </div>
+  </div>
+</main>
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script src="/static/js/base.js"></script>
+<script src="/static/js/login-signup.js"></script>
+</body>
+</html>

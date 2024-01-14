@@ -1,0 +1,260 @@
+#hero {
+  height: 78vh;
+}
+
+#sidebar {
+  border-radius: 0% 100% 100% 0% / 10% 15% 15% 10%;
+  min-width: 250px;
+  background: var(--color-maroon);
+  color: #fff;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  height: 86vh;
+  position: sticky;
+  top: 95px;
+}
+
+#sidebar.active {
+  margin-left: -250px;
+}
+
+#content {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0
+}
+
+@media (max-width: 991.98px) {
+  #sidebar {
+    margin-left: -250px;
+  }
+
+  #sidebar.active {
+    margin-left: 0;
+  }
+}
+
+#sidebar .custom-menu {
+  z-index: 1;
+  margin-right: -20px;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  position: absolute;
+  top: 45%;
+  right: 0;
+}
+
+#numbers-wrapper {
+  padding-block: 50px !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #sidebar .custom-menu {
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none;
+  }
+}
+
+#sidebar .custom-menu .btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  position: relative;
+}
+
+#sidebar .custom-menu .btn i {
+  margin-left: 25px !important;
+}
+
+#sidebar .custom-menu .btn.btn-primary {
+  background: transparent;
+  border-color: transparent;
+  padding: 0;
+}
+
+#sidebar .custom-menu .btn.btn-primary:after {
+  z-index: -1;
+  position: sticky;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  content: '';
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  background: var(--color-maroon);
+  border-radius: 10px;
+}
+
+#sidebar .custom-menu .btn.btn-primary:hover, #sidebar .custom-menu .btn.btn-primary:focus {
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
+a[data-toggle="collapse"] {
+  position: relative;
+}
+
+.dropdown-toggle::after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@media (max-width: 991.98px) {
+  #sidebarCollapse span {
+    display: none;
+  }
+}
+
+.number, .operator, .dot {
+  width: 80px;
+  height: 80px;
+  color: white;
+  background-color: var(--color-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--bs-border-radius);
+  font-size: 28px;
+  user-select: none;
+}
+
+@media screen {
+  
+}
+
+@media screen and (max-width: 992px) {
+  .number, .operator, .dot {
+    width: 60px!important;
+    height: 60px!important;
+  }
+
+}
+
+.number {
+  cursor: grab;
+}
+
+#numbers {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  grid-template-rows: repeat(5, 1fr); /* 5 rows */
+  height: 100%;
+}
+
+.dividend, .divisor {
+  border-radius: var(--bs-border-radius);
+  min-height: 80px;
+  min-width: 100%;
+  border: 2px solid transparent;
+}
+
+#first-row-number, #second-row-number {
+  justify-content: flex-end;
+  max-height: 80px;
+  border: 2px solid transparent;
+}
+
+.tooltip-danger {
+  --bs-tooltip-bg: var(--bs-danger);
+}
+
+.tooltip-maroon {
+  --bs-tooltip-bg: var(--color-maroon);
+}
+
+.popover {
+  overflow: hidden;
+  --bs-popover-border-radius: var(--bs-border-radius);
+}
+
+.fraction-grid {
+  border: 1px solid #000000;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+}
+
+.grid-cell {
+  border: 1px solid #000000;
+  background-color: white;
+  position: relative;
+  display: flow-root;
+
+  &:before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+}
+
+.fill:after {
+  content: '';
+  display: block;
+  position: absolute;
+  inset: 0 0 0 0;
+  margin: auto;
+  width: 60%;
+  height: 60%;
+  border-radius: 50% !important;
+  background-color: red;
+  z-index: 1;
+}
+
+.card ul li, .card ol li {
+  margin-block: 2.5%;
+}
+
+.card ol > li::marker {
+  font-weight: bold;
+}
+
+.card strong {
+  color: var(--color-orange)
+}
+
+.flex-basis-0 {
+  flex-basis: 0 !important;
+}
+
+.table thead th {
+  background-color: var(--color-orange);
+  color: white;
+}
+
+.table-of-content button {
+  text-align: start;
+  background-color: white;
+  border: 0;
+  color: var(--color-orange)
+}
+
+.table-of-content button:hover {
+  color: rgba(var(--color-orange-rgb), 0.75) !important;
+}
+
+.table-of-content li::marker {
+  color: var(--color-maroon);
+  font-weight: normal !important;
+}
+
+#before-round {
+  border: 2px solid transparent;
+}
+
+.swiper-pagination-bullet {
+  background-color: var(--color-orange);
+}

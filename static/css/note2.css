@@ -1,0 +1,20 @@
+.mq-editable-field.mq-focused,
+.mq-math-mode .mq-editable-field.mq-focused {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border: 0;
+}
+
+.mq-editable-field,
+.mq-math-mode .mq-editable-field {
+  border: var(--bs-border-width) solid lightgray;
+}
+
+#plot {
+  min-height: 60vh;
+}
+
+#linear, #quad, #reci, #cube {
+  min-height: 400px;
+}

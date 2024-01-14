@@ -1,0 +1,604 @@
+{% extends "base.html" %}
+{% block vendor_stylesheet %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1-a/mathquill.css">
+{% endblock %}
+
+{% block custom_stylesheet %}
+<link href="/static/css/note1.css" rel="stylesheet">
+<link href="/static/css/note2.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<header id="hero">
+  <div class="hero-image"></div>
+  <div class="overlay"></div>
+  <div class="row container-fluid h-100 d-flex text-light justify-content-center align-items-center mx-0 pt-5">
+    <div class="col-lg-8 col-md-10 col-sm-12 px-md-0 px-sm-0 text-center mt-5">
+      <div class="h1 display-3" style="font-weight: 900" data-aos="fade-right" data-aos-duration="1000"
+           data-aos-delay="1000">Nota
+      </div>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb fw-semibold justify-content-center">
+          <li class="breadcrumb-item d-inline-block" data-aos="zoom-in" data-aos-duration="1000"
+              data-aos-delay="1000">
+            <a href="/">
+              Laman Utama
+            </a>
+          </li>
+          <li class="breadcrumb-item d-inline-block" data-aos="zoom-in" data-aos-duration="1100"
+              data-aos-delay="1000">
+            <a href="/list_note">
+              Nota
+            </a>
+          </li>
+          <li class="breadcrumb-item active text-white" data-aos="zoom-in" data-aos-duration="1200"
+              data-aos-delay="1000">
+            Bab 9
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</header>
+
+}
+<main>
+  <div class="container mb-5">
+    <div class="row">
+      <section class="col-lg-8">
+        <article class="card mb-4" id="article-1" data-aos="fade-up" data-aos-duration="1500">
+          <h1 class="card-header fs-5 fw-bold text-maroon">Jenis Graf</h1>
+          <div class="card-body">
+            <ul>
+              <li>
+                Graf boleh dikumpulkan dalam <strong>4 kategori</strong> seperti yang ditunjukkan di bawah
+                <div class="row">
+                  <figure class="col-lg-6">
+                    <div id="linear"></div>
+                    <figcaption class="text-center text-maroon fw-bold">Graf Linear</figcaption>
+                  </figure>
+                  <figure class="col-lg-6">
+                    <div id="quad"></div>
+                    <figcaption class="text-center text-maroon fw-bold">Graf Kuadratik</figcaption>
+                  </figure>
+                  <figure class="col-lg-6">
+                    <div id="cube"></div>
+                    <figcaption class="text-center text-maroon fw-bold">Graf Kubik</figcaption>
+                  </figure>
+                  <figure class="col-lg-6">
+                    <div id="reci"></div>
+                    <figcaption class="text-center text-maroon fw-bold">Graf Salingan</figcaption>
+                  </figure>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </article>
+        <article class="card mb-4" id="article-2" data-aos="fade-up" data-aos-duration="1500">
+          <h1 class="card-header fs-5 fw-bold text-maroon">Garis Lulus</h1>
+          <div class="card-body">
+            <ul>
+              <li>Secara generalisasi, terdapat <strong>tiga bentuk</strong> persamaan garis lurus seperti berikut:
+                <div class="row">
+                  <div class="col-lg-6">
+                    <ol>
+                      <li class="mb-3">\( y = mx + c \)
+                        <ul class="mt-3">
+                          <li>x, y = koordinat titik pada garis lurus</li>
+                          <li>m = kecerunan garis lurus</li>
+                          <li>c = pintasan-y</li>
+                        </ul>
+                      </li>
+                      <li class="mb-3">\( ax + by = c \)
+                        <ul class="mt-3">
+                          <li>x, y = koordinat titik pada garis lurus</li>
+                          <li>a, b dan c = nilai pekali</li>
+                        </ul>
+                      </li>
+                      <li class="mb-3">\( \large{\frac{x}{a} + \frac{y}{b} = 1} \)
+                        <ul class="mt-3">
+                          <li>x, y = koordinat titik pada garis lurus</li>
+                          <li>a = pintasan-x</li>
+                          <li>b = pintasan-y</li>
+                        </ul>
+                      </li>
+                    </ol>
+                  </div>
+                  <div class="col-lg-6">
+                    <select id="type" class="form-select mt-4">
+                      <option value="" disabled selected>Pilih satu bentuk</option>
+                      <option value="3 * x + 5">3x + 5</option>
+                      <option value="2 - (x/3)">3x + 6y = 12</option>
+                      <option value="4 + 2 * x">(-x/2) + (y/4) = 1</option>
+                    </select>
+                    <div class="d-flex" style="height: 350px">
+                      <div id="garis-lulus" class="w-100 h-100"></div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <strong>Penukaran betuk garis lurus</strong> boleh dicapaikan dengan susun semula persamaan garis lurus
+                dengan
+                menggunakan nilai kecerunan dan pintasan-y yang baru seperti berikut:
+                <ol style="list-style-type: lower-alpha">
+                  <li>
+                    <span class="ms-2">\( 2x + 3y = 12 \)</span>
+                    <div class="row mt-3 gy-3">
+                      <div class="col-lg-6">
+                        <div class="card h-100">
+                          <h1 class="card-header d-flex align-items-center justify-content-center fs-6 text-maroon"
+                              style="height: 50px">\(
+                            \large{\frac{x}{a} + \frac{y}{b} = 1}
+                            \)</h1>
+                          <div class="card-body d-flex justify-content-center align-items-center">
+                            \[
+                            \begin{align*}
+                            2x + 3y &= 12 \\[0.5em]
+                            \colorbox{darkorange}{$\textcolor{white}{\div 12 \rightarrow}$} \: \frac{2x}{12} +
+                            \frac{3y}{12} &=
+                            \frac{12}{12} \\[0.5em]
+                            \frac{x}{6} + \frac{y}{4} &= 1
+                            \end{align*}
+                            \]
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="card h-100">
+                          <h1 class="card-header fs-6 text-maroon d-flex align-items-center justify-content-center"
+                              style="height: 50px">\( y = mx + c \)</h1>
+                          <div class="card-body d-flex justify-content-center align-items-center">
+                            \[
+                            \begin{align*}
+                            2x + 3y &= 12 \\[0.5em]
+                            3y &= -2x + 12 \\[0.5em]
+                            \colorbox{darkorange}{$\textcolor{white}{\div 3 \rightarrow}$} \: \frac{2x}{12} +
+                            \frac{3y}{12} &=
+                            \frac{12}{3}
+                            \\[0.5em]
+                            y &= -\frac{2}{3}x + 4
+                            \end{align*}
+                            \]
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="ms-2">\( \large{-\frac{x}{2} + \frac{y}{4}} = 1 \)</span>
+                    <div class="row mt-3 gy-3">
+                      <div class="col-lg-6">
+                        <div class="card h-100">
+                          <h1 class="card-header d-flex align-items-center justify-content-center fs-6 text-maroon"
+                              style="height: 50px">\(
+                            \ ax + by = c \)</h1>
+                          <div class="card-body d-flex justify-content-center align-items-center">
+                            \[
+                            \begin{align*}
+                            -\frac{x}{2} + \frac{y}{4} &= 1 \\[0.5em]
+                            \frac{-4x + 2y}{2(4)} &= 1 \\[0.5em]
+                            -4x + 2y &= 1(8) \\[0.5em]
+                            -4x+ 2y &= 8 \\[0.5em]
+                            -2x + y &= 4
+                            \end{align*}
+                            \]
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="card h-100">
+                          <h1 class="card-header fs-6 text-maroon d-flex align-items-center justify-content-center"
+                              style="height: 50px">\( y = mx + c \)</h1>
+                          <div class="card-body d-flex justify-content-center align-items-center">
+                            \[
+                            \begin{align*}
+                            -\frac{x}{2} + \frac{y}{4} &= 1 \\[0.5em]
+                            \frac{y}{4} &= \frac{x}{2} + 1 \\[0.5em]
+                            \colorbox{darkorange}{$\textcolor{white}{\times 4 \rightarrow}$} \: \frac{2x}{12} +
+                            \frac{3y}{12} &=
+                            \\[0.5em]
+                            \end{align*}
+                            \]
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ol>
+              </li>
+            </ul>
+          </div>
+        </article>
+        <article class="card mb-4" id="article-3" data-aos="fade-up" data-aos-duration="1500">
+          <h1 class="card-header fs-5 fw-bold text-maroon">Kecerunan</h1>
+          <div class="card-body">
+            <ul>
+              <li><strong>Kecerunan</strong> adalah nisbah perubahan nilai y terhadap perubahan nilai x.</li>
+              <li>Nilai kecerunan menunjukkan kemiringan garis lurus. Kecerunan <strong>positif</strong> menunjukkan
+                <strong>kenaikan</strong>, manakala kecerunan <strong>negatif</strong> menunjukkan
+                <strong>penurunan</strong>.
+                <div class="row mt-3 gy-3">
+                  <div class="col-lg-6">
+                    <div class="card" style="height: 400px;">
+                      <div class="card-body">
+                        <div id="positive-gradient" class="h-100 w-100"></div>
+                      </div>
+                      <div class="card-footer text-center text-maroon">
+                        \( y = mx + c \)
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="card" style="height: 400px;">
+                      <div class="card-body">
+                        <div id="negative-gradient" class="h-100 w-100"></div>
+                      </div>
+                      <div class="card-footer text-center text-maroon">
+                        \( y = -mx + c \)
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>Kcerunan boleh ditemui dengan menggunakan salah satu daripada <strong>tiga
+                cara</strong> ini:
+                <div class="row">
+                  <div class="col-lg-4">
+                    <div class="h-100 d-flex flex-column">
+                      <span>\[m = -\frac{\text{jarak menegak}}{\text{jarak mengufuk}}\]</span>
+                      <div class="card flex-grow-1 shadow-sm">
+                        <div class="card-img-top d-flex justify-content-center align-items-center"
+                             style="height: 200px">
+                          <img src="/static/images/gradient-1.png" alt="-jarak menegak/jarak mengufuk"
+                               class="img-fluid h-100">
+                        </div>
+                        <div class="card-body pt-0 d-flex justify-content-center align-items-center">
+                          \[ m = -\left(\frac{4}{2}\right) = -2 \]
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="h-100 d-flex flex-column">
+                      <span>\[ m = \frac{y_{2} - y_{1}}{x_{2} - x_{1}} \]</span>
+                      <div class="card flex-grow-1 shadow-sm">
+                        <div class="card-img-top p-4 d-flex justify-content-center align-items-center"
+                             style="height: 200px">
+                          <img src="/static/images/gradient-2.png" alt="y2-y1/x2-x1"
+                               class="img-fluid p-1 h-100">
+                        </div>
+                        <div class="card-body pt-0 d-flex justify-content-center align-items-center">
+                          \[ m = \frac{3 - 2}{4 - 0} = \frac{1}{4} \]
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="h-100 d-flex flex-column">
+                      <span>\[m = -\frac{\text{pintasan-y}}{\text{pintasan-x}}\]</span>
+                      <div class="card flex-grow-1 shadow-sm">
+                        <div class="card-img-top p-4 d-flex justify-content-center align-items-center"
+                             style="height: 200px">
+                          <img src="/static/images/gradient-3.jpeg" alt="-jarak menegak/jarak mengufuk"
+                               class="img-fluid h-100 p-3">
+                        </div>
+                        <div class="card-body pt-0 d-flex justify-content-center align-items-center">
+                          \[ m = \frac{3 - 2}{4 - 0} = \frac{1}{4} \]
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                Dua graf linear dengan <strong>kecerunan yang sama</strong> adalah <strong>selari</strong> satu sama
+                lain dan <strong>tidak akan pernah berpotongan.</strong>
+                <div class="d-flex justify-content-center" style="height: 300px">
+                  <div id="parallel" class="w-100 h-100"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </article>
+        <article class="card mb-4" id="article-4" data-aos="fade-up" data-aos-duration="1500">
+          <h1 class="card-header fs-5 fw-bold text-maroon">Menganalisis Hubungan Linear dan Garis Selari</h1>
+          <div class="card-body">
+            <ol>
+              <li id="sub-section-1">
+                <span class="fw-bold">Tentukan persamaan garis lurus dengan kecerunan dan melalui titik</span>
+                <ol style="list-style-type: lower-roman">
+                  <li>Tentukan nilai kecerunan, m.</li>
+                  <li> Tentukan satu titik yang dilalui oleh garis lurus atau pada garis lurus tersebut.</li>
+                  <li> Gantikan nilai kecerunan, m, nilai koordinat-x dan nilai koordinat-y dari titik ke dalam
+                    persamaan garis lurus y = mx + c untuk menentukan nilai c iaitu nilai pintasan-y.
+                    <div class="d-flex justify-content-center align-items-center">
+                      <img src="/static/images/tentuk-persamaan.png" alt="tentukan persamaan" class="img-fluid"
+                           width="350">
+                    </div>
+                  </li>
+                  <li> Gantikan nilai kecerunan dan nilai pintasan-y yang ditentukan ke dalam persamaan garis
+                    lurus </br>y =
+                    <strong>m</strong>x + <strong>c</strong>.
+                  </li>
+                </ol>
+                <div class="card">
+                  <h1 class="card-header fs-6 text-maroon text-center fw-bold">Contoh</h1>
+                  <div class="card-body p-0">
+                    <div class="row g-0 gy-3">
+                      <div class="col-lg-6">
+                        <div class="border p-4 h-100">
+                          <div class="mb-3">\( \large{m = \frac{1}{2}}, \: P(6, 8) \)</div>
+                          <div>Gantikan nilai m, x dan y ke dalam y = mx + c untuk menentukan nilai c.</div>
+                          <div>
+                            \[
+                            \begin{align*}
+                            8 &= \frac{1}{2}(6) + c \\[0.5em]
+                            8 &= 3 + c \\[0.5em]
+                            c &= 8 - 3 \\[0.5em]
+                            c &= 5
+                            \end{align*}
+                            \]
+                          </div>
+                          <div>Maka, persamaan garis lulus ialah</div>
+                          <div class="text-center mt-3">\( y = \frac{1}{2}x + 5 \)</div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="border p-4 h-100">
+                          <div class="mb-3">\( \large{m = \frac{2}{3}}, \: P(12, 5) \)</div>
+                          <div>Gantikan nilai m, x dan y ke dalam y = mx + c untuk menentukan nilai c.</div>
+                          <div>
+                            \[
+                            \begin{align*}
+                            5 &= \frac{2}{3}(12) + c \\[0.5em]
+                            5 &= 8 + c \\[0.5em]
+                            c &= 8 - 5\\[0.5em]
+                            c &= 3
+                            \end{align*}
+                            \]
+                          </div>
+                          <div>Maka, persamaan garis lulus ialah</div>
+                          <div class="text-center mt-3">\( y = \frac{2}{3}x + 3 \)</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li id="sub-section-2">
+                <span class="fw-bold">Tentukan titik persilangan bagi dua garis lurus</span>
+                <div class="row mt-3 gy-3">
+                  <div class="col-lg-6">
+                    <div class="card h-100">
+                      <h1 class="fs-6 text-maroon fw-bold card-header">Kaedah Penggantian</h1>
+                      <div class="card-body text-start">
+                        <div>
+                          \[
+                          \begin{align*}
+                          2x + y = 5& && \hbox{(1)} \\[0.5em]
+                          x + 2y = 1& && \hbox{(2)} \\[0.5em]
+                          \end{align*}
+                          \]
+                        </div>
+                        <div>\( \text{Gantikan y = 5 - 2x dalam (2)} \)</div>
+                        <div>
+                          \[
+                          \begin{align*}
+                          x + 2(5-2x) &= 1 \\[0.5em]
+                          x + 10 - 4x &= 1 \\[0.5em]
+                          x - 4x &= 1 - 10 \\[0.5em]
+                          -3x &= -9 \\[0.5em]
+                          x &= 3 \\[0.5em]
+                          \end{align*}
+                          \]
+                        </div>
+                        <div>\( \text{Gantikan x = 3 dalam (3)} \)</div>
+                        <div>
+                          \[
+                          \begin{align*}
+                          y &= 5 - 2(3) \\[0.5em]
+                          y &= 5 - 6 \\[0.5em]
+                          y &= -1 \\[0.5em]
+                          \end{align*}
+                          \]
+                        </div>
+                        <div>\( \text{Maka, titik persilangan ialah (3, -1).} \)</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="card h-100">
+                      <h1 class="fs-6 text-maroon fw-bold card-header">Kaedah Penghapusan</h1>
+                      <div class="card-body text-start">
+                        <div class="border-dark border-bottom">
+                          \[
+                          \begin{align*}
+                          2x + y = 5& && \hbox{(1)} \\[0.5em]
+                          x + 2y = 1& && \hbox{(2)} \\[0.5em]
+                          (1)\times2 \quad 4x + 2y = 10& && \hbox{(3)} \\[0.5em]
+                          x + 2y = 1& && \hbox{(2)} && \hbox{(tolak)} \\[0.5em]
+                          \end{align*}
+                          \]
+                        </div>
+                        <div>
+                          \[
+                          \begin{align*}
+                          3x &= 9 \\[0.5em]
+                          x &= 3
+                          \end{align*}
+                          \]
+                        </div>
+                        <div>\( \text{Gantikan x = 3 dalam (1)} \)</div>
+                        <div>
+                          \[
+                          \begin{align*}
+                          2(3) + y &= 5 \\[0.5em]
+                          6 + y &= 5 \\[0.5em]
+                          y &= 5 - 6 \\[0.5em]
+                          y &= -1 \\[0.5em]
+                          \end{align*}
+                          \]
+                        </div>
+                        <div>\( \text{Maka, titik persilangan ialah (3, -1).} \)</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li id="sub-section-3">
+                <span class="fw-bold">Tentukan sama ada suatu titik terletak pada graf linear</span>
+                <ul>
+                  <li>Gantikan nilai x dan y dari titik ke dalam persamaan linear. Hasil substitusi akan memberikan
+                    nilai y yang dijangkakan pada garis untuk nilai x tertentu.
+                  </li>
+                  <li>Contoh dengan gantikan titik P(4, 0)
+                    <div>
+                      \[
+                      \begin{align*}
+                      &\colorbox{darkorange}{\(\color{white}{Kiri:}\)} \quad
+                      &\colorbox{darkorange}{\(\color{white}{Kanan:}\)} \\[0.5em]
+                      &x + 2y &= 4 \\[0.5em]
+                      &= 4 + 2(0) & \uparrow \\[0.5em]
+                      &= 4 &\leftarrow \colorbox{darkorange}{\(\color{white}{Sama}\)} \\[0.5em]
+                      \end{align*}
+                      \]
+                      <span class="fw-semibold">Maka, sama menunjunkkan bahawa titik P(4, 0) berada pada garis lurus tersebut></span>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ol>
+          </div>
+        </article>
+      </section>
+      <aside class="col-lg-4 d-lg-block d-sm-none mb-4">
+        <article class="card mb-3" data-aos="zoom-in" data-aos-duration="1500">
+          <h1 class="card-header fs-6 text-maroon fw-bold">Sumber Rujukan</h1>
+          <div class="card-body">
+            <div class="resource d-flex justify-content-center align-items-stretch gap-4 ">
+              <figure class="d-flex flex-column flex-grow-1 flex-basis-0 row-gap-3">
+                <img src="/static/books/chap9_book/buku-teks-front.jpg" alt="Buku Teks"
+                     class="img-fluid  border border-4 border-dark">
+                <figcaption class="w-100 d-flex justify-content-center">
+                  <a href="/static/books/chap9_book/buku-teks.pdf" target="_blank"
+                     class="btn btn-orange rounded-pill border py-2 px-3">
+                    <span>Read More</span>
+                  </a>
+                </figcaption>
+              </figure>
+              <figure class="d-flex flex-column flex-grow-1 flex-basis-0 row-gap-3">
+                <img src="/static/books/chap9_book/additional-note-front.jpg" alt="Additional note"
+                     class="img-fluid border border-4 border-dark flex-grow-1">
+                <figcaption class="w-100 d-flex justify-content-center">
+                  <a href="/static/books/chap9_book/additional-note.pdf" target="_blank"
+                     class="btn btn-orange rounded-pill border py-2 px-3">Read
+                    now</a>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </article>
+        <nav class="card position-sticky table-of-content z-0" data-aos="zoom-in" data-aos-duration="1500"
+             style="top:100px">
+          <h1 class="fw-bold fs-6 text-maroon card-header">Jadual Kandungan</h1>
+          <div class="card-body">
+            <ul>
+              <li>
+                <div>
+                  <button type="button" data-link="article-1" class="link-button">Jenis Graf
+                  </button>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <button type="button" data-link="article-2" class="link-button">Garis Lulus</button>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <button type="button" data-link="article-3" class="link-button">Kecerunan</button>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <button type="button" data-link="article-4" class="link-button">Menganalisis Hubungan Linear dan Garis
+                    Selari
+                  </button>
+                  <ol>
+                    <li class="my-0">
+                      <button type="button" data-link="sub-section-1" class="link-button">Tentukan persamaan garis lurus
+                        dengan kecerunan dan melalui titik
+                      </button>
+                    </li>
+                    <li class="my-0">
+                      <button type="button" data-link="sub-section-2" class="link-button">Tentukan titik persilangan
+                        bagi dua garis lurus
+                      </button>
+                    </li>
+                    <li class="my-0">
+                      <button type="button" data-link="sub-section-3" class="link-button">Tentukan sama ada suatu titik
+                        terletak pada graf linear
+                      </button>
+                    </li>
+                  </ol>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <button type="button" data-link="section-interact" class="link-button">Plot</button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </aside>
+      <section class="col-lg-12" id="section-interact">
+        <div class="card">
+          <h1 class="card-header fs-3 text-maroon fw-bold text-center">Plot</h1>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-3">
+                <label class="form-label mb-4">Masukkan persamaan</label>
+                <span id="math-field" class="form-control mb-5 p-3"></span>
+                <p class="mb-4 row">
+                  <label for="x-intercept" class="col-sm-5 col-form-label">Pintasan-X:</label>
+                  <span class="col-sm-7"><input id="x-intercept" class="form-control" readonly></span>
+                </p>
+                <p class="mb-4 row">
+                  <label for="x-intercept" class="col-sm-5 col-form-label">Pintasan-Y:</label>
+                  <span class="col-sm-7"><input id="y-intercept" class="form-control" readonly></span>
+                </p>
+              </div>
+              <div class="col-lg-9">
+                <div class="d-flex">
+                  <div id="plot" class="w-100 h-100"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+{% endblock %}
+
+{% block vendor_script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1-a/mathquill.min.js"></script>
+<script src="https://mauriciopoppe.github.io/function-plot/js/function-plot.js"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@scicave/math-latex-parser/lib/bundle.min.js"></script>
+
+{% endblock %}
+
+{% block custom_script %}
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+    },
+  };
+</script>
+<script src="/static/js/note2.js"></script>
+{% endblock %}

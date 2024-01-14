@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block vendor_stylesheet %}
+<link rel="stylesheet" href="https://unpkg.com/@excalidraw/excalidraw@0.17.1-7441-4e2c539/dist/browser/dev/index.css">
+{% endblock %}
+
+{% block custom_stylesheet %}
+<link rel="stylesheet" href="/static/js/src/styles.css">
+<link rel="stylesheet" href="/static/css/dashboard.css">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0 mb-5">
+  <div id="hero">
+    <div class="hero-image"></div>
+    <div class="overlay"></div>
+    <div class="row container-fluid h-100 d-flex text-light justify-content-center align-items-center mx-0 pt-5">
+      <div class="col-lg-8 col-md-10 col-sm-12 px-md-0 px-sm-0 text-center mt-5">
+        <div class="h1 display-3" style="font-weight: 900" data-aos="fade-right" data-aos-duration="1000"
+             data-aos-delay="1000">Memo
+        </div>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb fw-semibold justify-content-center">
+            <li class="breadcrumb-item d-inline-block" data-aos="zoom-in" data-aos-duration="1100"
+                data-aos-delay="1000">
+              <a href="/">
+                Laman Utama
+              </a>
+            </li>
+            <li class="breadcrumb-item active text-white" data-aos="zoom-in" data-aos-duration="1200"
+                 data-aos-delay="1000">
+                Memo
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<section>
+  <div class="section-title mb-3" data-aos="zoom-out" data-aos-duration="1100">Papan Putih
+    Interaktif
+  </div>
+  <div class="section-header mb-3" data-aos="zoom-out" data-aos-duration="1100">Kanvas Peribadi
+    Anda untuk Idea
+  </div>
+  <div id="app"  data-aos="fade-up" data-aos-duration="1500"></div>
+</section>
+{% endblock %}
+
+{% block vendor_script %}
+<script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+<script type="module">
+  import * as ExcalidrawLib
+    from 'https://unpkg.com/@excalidraw/excalidraw@0.17.1-7441-b272514/dist/browser/dev/index.js';
+
+  window.ExcalidrawLib = ExcalidrawLib;
+</script>
+{% endblock %}
+
+{% block custom_script %}
+<script defer type="module" src="/static/js/src/index.js"></script>
+{% endblock %}

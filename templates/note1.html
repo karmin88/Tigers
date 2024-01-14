@@ -1,0 +1,760 @@
+{% extends "base.html" %}
+{% block vendor_stylesheet %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<link rel="stylesheet" href="https://unpkg.com/intro.js/introjs.css">
+{% endblock %}
+
+{% block custom_stylesheet %}
+<link href="/static/css/note1.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<header id="hero">
+  <div class="hero-image"></div>
+  <div class="overlay"></div>
+  <div class="row container-fluid h-100 d-flex text-light justify-content-center align-items-center mx-0 pt-5">
+    <div class="col-lg-8 col-md-10 col-sm-12 px-md-0 px-sm-0 text-center mt-5">
+      <div class="h1 display-3" style="font-weight: 900" data-aos="fade-right" data-aos-duration="1000"
+           data-aos-delay="1000">Nota
+      </div>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb fw-semibold justify-content-center">
+          <li class="breadcrumb-item d-inline-block" data-aos="zoom-in" data-aos-duration="1000"
+              data-aos-delay="1000">
+            <a href="/">
+              Laman Utama
+            </a>
+          </li>
+          <li class="breadcrumb-item d-inline-block" data-aos="zoom-in" data-aos-duration="1100"
+              data-aos-delay="1000">
+            <a href="/list_note">
+              Nota
+            </a>
+          </li>
+          <li class="breadcrumb-item active text-white" data-aos="zoom-in" data-aos-duration="1200"
+              data-aos-delay="1000">
+            Bab 3
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main style="margin-top: 22vh!important;">
+  <div class="container">
+    <div class="row mb-5">
+      <section class="col-lg-8">
+        <article class="card mb-4" data-aos="fade-up" data-aos-duration="1500" id="article-1">
+          <h1 class="card-header fs-5 fw-bold text-maroon">Nilai Tempat & Nilai Digit Perpuluhan</h1>
+          <div class="card-body">
+            <ul>
+              <li><strong>Nilai Tempat</strong> adalah nilai sebuah angka berdasarkan posisinya dalam sebuah bilangan.
+              </li>
+              <li>Sebagai contoh
+                <div class="table-responsive mt-2 text-center">
+                  <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                      <th>Perpuluhan</th>
+                      <th>4</th>
+                      <th>7</th>
+                      <th>3</th>
+                      <th>.</th>
+                      <th>2</th>
+                      <th>8</th>
+                      <th>6</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <th>Nilai Tempat</th>
+                      <td>Ratus</td>
+                      <td>Puluh</td>
+                      <td>Sa</td>
+                      <td rowspan="2">Titik Perpuluhan</td>
+                      <td>Persepuluh</td>
+                      <td>Perseratus</td>
+                      <td>Perseribu</td>
+                    </tr>
+                    <tr>
+                      <th>Nilai Digit</th>
+                      <td>400</td>
+                      <td>70</td>
+                      <td>3</td>
+                      <td>0.2</td>
+                      <td>0.08</td>
+                      <td>0.006</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </article>
+        <article class="card mb-4" data-aos="fade-up" data-aos-duration="1500" id="article-2">
+          <h1 class="card-header fs-5 fw-bold text-maroon">Pecahan & Perpuluhan</h1>
+          <div class="card-body">
+            <div class="container mx-3">
+              <div class="row">
+                <ul class="col-md-8 mb-0">
+                  <li><strong>Pecahan</strong> adalah cara untuk mewakili bagian dari keseluruhan.</li>
+                  <li>Terdiri dari dua bagian: pembilang (angka atas) dan penyebut (angka bawah).</li>
+                  <li>Pembilang menunjukkan jumlah bagian yang kita miliki, dan penyebut menunjukkan berapa banyak
+                    bagian
+                    yang
+                    sama di keseluruhan.
+                  </li>
+                  <li class="list-unstyled">
+                    <div class="table-responsive mt-2 text-center">
+                      <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                          <th>Percahan</th>
+                          <th>Perpuluhan</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                          <td>\( \large{\frac{1}{10}} \)</td>
+                          <td>0.1</td>
+                        </tr>
+                        <tr>
+                          <th>\( \large{\frac{1}{100}} \)</th>
+                          <td>0.01</td>
+                        </tr>
+                        <tr>
+                          <th>\( \large{\frac{1}{1000}} \)</th>
+                          <td>0.001</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </li>
+                </ul>
+                <div class="col-md-4 mt-4">
+                  <img src="https://www.math.net/img/a/primary-math/fractions/fractions/pizza.svg" class="img-fluid">
+                </div>
+                <ul class="col-md-12">
+                  <li class="d-flex gap-3 list-unstyled mt-0">
+                    <section class="card card-body flex-grow-1 flex-basis-0">
+                      <h1 class="text-center text-decoration-underline mb-3 h5 fw-bold text-maroon">Tukar pecahan ke
+                        perpuluhan</h1>
+                      <p class="mb-3">Kira <strong>SIFAR</strong> yang ada pada penyebut pecahan. Letak titk perpuluhan
+                        di belakang
+                        nombor dan lompat ke kiri.
+                      </p>
+                      <p class="text-center mb-3">
+                        <span class="me-3">\( \large{\overset{\curvearrowleft}{\frac{1.}{10}}} \)</span>
+                        <span class="bg-orange p-3 rounded-2 fs-4 text-white">\(0.1\)</span>
+                      </p>
+                    </section>
+                    <section class="card card-body flex-grow-1 flex-basis-0">
+                      <h1 class="text-center text-decoration-underline mb-3 h5 fw-bold text-maroon">Tukar perpuluhan ke
+                        pecahan</h1>
+                      <p class="mb-3">Titik perpuluhan lompat ke kanan. Bilangan lompatan mewakili bilangan
+                        <strong>SIFAR</strong>
+                        yang perlu ada pada penyebut pecahan.
+                      </p>
+                      <p class="text-center mb-3">
+                        <span class="me-3">\( \large{0.\overset{\curvearrowright}{1}} \)</span>
+                        <span class="bg-orange p-3 rounded-2 fs-4 text-white">\( \large{\frac{1}{10}} \)</span>
+                      </p>
+                    </section>
+                  </li>
+                  <li>
+                    <div class="row">
+                      <div>Pecahan boleh lagi dibahagikan kepada pecahan tak wajar dan nombor bercampur, seperti yang
+                        diperlihatkan di bawah
+                      </div>
+                      <div class="col-lg-8">
+                        <img src="/static/images/note1-img1.png" class="img-fluid">
+                      </div>
+                      <p class="col-lg-4">
+                        <span class="my-3">Ada <strong>satu satu perempat</strong> biji pai.</span>
+                        <span><strong>Satu satu perempat</strong> ditulis sebagai \( 1\large{\frac{1}{4}} \)</span>
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="card mb-4" data-aos="fade-up" data-aos-duration="1500" id="article-3">
+          <h1 class="card-header fs-5 fw-bold text-maroon">Operasi Penambahan, Pengurangan, Perkalian, &
+            Pembahagian</h1>
+          <div class="card-body">
+            <ol>
+              <li id="sub-section-tambah">
+                <h1 class="fw-bold fs-6">Tambah</h1>
+                <ul>
+                  <li>Menambah dua atau lebih nombor perpuluhan.</li>
+                  <li>Satu-satunya peraturan utama adalah menyelaraskan titik perpuluhan dan menjumlahkan digit-digits
+                    yang bersesuaian.
+                  </li>
+                  <li>
+                    <h1 class="fs-6">Contoh</h1>
+                    <div class="row">
+                      <div class="col-md-2">
+                        <p class="mt-3 mb-4 fw-bold text-orange">Jumlahkan</p>
+                        <p>\( \large{\frac{1}{4} + \frac{1}{4}} \)</p>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="d-flex align-items-center h-100 justify-content-center border border-orange rounded-4 border-opacity-50 p-3 shadow-sm">
+                          <img src="/static/images/note1-img2.png" class="img-fluid rounded-4"></div>
+                      </div>
+                      <div class="col-md-4 mb-0">
+                        <p class="d-flex align-items-center h-100 justify-content-center w-100 border border-orange rounded-4 border-opacity-50 shadow-sm">
+                          $$
+                          \begin{aligned}
+                          \frac{1}{4} + \frac{1}{4} &= \frac{2}{4} \\[5px]
+                          &= \frac{2 \color{darkorange} \div 2}{4 \color{darkorange} \div 2} \\[5px]
+                          &= \frac{1}{2}
+                          \end{aligned}
+                          $$
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li id="sub-section-tolak">
+                <h1 class="fs-6 fw-bold">Tolak</h1>
+                <ul>
+                  <li>Menambah dua atau lebih nombor perpuluhan.</li>
+                  <li>Titik perpuluhan juga harus diselaraskan sebelum mengurangkan.</li>
+                  <li>
+                    <header>Contoh</header>
+                    <div class="row">
+                      <div class="col-md-2">
+                        <p class="mt-3 fw-bold text-orange">Tolak</p>
+                        <p>\( \large{\frac{3}{8}} \)</p>
+                        <p class="mb-2">daripada</p>
+                        <p>\( \large{\frac{7}{8}} \)</p>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="d-flex align-items-center h-100 justify-content-center border border-orange rounded-4 border-opacity-50 p-3 shadow-sm">
+                          <img src="/static/images/note1-img3.png" class="img-fluid rounded-4"></div>
+                      </div>
+                      <div class="col-md-4">
+                        <p class="d-flex align-items-center h-100 justify-content-center w-100 border border-orange rounded-4 border-opacity-50 shadow-sm">
+                          $$
+                          \begin{aligned}
+                          \frac{7}{8} - \frac{3}{8} &= \frac{4}{8} \\[5px]
+                          &= \frac{4 \color{darkorange} \div 2}{8 \color{darkorange} \div 2} \\[5px]
+                          &= \frac{1}{2}
+                          \end{aligned}
+                          $$
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li id="sub-section-dnb">
+                <h1 class="fs-6 mb-3 fw-bold">Darab dan bahagi</h1>
+                <div class="d-flex gap-3 mt-0">
+                  <section class="card card-body flex-grow-1 flex-basis-0">
+                    <h1 class="text-center text-decoration-underline mb-3 fs-5 fw-bold text-maroon">Darab</h1>
+                    <p class="mb-3">Bagi menentukan <strong>tempat perpuluhan</strong> pada jawapan, jumlahkan tempat
+                      perpuluhan bagi dua nombor yang didarabkan.
+                    </p>
+                    <p class="text-center mb-3">
+                      \begin{align*}
+                      32.03& && \hbox{(1 t.p )} \\
+                      \times\underline{\phantom{00000}1.2}& && \hbox{(2 t.p )}\\
+                      6406&\\
+                      +\underline{\phantom{00)}3203\phantom{0}}& \\
+                      \underline{\phantom{00}38.436}& && \hbox{(3 t.p)}
+                      \end{align*}
+                    </p>
+                  </section>
+                  <section class="card card-body flex-grow-1 flex-basis-0">
+                    <h1 class="text-center text-decoration-underline mb-3 fs-5 fw-bold text-maroon">Bahagi</h1>
+                    <p class="mb-3">Gerakkan <strong>titik perpuluhan ke kanan</strong> sepadan bagi kedua-dua nombor
+                      tersebut
+                    </p>
+                    <p class="text-center mb-3">
+                      $$
+                      \require{enclose}
+                      \begin{align*}
+                      4.5\enclose{longdiv}{15.75}& =\\[1em]
+                      3.5&\\
+                      45 \enclose{longdiv}{157.5}&\\
+                      \underline{-135\phantom{00}}&\\
+                      225\phantom{0}&\\
+                      \underline{-225\phantom{0}}&\\
+                      0\phantom{0}& \\
+                      \end{align*}
+                      $$
+                    </p>
+                  </section>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </article>
+        <article class="card mb-4" data-aos="fade-up" data-aos-duration="1500" id="article-4">
+          <h1 class="card-header fs-5 fw-bold text-maroon">Pecahan, Peratus & Perpuluhan</h1>
+          <div class="card-body row text-center gy-5">
+            <div class="col-lg-6">
+              <table class="table h-100 table-bordered">
+                <thead>
+                <tr>
+                  <th>Pecahan</th>
+                  <th>Peratus</th>
+                  <th>Perpuluhan</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>\(1\)</td>
+                  <td>100%</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td>\( \large{\frac{1}{2}} \)</td>
+                  <td>50%</td>
+                  <td>0.5</td>
+                </tr>
+                <tr>
+                  <td>\( \large{\frac{1}{4}} \)</td>
+                  <td>25%</td>
+                  <td>0.25</td>
+                </tr>
+                <tr>
+                  <td>\( \large{\frac{2}{4}} \)</td>
+                  <td>50%</td>
+                  <td>0.5</td>
+                </tr>
+                <tr>
+                  <td>\( \large{\frac{3}{4}} \)</td>
+                  <td>75%</td>
+                  <td>0.75</td>
+                </tr>
+                <tr>
+                  <td>\( \large{\frac{1}{5}} \)</td>
+                  <td>20%</td>
+                  <td>0.2</td>
+                </tr>
+                <tr>
+                  <td>\( \large{\frac{2}{5}} \)</td>
+                  <td>40%</td>
+                  <td>0.4</td>
+                </tr>
+                <tr>
+                  <td>\( \large{\frac{3}{5}} \)</td>
+                  <td>60%</td>
+                  <td>0.6</td>
+                </tr>
+                <tr>
+                  <td>\( \large{\frac{4}{5}} \)</td>
+                  <td>80%</td>
+                  <td>0.8</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-lg-6">
+              <table class="table h-100 table-bordered">
+                <thead>
+                <tr>
+                  <th>Pecahan</th>
+                  <th>Peratus</th>
+                  <th>Perpuluhan</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>\( \large{\frac{1}{10}} \)</td>
+                  <td>10%</td>
+                  <td>0.1</td>
+                </tr>
+                <tr>
+                  <td>\( \large{\frac{2}{10}} \)</td>
+                  <td>20%</td>
+                  <td>0.2</td>
+                </tr>
+                <tr>
+                  <td>\( \large{\frac{3}{10}} \)</td>
+                  <td>30%</td>
+                  <td>0.3</td>
+                </tr>
+                <tr>
+                  <td>\( \large{\frac{4}{10}} \)</td>
+                  <td>40%</td>
+                  <td>0.4</td>
+                </tr>
+                <tr>
+                  <td>\( \large{\frac{5}{10}} \)</td>
+                  <td>50%</td>
+                  <td>0.5</td>
+                </tr>
+                <tr>
+                  <td>\( \large{\frac{6}{10}} \)</td>
+                  <td>60%</td>
+                  <td>0.6</td>
+                </tr>
+                <tr>
+                  <td>\( \large{\frac{7}{10}} \)</td>
+                  <td>70%</td>
+                  <td>0.7</td>
+                </tr>
+                <tr>
+                  <td>\( \large{\frac{8}{10}} \)</td>
+                  <td>38%</td>
+                  <td>0.8</td>
+                </tr>
+                <tr>
+                  <td>\( \large{\frac{9}{10}} \)</td>
+                  <td>90%</td>
+                  <td>0.9</td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </article>
+        <article class="card mb-4" data-aos="fade-up" data-aos-duration="1500" id="article-5">
+          <h1 class="card-header fs-5 fw-bold text-maroon">Pembundaran Nombor Bulat</h1>
+          <div class="card-body">
+            <ul>
+              <li>Nombor boleh dibundarkan mengikut suatu nilai tempat dengan mengikuti syarat-syarat pembundaran.</li>
+              <li>
+                <p class="mb-0">Syarat pembundaran terbahagi kepada dua:</p>
+                <div class="d-flex gap-3">
+                  <ol>
+                    <li class="ms-3">
+                      <p>Jika <strong>digit sebelah kanan</strong> nilai tempat yang hendak dibundarkan ialah <strong>5
+                        atau
+                        lebih (5,6,7,8,9)</strong></p>
+                      <ul>
+                        <li><strong>Tambahkan 1</strong> pada nilai yang hendak dibundarkan</li>
+                        <li><strong>Gantikan semua digit di sebelah kanan</strong> nombor yang dibundarkan
+                          dengan <strong>sifar (0)</strong>.
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="ms-3">
+                      <p>Jika <strong>digit sebelah kanan</strong> nilai tempat yang hendak dibundarkan ialah <strong>kurang
+                        daripada 5 (0,1,2,3,4)</strong></p>
+                      <ul>
+                        <li><strong>Kekalkan nombor</strong> yang hendak dibundarkan</li>
+                        <li><strong>Gantikan semua digit di sebelah kanan</strong> nombor yang hendak
+                          dibundarkan degnan <strong>sifar (0)</strong>.
+                        </li>
+                      </ul>
+                    </li>
+                  </ol>
+                  <div class="">
+                    <img src="/static/images/rounding.png" alt="Pembundaran" class="img-fluid">
+                  </div>
+                </div>
+              </li>
+              <li>
+                <p>Contoh</p>
+                <div class="swiper mySwiper swiper-cube swiper-3d swiper-initialized swiper-horizontal swiper-watch-progress px-5 pt-3">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide border" role="group" aria-label="1 / 4">
+                      <img src="/static/images/Bundar1.jpg" class="img-fluid">
+                      <div class="swiper-slide-shadow-cube swiper-slide-shadow-left"></div>
+                      <div class="swiper-slide-shadow-cube swiper-slide-shadow-right"></div>
+                    </div>
+                    <div class="swiper-slide  border " role="group" aria-label="2 / 4">
+                      <img src="/static/images/Bundar2.jpg" class="img-fluid">
+                      <div class="swiper-slide-shadow-cube swiper-slide-shadow-left"></div>
+                      <div class="swiper-slide-shadow-cube swiper-slide-shadow-right"></div>
+                    </div>
+                    <div class="swiper-slide  border  swiper-slide-prev" role="group" aria-label="3 / 4">
+                      <img src="/static/images/Bundar3.jpg" class="img-fluid">
+                      <div class="swiper-slide-shadow-cube swiper-slide-shadow-left"></div>
+                      <div class="swiper-slide-shadow-cube swiper-slide-shadow-right"></div>
+                    </div>
+                    <div class="swiper-slide border swiper-slide-visible swiper-slide-fully-visible swiper-slide-active"
+                         role="group" aria-label="4 / 4">
+                      <img src="/static/images/Bundar4.jpg" class="img-fluid">
+                      <div class="swiper-slide-shadow-cube swiper-slide-shadow-left"></div>
+                      <div class="swiper-slide-shadow-cube swiper-slide-shadow-right"></div>
+                    </div>
+                    <div class="swiper-cube-shadow"></div>
+                  </div>
+                  <div class="swiper-pagination swiper-pagination-bullets swiper-pagination-horizontal"><span
+                        class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span
+                        class="swiper-pagination-bullet"></span><span
+                        class="swiper-pagination-bullet swiper-pagination-bullet-active" aria-current="true"></span>
+                  </div>
+                  <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+              </li>
+            </ul>
+          </div>
+        </article>
+      </section>
+      <aside class="col-lg-4 d-lg-block d-sm-none mb-4 z-0">
+        <article class="card mb-3" data-aos="zoom-in" data-aos-duration="1500">
+          <h1 class="card-header fs-6 text-maroon fw-bold">Sumber Rujukan</h1>
+          <div class="card-body">
+            <div class="resource d-flex justify-content-center align-items-stretch gap-4 ">
+              <figure class="d-flex flex-column flex-grow-1 flex-basis-0 row-gap-3">
+                <img src="/static/books/chap3_book/buku-teks-front.jpg" alt="Buku Teks"
+                     class="img-fluid  border border-4 border-dark">
+                <figcaption class="w-100 d-flex justify-content-center">
+                  <a href="/static/books/chap3_book/buku-teks.pdf" target="_blank"
+                     class="btn btn-orange rounded-pill border py-2 px-3">
+                    <span>Read More</span>
+                  </a>
+                </figcaption>
+              </figure>
+              <figure class="d-flex flex-column flex-grow-1 flex-basis-0 row-gap-3">
+                <img src="/static/books/chap3_book/additional-note-front.png" alt="Additional note"
+                     class="img-fluid border border-4 border-dark flex-grow-1">
+                <figcaption class="w-100 d-flex justify-content-center">
+                  <a href="/static/books/chap3_book/additional-note.pdf" target="_blank"
+                     class="btn btn-orange rounded-pill border py-2 px-3">Read
+                    now</a>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </article>
+        <nav class="card position-sticky table-of-content" data-aos="zoom-in" data-aos-duration="1500" style="top:100px; z-index: 0">
+          <h1 class="fw-bold fs-6 text-maroon card-header">Jadual Kandungan</h1>
+          <div class="card-body">
+            <ul>
+              <li>
+                <div>
+                  <button type="button" data-link="sub-1" class="link-button">Nilai Tempat & Nilai Digit Perpuluhan
+                  </button>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <button type="button" data-link="article-2" class="link-button">Pecahan & Perpuluhan</button>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <button type="button" data-link="article-3" class="link-button">Operasi Penambahan, Pengurangan,
+                    Perkalian, & Pembahagian
+                  </button>
+                  <ol>
+                    <li class="my-0">
+                      <button type="button" data-link="sub-section-tambah" class="link-button">Tambah</button>
+                    </li>
+                    <li class="my-0">
+                      <button type="button" data-link="sub-section-tolak" class="link-button">Tolak</button>
+                    </li>
+                    <li class="my-0">
+                      <button type="button" data-link="sub-section-dnb" class="link-button">Darab dan bahagi</button>
+                    </li>
+                  </ol>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <button type="button" data-link="article-4" class="link-button">Pecahan, Peratus & Perpuluhan</button>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <button type="button" data-link="section-interact" class="link-button">PEMBELAJARAN INTERAKTIF
+                  </button>
+                  <ol>
+                    <li class="my-0">
+                      <button type="button" data-link="sub-section-calculator" class="link-button">Kalkulator</button>
+                    </li>
+                    <li class="my-0">
+                      <button type="button" data-link="sub-section-fraction" class="link-button">Pecahan</button>
+                    </li>
+                    <li class="my-0">
+                      <button type="button" data-link="sub-section-rounding" class="link-button">Pembundaran</button>
+                    </li>
+                  </ol>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </aside>
+    </div>
+  </div>
+
+  <section class="d-flex align-items-stretch mb-5" id="section-interact">
+    <aside id="sidebar">
+      <div class="custom-menu">
+        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+          <i class="bi bi-list h5" style="translate: 10px 40px;"></i>
+          <span class="visually-hidden">Toggle Menu</span>
+        </button>
+      </div>
+      <div class="p-4 h-100" id="numbers-wrapper">
+        <div id="numbers">
+          <span class="number" data-value="0">0</span>
+          <span class="number" data-value="1">1</span>
+          <span class="number" data-value="2">2</span>
+          <span class="number" data-value="3">3</span>
+          <span class="number" data-value="4">4</span>
+          <span class="number" data-value="5">5</span>
+          <span class="number" data-value="6">6</span>
+          <span class="number" data-value="7">7</span>
+          <span class="number" data-value="8">8</span>
+          <span class="number" data-value="9">9</span>
+        </div>
+      </div>
+    </aside>
+
+    <div id="content" class="w-100 p-5">
+      <h1 class="fw-bold text-maroon text-center text-uppercase mb-3">Pembelajaran Interaktif</h1>
+      <section id="sub-section-calculator" class="card mb-5">
+        <header class="position-relative text-center card-header fs-3 text-maroon fw-bold">
+          Kalkulator
+          <button type="button" class="btn btn-orange rounded-pill position-absolute" id="tutorial-calc"
+                  style="right: 1%; bottom:15%">Tutorial
+          </button>
+        </header>
+        <div class="card-body py-4">
+          <div class="d-flex flex-row align-items-center gap-3 w-100 mb-5 rounded-2" id="first-row-number">
+            <span class="number" data-value="7">7</span>
+            <span class="number" data-value="2">2</span>
+            <span class="bg-maroon filtered dot" data-value=".">.</span>
+            <span class="number" data-value="7">7</span>
+          </div>
+          <div class="d-flex rounded-2">
+            <button type="button" class="btn btn-maroon flex-shrink-0 bg-maroon operator me-2" id="operator">+
+            </button>
+            <div class="d-flex flex-row gap-3 w-100 rounded-2" id="second-row-number">
+              <span class="number" data-value="3">9</span>
+              <span class="bg-maroon filtered dot" data-value=".">.</span>
+              <span class="number" data-value="5">5</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="d-flex align-items-center">
+            <button class="btn btn-orange border shadow-sm operator me-auto" id="calculate">=</button>
+            <span id="output" class="text-center text-maroon h1 fw-bold display-3">Jawapan</span>
+          </div>
+        </div>
+      </section>
+      <section id="sub-section-fraction" class="card mb-5">
+        <header class="position-relative text-center card-header fs-3 text-maroon fw-bold">
+          Pecahan
+          <button type="button" class="btn btn-orange rounded-pill position-absolute" id="tutorial-pecahan"
+                  style="right: 1%; bottom:15%">Tutorial
+          </button>
+        </header>
+        <div class="card-body py-4">
+          <div class="row d-flex justify-content-center">
+            <div class="col-4 frac">
+              <div class="d-flex flex-column">
+                <div class="d-flex gap-4 justify-content-center dividend">
+                  <span class="number" data-value="2">2</span>
+                  <span class="number" data-value="1">1</span>
+                </div>
+                <hr/>
+                <div class="d-flex gap-4 justify-content-center divisor">
+                  <span class="number" data-value="7">7</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="d-flex gap-4 mt-5 h-100 justify-content-center">
+                <span class="operator bg-maroon" id="fraction-equal">&NotEqual;</span>
+              </div>
+            </div>
+            <div class="col-4 frac">
+              <div class="d-flex gap-4 justify-content-center dividend">
+                <span class="number" data-value="1">1</span>
+                <span class="number" data-value="2">2</span>
+              </div>
+              <hr/>
+              <div class="d-flex gap-4 justify-content-center divisor">
+                <span class="number" data-value="7">7</span>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="d-grid fraction-grid mt-5"></div>
+            </div>
+            <div class="col-2">
+              <div class="d-flex flex-column align-items-center gap-5 justify-content-center h-100">
+                <div class="fw-bold text-maroon" style="width: 55%">
+                  Pembilang
+                  <div class="border w-100 rounded-1 grid-cell shadow-sm"
+                       style="background-color: lightgreen"></div>
+                </div>
+                <div class="fw-bold text-maroon" style="width: 55%">
+                  Penyebut
+                  <div class="border w-100 rounded-1 grid-cell fill shadow-sm"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="d-grid fraction-grid mt-5"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="sub-section-rounding" class="card">
+        <header class="position-relative text-center card-header fs-3 text-maroon fw-bold">
+          Pembundaran
+          <button type="button" class="btn btn-orange rounded-pill position-absolute" id="tutorial-round"
+                  style="right: 1%; bottom:15%">Tutorial
+          </button>
+        </header>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-8">
+              <div id="before-round" class="h-100  d-flex flex-row gap-3 justify-content-end align-items-end">
+                <span class="bg-maroon filtered dot" data-value=".">.</span>
+                <span class="number" data-value="3">3</span>
+                <span class="number" data-value="0">0</span>
+                <span class="number" data-value="1">1</span>
+                <span class="number" data-value="3">3</span>
+              </div>
+            </div>
+            <div class="col-4 border-start">
+              <div class="d-flex gap-3 justify-content-center align-items-center flex-column">
+                <label for="round-val" class="text-orange fw-semibold">Bundar kepada</label>
+                <select class="form-select text-maroon" id="round-val">
+                  <option class="text-maroon" selected disabled value="0">Pilih tempat perpuluhan</option>
+                  <option class="text-maroon" value="1">Satu</option>
+                  <option class="text-maroon" value="2">Dua</option>
+                  <option class="text-maroon" value="3">Tiga</option>
+                  <option class="text-maroon" value="4">Empat</option>
+                  <option class="text-maroon" value="5">Lima</option>
+                  <option class="text-maroon" value="6">Enam</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer d-flex">
+          <button type="button" class="btn btn-orange operator me-auto" data-value="=" id="round">=</button>
+          <span id="after-round" class="text-center text-maroon h1 fw-bold display-3">Jawapan</span>
+        </div>
+      </section>
+    </div>
+  </section>
+
+</main>
+{% endblock %}
+
+{% block vendor_script %}
+<script type="module" src="/static/vendor/sortable.core.esm.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.1/Sortable.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<script src="https://unpkg.com/intro.js/intro.js"></script>
+{% endblock %}
+
+{% block custom_script %}
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+    },
+  };
+</script>
+<script type="module" src="/static/js/note1.js"></script>
+{% endblock %}

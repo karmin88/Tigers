@@ -1,0 +1,344 @@
+#hero {
+  max-height: 78vh;
+}
+
+.our-content {
+  position: relative;
+  width: 100%;
+  min-height: 95vh;
+  background: transparent;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.our-content * {
+  z-index: 1;
+}
+
+.section-content-quiz {
+  backdrop-filter: blur(100px);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/static/images/quiz-section.png') fixed no-repeat;
+  background-size: cover;
+}
+
+.our-content::before {
+  z-index: 0;
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 50vw;
+  background-image: linear-gradient(
+      90deg,
+      hsla(23, 92%, 57%, 0.7) 0%,
+      hsla(21, 81%, 55%, 0.7) 10%,
+      hsla(17, 71%, 52%, 0.7) 20%,
+      hsla(14, 64%, 49%, 0.7) 31%,
+      hsla(11, 62%, 46%, 0.7) 42%,
+      hsla(7, 61%, 43%, 0.7) 54%,
+      hsla(3, 59%, 40%, 0.7) 65%,
+      hsla(359, 60%, 36%, 0.7) 77%,
+      hsla(354, 68%, 31%, 0.7) 89%,
+      hsla(349, 79%, 26%, 0.7) 100%
+  );
+  translate: -30% 0;
+  rotate: 45deg;
+  transform-origin: center;
+}
+
+.swiper-slide:nth-child(1) {
+  border-top-left-radius: 250px 15px;
+  border-bottom-left-radius: 20px 115px;
+  border-bottom-right-radius: 105px 15px;
+  background-image: linear-gradient(to right top, #7b3844, #9f4347, #c05145, #de633c, #f67b2c);
+}
+
+.swiper-slide:nth-child(2) {
+  border-bottom-left-radius: 250px 15px;
+  border-top-left-radius: 20px 115px;
+  border-bottom-right-radius: 105px 15px;
+  background-image: linear-gradient(to left top, #7b3844, #9f4347, #c05145, #de633c, #f67b2c);
+}
+
+span:has(span.date) {
+  font-size: 12px;
+}
+
+
+.card-custom-avatar img {
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
+  position: absolute;
+  top: 40px;
+  left: 1.25rem;
+  width: 100px;
+  height: 100px;
+}
+
+.text-yellow {
+  color: var(--bs-warning);
+}
+
+.bg-mi {
+  background-color: #ff985d;
+}
+
+.swiper-slide .card-body {
+  color: #c7c7c7;
+  font-family: 'Handwriting', sans-serif;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-wrapper {
+  align-items: center;
+}
+
+.swiper-container {
+  padding: 2% 10%;
+}
+
+@media only screen and (max-width: 992px) {
+  .section-content-quiz, .swiper-container {
+    max-height: 60vh;
+  }
+}
+
+.swiper-slide {
+  clip-path: polygon(94% 0, 100% 4%, 100% 100%, 0 100%, 0 0);
+  transition: 0.4s !important;
+  height: 90%;
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-style: solid;
+    border-width: .7rem;
+    border-color: transparent transparent lightgray lightgray;
+    transition: 0.4s !important;
+  }
+
+  &:hover::after {
+    border-width: 1.5rem;
+  }
+
+  &:hover {
+    clip-path: polygon(88% 0, 100% 9%, 100% 100%, 0 100%, 0 0);
+  }
+}
+
+.swiper-slide:nth-child(1) .card-body h1 {
+  rotate: -1.5deg;
+  font-family: inherit;
+
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 10%;
+    width: 80%;
+    height: 100%;
+    border-bottom: 1px white solid;
+    rotate: 1deg;
+  }
+}
+
+.swiper-slide:nth-child(2) .card-body h1 {
+  rotate: 1deg;
+  font-family: inherit;
+
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    border-bottom: 1px white solid;
+    rotate: -1deg;
+  }
+}
+
+.paper-button {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+
+  & .bi {
+    transition: 0.4s;
+  }
+
+  &:hover .bi {
+    scale: 1.1;
+    translate: 10% -10%;
+  }
+}
+
+.quiz-card {
+  overflow: hidden;
+  height: min-content;
+  box-shadow: var(--bs-box-shadow);
+  transition: 0.5s ease;
+
+  &:hover {
+    box-shadow: var(--bs-box-shadow-lg);
+    scale: 1.05;
+  }
+
+  & .card-text {
+    transition: 0.5s ease;
+    font-size: 12px;
+  }
+
+  & .card-subtitle {
+    font-size: 12px;
+  }
+
+  &:hover .card-text {
+    translate: 10% 0;
+  }
+
+  & .bi-cursor-fill {
+    transition: 0.5s ease;
+    transform-origin: bottom;
+  }
+
+  &:hover .bi-cursor-fill {
+    scale: 1.3;
+    translate: 5% -5%;
+    rotate: 15deg;
+  }
+
+  & .card-custom-img {
+    height: 140px;
+    min-height: 140px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-color: inherit;
+  }
+
+  & .card-custom-img:after {
+    position: absolute;
+    content: '';
+    top: 100px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-top-width: 40px;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 545px;
+    border-left-width: calc(575px - 5vw);
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: inherit;
+  }
+
+  &.card-chap-3 {
+    color: var(--color-maroon);
+  }
+
+  &.card-chap-9 {
+    color: var(--color-orange)
+  }
+
+  &.card-chap-3 .card-custom-img {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='300' height='140' preserveAspectRatio='none' viewBox='0 0 300 140'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1064%26quot%3b)' fill='none'%3e%3crect width='300' height='140' x='0' y='0' fill='url(%26quot%3b%23SvgjsLinearGradient1065%26quot%3b)'%3e%3c/rect%3e%3cpath d='M -147.7322227380825%2c102 C -127.73%2c91.6 -87.73%2c48.4 -47.732222738082484%2c50 C -7.73%2c51.6 12.27%2c108.2 52.267777261917516%2c110 C 92.27%2c111.8 112.27%2c61 152.2677772619175%2c59 C 192.27%2c57 222.72%2c104 252.2677772619175%2c100 C 281.81%2c96 290.45%2c51.2 300%2c39' stroke='rgba(234%2c 134%2c 18%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M -134.70115407343164%2c56 C -114.7%2c68.8 -74.7%2c126.4 -34.70115407343164%2c120 C 5.3%2c113.6 25.3%2c31.6 65.29884592656836%2c24 C 105.3%2c16.4 125.3%2c83.2 165.29884592656836%2c82 C 205.3%2c80.8 238.36%2c11.2 265.29884592656833%2c18 C 292.24%2c24.8 293.06%2c96.4 300%2c116' stroke='rgba(233%2c 193%2c 43%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M -0.009169100431137167%2c59 C 19.99%2c63.6 59.99%2c82 99.99083089956886%2c82 C 139.99%2c82 159.99%2c57.6 199.99083089956886%2c59 C 239.99%2c60.4 259.99%2c92.4 299.9908308995689%2c89 C 339.99%2c85.6 399.99%2c42.4 399.9908308995689%2c42 C 399.99%2c41.6 320%2c78 300%2c87' stroke='rgba(234%2c 134%2c 18%2c 1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M -93.1673969961258%2c73 C -73.17%2c63.8 -33.17%2c17.6 6.832603003874205%2c27 C 46.83%2c36.4 66.83%2c114.6 106.8326030038742%2c120 C 146.83%2c125.4 166.83%2c53 206.8326030038742%2c54 C 246.83%2c55 288.2%2c123.4 306.8326030038742%2c125 C 325.47%2c126.6 301.37%2c74.6 300%2c62' stroke='rgba(234%2c 134%2c 18%2c 1)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1064'%3e%3crect width='300' height='140' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='13.33%25' y1='-28.57%25' x2='86.67%25' y2='128.57%25' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient1065'%3e%3cstop stop-color='rgba(117%2c 14%2c 33%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(246%2c 123%2c 44%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e");
+  }
+
+  &.card-chap-9 .card-custom-img {
+    background-image: url("data:image/svg+xml,%0A%3Csvg id='visual' viewBox='0 0 900 600' width='900' height='600' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' version='1.1'%3E%3Cpath d='M0 163L82 133L164 163L245 139L327 229L409 265L491 175L573 193L655 97L736 103L818 127L900 271L900 0L818 0L736 0L655 0L573 0L491 0L409 0L327 0L245 0L164 0L82 0L0 0Z' fill='%23ffde89'%3E%3C/path%3E%3Cpath d='M0 295L82 229L164 235L245 235L327 355L409 361L491 247L573 313L655 223L736 265L818 283L900 355L900 269L818 125L736 101L655 95L573 191L491 173L409 263L327 227L245 137L164 161L82 131L0 161Z' fill='%23fcc86c'%3E%3C/path%3E%3Cpath d='M0 349L82 271L164 337L245 325L327 469L409 463L491 355L573 379L655 301L736 307L818 355L900 457L900 353L818 281L736 263L655 221L573 311L491 245L409 359L327 353L245 233L164 233L82 227L0 293Z' fill='%23fab052'%3E%3C/path%3E%3Cpath d='M0 409L82 367L164 439L245 421L327 511L409 505L491 397L573 427L655 367L736 409L818 427L900 499L900 455L818 353L736 305L655 299L573 377L491 353L409 461L327 467L245 323L164 335L82 269L0 347Z' fill='%23f8973c'%3E%3C/path%3E%3Cpath d='M0 601L82 601L164 601L245 601L327 601L409 601L491 601L573 601L655 601L736 601L818 601L900 601L900 497L818 425L736 407L655 365L573 425L491 395L409 503L327 509L245 419L164 437L82 365L0 407Z' fill='%23f67b2c'%3E%3C/path%3E%3C/svg%3E");
+    object-fit: contain;
+    background-position: bottom;
+  }
+
+  &.card-chap-3 .col-lg-4:has(.stretched-link) {
+    background-color: var(--color-maroon);
+  }
+
+  &.card-chap-9 .col-lg-4:has(.stretched-link) {
+    background-color: var(--color-orange);
+  }
+
+  & .card-text span {
+    width: max-content;
+  }
+
+  &.card-chap-3 .card-text > span:nth-child(1) {
+    background-color: var(--color-maroon);
+  }
+
+  &.card-chap-3 .card-text > span:nth-child(2) {
+    background-color: var(--color-orange);
+  }
+
+  &.card-chap-9 .card-text > span:nth-child(1) {
+    background-color: var(--color-orange);
+  }
+
+  &.card-chap-9 .card-text > span:nth-child(2) {
+    background-color: var(--bs-warning);
+  }
+
+  &.card-footer {
+    padding: 0 !important;
+  }
+
+  & .img-user {
+    padding: 2px;
+  }
+
+  & .username {
+    position: relative;
+    z-index: 10!important;
+  }
+
+  &.card-chap-3 .img-user {
+    background-color: var(--color-maroon);
+  }
+
+  &.card-chap-9 .img-user {
+    background-color: var(--color-orange);
+  }
+
+  &.card-chap-3 .username {
+    color: var(--color-maroon);
+  }
+
+  &.card-chap-9 .username {
+    color: var(--color-orange);
+  }
+
+  &.card-chap-3 .username:hover {
+    scale: 1.05;
+    color: var(--color-maroon);
+
+  }
+
+  &.card-chap-9 .username:hover {
+    scale: 1.05;
+    color: var(--color-orange);
+  }
+}
+
+.input-group-text:has(.bi-search) {
+  background-color: transparent !important;
+  z-index: 1 !important;
+  border: 0;
+  margin-right: -40px;
+}
+
+.input-group-text:has(.bi-search) + input {
+  z-index: 0 !important;
+  padding-left: 40px;
+}

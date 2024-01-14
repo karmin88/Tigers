@@ -1,0 +1,55 @@
+.container {
+  font-family: inherit;
+  text-align: center;
+}
+
+#hero {
+  height: 78vh;
+}
+
+.button-wrapper {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.button-wrapper button {
+  z-index: 1;
+  height: 40px;
+  width: 100px;
+  margin: 10px;
+  padding: 5px;
+}
+
+.excalidraw .App-menu_top .buttonList {
+  display: flex;
+}
+
+.excalidraw-wrapper {
+  border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+  overflow: clip;
+  box-shadow: var(--bs-box-shadow-lg);
+  height: 800px;
+  margin-top: 30px;
+  position: relative;
+  border-top-left-radius: 250px 15px;
+  border-bottom-left-radius: 20px 115px;
+  border-bottom-right-radius: 105px 15px;
+}
+
+:root[dir="ltr"]
+.excalidraw
+.layer-ui__wrapper
+.zen-mode-transition.App-menu_bottom--transition-left {
+  transform: none;
+}
+
+.dropdown-menu {
+  padding: 0 !important;
+  display: inherit !important;
+}
+
+
+.excalidraw-modal-container {
+  position: fixed !important;
+}

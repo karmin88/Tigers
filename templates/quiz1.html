@@ -1,0 +1,627 @@
+{% extends "base.html" %}
+{% block vendor_stylesheet %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+{% endblock %}
+{% block custom_stylesheet %}
+<link rel="stylesheet" href="/static/css/quiz1.css">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0 mb-5">
+  <div id="hero">
+    <div class="hero-image"></div>
+    <div class="overlay"></div>
+    <div class="row container-fluid h-100 d-flex text-light justify-content-center align-items-center mx-0 pt-5">
+      <div class="col-lg-8 col-md-10 col-sm-12 px-md-0 px-sm-0 text-center mt-5">
+        <div class="h1 display-3" style="font-weight: 900" data-aos="fade-right" data-aos-duration="1000"
+             data-aos-delay="1000">Nota
+        </div>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb fw-semibold justify-content-center">
+            <li class="breadcrumb-item d-inline-block" data-aos="zoom-in" data-aos-duration="1000"
+                data-aos-delay="1000">
+              <a href="/">
+                Laman Utama
+              </a>
+            </li>
+            <li class="breadcrumb-item d-inline-block" data-aos="zoom-in" data-aos-duration="1100"
+                data-aos-delay="1000">
+              <a href="/list_quiz">
+                Penilaian
+              </a>
+            </li>
+            <li class="breadcrumb-item active text-white" data-aos="zoom-in" data-aos-duration="1200"
+                data-aos-delay="1000">
+              Bab 3
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<main>
+  <div class="bg-maroon py-5 mt-5">
+    <div class="container text-white text-start fw-bolder fs-1 ">
+      Kad Kilat
+    </div>
+  </div>
+  <div class="swiper mySwiper flashcards">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide rounded-2 overflow-hidden">
+        <div class="card card-flip h-100 border-0 bg-transparent">
+          <div class="card-front text-white bg-maroon">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <h3 class="card-title fw-semibold fs-2 text-center">Apakah definisi nilai tempat?</h3>
+            </div>
+          </div>
+          <div class="card-back text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <p class="card-text">Nilai tempat adalah cara untuk menunjukkan nilai atau tempat digit dalam suatu
+                bilangan. Dalam sistem nilai tempat, setiap digit memiliki tempat tertentu yang menentukan nilainya
+                berdasarkan posisinya dalam bilangan tersebut. Tempat-tempat tersebut umumnya diberi nama seperti
+                satuan,
+                puluh, ratus, ribu, dan seterusnya, tergantung pada posisinya dari digit paling kanan ke digit paling
+                kiri.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide rounded-2 overflow-hidden">
+        <div class="card card-flip h-100 border-0 bg-transparent">
+          <div class="card-front text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <div class="card-title fw-semibold fs-2 text-center">
+                Apakah kaitan antara nilai perpuluhan dan pecahan?
+              </div>
+            </div>
+          </div>
+          <div class="card-back text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <p class="card-text">Nilai perpuluhan boleh dihubungkan dengan pecahan, kerana setiap nilai perpuluhan
+                boleh diwakili sebagai pecahan. Sebagai contoh, 0.5 sama dengan ½.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide rounded-2 overflow-hidden">
+        <div class="card card-flip h-100 border-0 bg-transparent">
+          <div class="card-front text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <div class="card-title fw-semibold fs-2 text-center">
+                Apakah nilai perpuluhan dalam 0.5?
+              </div>
+            </div>
+          </div>
+          <div class="card-back text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <p class="card-text">Nilai perpuluhan dalam 0.5 ialah 50.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide rounded-2 overflow-hidden">
+        <div class="card card-flip h-100 border-0 bg-transparent">
+          <div class="card-front text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <h3 class="card-title fw-semibold fs-2 text-center">Apakah definisi pembundaran nombor?</h3>
+            </div>
+          </div>
+          <div class="card-back text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <p class="card-text">Pembundaran nombor adalah proses untuk menggantikan suatu bilangan dengan bilangan
+                yang lebih dekat atau mudah digunakan, dengan mempertimbangkan nilai tempat tertentu. Pembundaran dapat
+                dilakukan ke tempat desimal tertentu, ke ratusan terdekat, atau ke tempat lainnya, tergantung pada
+                kebutuhan atau aturan yang ditetapkan.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide rounded-2 overflow-hidden">
+        <div class="card card-flip h-100 border-0 bg-transparent">
+          <div class="card-front text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <h3 class="card-title fw-semibold fs-2 text-center">Apakah perbezaan antara pembundaran ke atas dan ke
+                bawah?</h3>
+            </div>
+          </div>
+          <div class="card-back text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <p class="card-text">Pembundaran ke atas berlaku jika nilai perpuluhan 0.5 atau lebih, manakala
+                pembundaran ke bawah berlaku jika nilai perpuluhan kurang daripada 0.5.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide rounded-2 overflow-hidden">
+        <div class="card card-flip h-100 border-0 bg-transparent">
+          <div class="card-front text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <h3 class="card-title fw-semibold fs-2 text-center">Bagaimana cara membundarkan 12.68 kepada bilangan
+                bulat terdekat?</h3>
+            </div>
+          </div>
+          <div class="card-back text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <p class="card-text"> Jika nilai perpuluhan 0.5 atau lebih, dibundarkan ke atas. Jadi, 12.68 akan
+                dibundarkan kepada 13.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide rounded-2 overflow-hidden">
+        <div class="card card-flip h-100 border-0 bg-transparent">
+          <div class="card-front text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <h3 class="card-title fw-semibold fs-2 text-center"> Mengapa kita menggunakan pembundaran dalam
+                matematik?</h3>
+            </div>
+          </div>
+          <div class="card-back text-white">
+            <div class="card-body px-5 d-flex flex-column align-items-center justify-content-center">
+              <p class="card-text">Pembundaran membantu membuat kiraan lebih mudah difahami dan sesuai untuk situasi di
+                mana nilai tepat tidak begitu penting.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+
+  <div class="bg-maroon py-5">
+    <div class="container text-white text-start fw-bolder fs-1 ">
+      Ujian Padanan
+    </div>
+  </div>
+  <div class="position-relative">
+    <canvas id="confetti"></canvas>
+    <div class="modal fade" tabindex="-1" data-bs-backdrop="false" data-bs-keyboard="false" id="match-result">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Keputusan ujian</h5>
+          </div>
+          <div class="modal-body">
+            <p>Anda telah menghabiskan <span id="match-time" class="text-orange"></span> saat untuk menyelesaikan ujian.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-orange" id="retry" onclick="window.location.reload()">Cuba lagi
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="match-section" style="height: min-content">
+      <div class="section-overlay">
+        <img src="/static/images/matching.png" class="img-fluid mb-5" width="200"
+             style="rotate: -10deg; translate: -17px 0;">
+        <div class="fs-1 text-white mb-3">Sedia untuk menguji diri anda?</div>
+        <div class="fs-4 text-white mb-5">Padankan semua istilah dengan jawapan mereka secepat yang anda boleh</div>
+        <button type="button" class="btn-orange btn fs-4 px-4 py-2" id="start">Mula</button>
+      </div>
+      <div id="timer" class="fs-4 text-white">
+        <div class=" bg-maroon rounded-pill d-flex align-items-center justify-content-center px-4">
+          <i class="bi bi-clock text-white"></i>
+          <span id="timer-value" class="ms-2">0.00</span><span>s</span>
+        </div>
+      </div>
+      <div class="row gy-2 gx-2 text-center fs-4" id="card-wrapper">
+        <div class="col-lg-3">
+          <div class="card card-body d-flex justify-content-center align-items-center card-match" data-key="1">
+            Nilai perpuluhan dalam konteks suhu
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card card-body answer d-flex justify-content-center align-items-center card-match" data-key="1">
+            25.5°C
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="card card-body d-flex justify-content-center align-items-center card-match" data-key="2">
+            Pembundaran 3.72
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card card-body answer d-flex justify-content-center align-items-center card-match" data-key="2">
+            3.7
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="card card-body d-flex justify-content-center align-items-center card-match" data-key="3">
+            kadar faedah 4.75% setahun
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card card-body answer d-flex justify-content-center align-items-center card-match" data-key="3">
+            0.0475
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="card card-body d-flex justify-content-center align-items-center card-match" data-key="4">
+            Nilai sihat
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card card-body answer d-flex justify-content-center align-items-center card-match" data-key="4">
+            6
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="card card-body d-flex justify-content-center align-items-center card-match" data-key="5">
+            <input type="hidden" value="5" name="key">
+            Nilai sakit
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card card-body answer d-flex justify-content-center align-items-center card-match" data-key="5">
+            3
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="card card-body d-flex justify-content-center align-items-center card-match" data-key="6">
+            0.125
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="card card-body answer d-flex justify-content-center align-items-center card-match" data-key="6">
+            1/8
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-maroon py-5">
+    <div class="container text-white text-start fw-bolder fs-1 ">
+      Kuiz
+    </div>
+  </div>
+  <div class="swiper mySwiper quiz shadow position-relative">
+    <div class="modal fade" tabindex="-1" id="result-modal" data-bs-backdrop="false" data-bs-keyboard="false">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-orange fw-bold">Keputusan Ujian</h5>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">Dari <strong class="text-orange">10</strong>
+              soalan, anda menjawab dengan betul pada <strong id="correct" class="text-orange"></strong> soalan.
+            </div>
+            <div class="mb-3">Markah keseluruhan: <strong class="text-orange" id="score"></strong></div>
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped" role="progressbar" id="scorebar"
+                   aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-orange" data-bs-dismiss="modal" onclick="window.location.reload()">Cuba
+              lagi
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-orange" id="next">Seterusnya</button>
+    <div class="section-overlay">
+      <div class="fs-1 text-white mb-3">Sedia untuk menguji diri anda?</div>
+      <div class="fs-4 text-white mb-5">Jawab setiap soalan dalam tempoh 30 saat untuk merangsang ujian masa terhad
+      </div>
+      <button type="button" class="btn-orange btn fs-4 px-4 py-2" id="start-quiz">Mula</button>
+    </div>
+    <div id="quiz-timer" class="d-flex align-items-center">
+      <i class="bi bi-clock text-orange"></i>
+      <div class="ms-2 progress w-100">
+        <div class="progress-bar" role="progressbar"></div>
+      </div>
+    </div>
+    <div class="swiper-wrapper">
+      <form class="swiper-slide">
+        <div class="row gx-0 h-100 w-100 bg-light">
+          <div class="col-lg-12 h-100 border-start">
+            <div class="content">
+              <div class="text-orange text-decoration-underline mb-2">Soalan 1</div>
+              <div class="fw-bold fs-4 mb-3 text-maroon">Tulis 60.57 dalam perkataan</div>
+              <ol class="list-unstyled text-orange ms-2">
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  Enam puluh perpuluhan lima puluh tujuh
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2 answer" name="selection"></span>
+                  Enam puluh perpuluhan lima tujuh
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  Enam sifar perpuluhan lima tujuh
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  Enam puluh lima tujuh
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form class="swiper-slide">
+        <div class="row gx-0 h-100 w-100 bg-light">
+          <div class="col-lg-12 h-100 border-start">
+            <div class="content">
+              <div class="text-orange text-decoration-underline mb-2">Soalan 2</div>
+              <div class="fw-bold fs-4 mb-3 text-maroon">Tulis Tujuh puluh tiga perpuluhan satu tujuh</div>
+              <ol class="list-unstyled text-orange ms-2">
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2 answer" name="selection"></span>
+                  73.17
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  703.17
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  73.71
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  30.9
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form class="swiper-slide">
+        <div class="row gx-0 h-100 w-100 bg-light">
+          <div class="col-lg-12 h-100 border-start">
+            <div class="content">
+              <div class="text-orange text-decoration-underline mb-2">Soalan 3</div>
+              <div class="fw-bold fs-4 mb-3 text-maroon">40.5 + 5.36 + 7 = ?</div>
+              <ol class="list-unstyled text-orange ms-2">
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  86.52
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  52.27
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2 answer" name="selection"></span>
+                  52.86
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  25.86
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form class="swiper-slide">
+        <div class="row gx-0 h-100 w-100 bg-light">
+          <div class="col-lg-12 h-100 border-start">
+            <div class="content">
+              <div class="text-orange text-decoration-underline mb-2">Soalan 4</div>
+              <div class="fw-bold fs-4 mb-3 text-maroon">Yang manakah nilai digit 7 yang paling kecil?</div>
+              <ol class="list-unstyled text-orange ms-2">
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2 answer" name="selection"></span>
+                  0.007
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  7.0
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  0.7
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  70.0
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form class="swiper-slide">
+        <div class="row gx-0 h-100 w-100 bg-light">
+          <div class="col-lg-12 h-100 border-start">
+            <div class="content">
+              <div class="text-orange text-decoration-underline mb-2">Soalan 5</div>
+              <div class="fw-bold fs-4 mb-3 text-maroon">Bentukkan nombor perpuluhan terbesar dengan menggunakan
+                digit 4, 0, 6, 2, 8.
+              </div>
+              <ol class="list-unstyled text-orange ms-2">
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2 answer" name="selection"></span>
+                  86.420
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  0.8462
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  0.4682
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  842.06
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form class="swiper-slide">
+        <div class="row gx-0 h-100 w-100 bg-light">
+          <div class="col-lg-12 h-100 border-start">
+            <div class="content">
+              <div class="text-orange text-decoration-underline mb-2">Soalan 6</div>
+              <div class="fw-bold fs-4 mb-3 text-maroon">5417 dibundarkan kepada ribu terdekat
+              </div>
+              <ol class="list-unstyled text-orange ms-2">
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  6000
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  5420
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  5410
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2 answer" name="selection"></span>
+                  5000
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form class="swiper-slide">
+        <div class="row gx-0 h-100 w-100 bg-light">
+          <div class="col-lg-12 h-100 border-start">
+            <div class="content">
+              <div class="text-orange text-decoration-underline mb-2">Soalan 7</div>
+              <div class="fw-bold fs-4 mb-3 text-maroon">Nombor manakah akan menjadi 1.345 apabila dibundarkan kepada
+                tiga tempat perpuluhan?
+              </div>
+              <ol class="list-unstyled text-orange ms-2">
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  1.3421
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  1.3456
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  1.3455
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2 answer" name="selection"></span>
+                  1.3454
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form class="swiper-slide">
+        <div class="row gx-0 h-100 w-100 bg-light">
+          <div class="col-lg-12 h-100 border-start">
+            <div class="content">
+              <div class="text-orange text-decoration-underline mb-2">Soalan 8</div>
+              <div class="fw-bold fs-4 mb-3 text-maroon">Nombor manakah dibundarkan kepada satu tempat perpuluhan
+                menjadi 4.8?
+              </div>
+              <ol class="list-unstyled text-orange ms-2">
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  4.72
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  4.74
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2 answer" name="selection"></span>
+                  4.81
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  4.87
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form class="swiper-slide">
+        <div class="row gx-0 h-100 w-100 bg-light">
+          <div class="col-lg-12 h-100 border-start">
+            <div class="content">
+              <div class="text-orange text-decoration-underline mb-2">Soalan 9</div>
+              <div class="fw-bold fs-4 mb-3 text-maroon">Bundarkan 1235 kepada ratus terdekat.
+              </div>
+              <ol class="list-unstyled text-orange ms-2">
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2 answer" name="selection"></span>
+                  1200
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  1300
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  150
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  1236
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </form>
+      <form class="swiper-slide">
+        <div class="row gx-0 h-100 w-100 bg-light">
+          <div class="col-lg-12 h-100 border-start">
+            <div class="content">
+              <div class="text-orange text-decoration-underline mb-2">Soalan 10</div>
+              <div class="fw-bold fs-4 mb-3 text-maroon">Nombor manakah dibundarkan kepada satu tempat perpuluhan
+                menjadi 4.8?
+              </div>
+              <ol class="list-unstyled text-orange ms-2">
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  4.72
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  4.74
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2 answer" name="selection"></span>
+                  4.81
+                </li>
+                <li class="mb-2">
+                  <span><input type="radio" class="form-check-input me-2" name="selection"></span>
+                  4.87
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+{% endblock %}
+
+{% block vendor_script %}
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
+{% endblock %}
+{% block custom_script %}
+<script src="/static/js/quiz1.js"></script>
+{% endblock %}
