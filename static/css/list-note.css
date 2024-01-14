@@ -1,0 +1,223 @@
+#hero {
+  height: 78vh;
+}
+
+#hero .hero-image {
+  background-position: bottom;
+  background-image: url("/static/images/side-hero.png");
+}
+
+.overlay {
+  background: linear-gradient(
+      to top,
+      rgba(var(--bs-dark-rgb), 0.8) 0%,
+      rgba(var(--bs-dark-rgb), 0.1) 50%,
+      rgba(var(--color-orange-rgb), 0.1) 100%
+  );
+}
+
+.card-container .card {
+  overflow: hidden;
+  height: 450px;
+  width: 375px;
+  position: relative;
+  transition: border-right-color 0.5s linear;
+}
+
+.card-container .card-img {
+  object-fit: cover;
+  z-index: 0;
+  position: absolute;
+  height: 100%;
+  transition: all 1s ease;
+}
+
+.card-container .card-body {
+  padding: 10% 15%;
+  z-index: 1;
+  transition: 0.5s ease;
+}
+
+.card-container .card-body:before {
+  z-index: -1;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  transition: opacity 1s ease;
+  background: linear-gradient(0deg, rgba(var(--color-orange-rgb), 0.5) 0%, rgba(var(--color-orange-rgb), 1) 100%);
+  position: absolute;
+}
+
+.card-container:hover .card-body:before {
+  opacity: 0;
+}
+
+.card-container:hover .card-body > * {
+  animation: fadeRight 1s ease forwards;
+}
+
+@keyframes fadeRight {
+  from {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(200px);
+  }
+}
+
+.card-container {
+  scale: 0.8;
+  transition: 1s ease;
+  transform-origin: center;
+  z-index: 2;
+}
+
+.card-container:hover {
+  scale: 1;
+}
+
+.card-container:hover .card-img {
+  scale: 1.1;
+}
+
+.card-container .card-content {
+  border-left: 0;
+  opacity: 0;
+  overflow: clip;
+  width: 0;
+  transition: width 1s ease;
+}
+
+
+.card-container:hover .card-content {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  box-shadow: var(--bs-box-shadow);
+  width: 400px;
+  opacity: 1;
+  transition: width 1s ease, opacity 1s ease-in;
+}
+
+.card-container:hover .card:first-child {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right-color: rgba(255, 255, 255, 0);
+}
+
+
+.sidebar .list-group-item {
+  border-left: 4px solid transparent !important;
+  max-height: 150px;
+}
+
+.sidebar .list-group-item.active {
+  border-top: 0;
+  border-bottom: 1px solid gainsboro !important;
+  border-left: 4px solid orange !important;
+  background-color: #fff3e1 !important;
+  color: black !important;
+}
+
+.sidebar .list-group-item.active span {
+  max-height: 80px;
+  -webkit-line-clamp: 10;
+}
+
+.sidebar .list-group-item span {
+  display: -webkit-box;
+  width: 80%;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-height: 42px;
+  transition: max-height 1s ease;
+}
+
+.sidebar .list-group-item:hover span {
+  max-height: 80px;
+  -webkit-line-clamp: 10;
+}
+
+.card-hover {
+  box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+  transition: .3s cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+}
+
+.card-hover:hover {
+  scale: 1.05;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+}
+
+#note-section a {
+  padding-top: 0!important;
+  color: #f18d4d;
+}
+
+#note-section a:hover {
+  color: black;
+  text-decoration: underline !important;
+}
+
+#note-section .breadcrumb-item + .breadcrumb-item::before {
+  color: var(--color-orange);
+}
+
+.note.card {
+  overflow: hidden;
+  height: 100%;
+  max-height: 200px;
+}
+
+.wrapper {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("/static/images/feature.png");
+  padding-block: 5%;
+  position: relative;
+  &:after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.input-group-text:has(.bi-search) {
+  background-color: transparent!important;
+  z-index: 1!important;
+  border: 0;
+  margin-right: -40px;
+}
+
+.input-group-text:has(.bi-search) + input {
+  z-index: 0!important;
+  padding-left: 40px;
+}
+
+.card-chap-3 {
+
+  & .card-header {
+    background-color: var(--color-orange);
+  }
+
+  & .card-header > div {
+    background-color: var(--color-maroon);
+  }
+}
+
+.card-chap-9 {
+  & .card-header {
+    background-color: var(--color-maroon);
+  }
+
+  & .card-header > div {
+    background-color: var(--color-orange);
+  }
+}

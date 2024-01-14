@@ -1,45 +1,116 @@
-@font-face {
-  font-family: Bryndan_write;
-  src: url(/static/font/Bryndan_Write.ttf);
+#hero {
+  height: 78vh;
 }
 
-.add-quiz-form {
-    width: 70%;
-    margin: 30px auto;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.swiper {
+  width: 100%;
+  height: 100%;
 }
 
-.add-quiz-form .form-group {
-    margin-bottom: 20px;
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
 }
 
-.add-quiz-form .form-group label {
-  font-family:  Bryndan_write;
-    font-weight: bold;
-    color: #723d00;
-    font-size: larger;
+.swiper-slide button:has(.bi) {
+  height: min-content;
+  width: min-content;
+  padding: 0;
+  border: none;
+  background-color: transparent;
 }
 
-.add-quiz-form .form-control {
-    border: 1px solid #e57e00;
-    border-radius: 4px;
+.swiper-slide .card-img {
+  padding-block: 2%;
+  height: 400px;
 }
 
-.add-quiz-form .btn-primary {
-    background-color: #e57e00;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-  font-family:  Bryndan_write;
-
+.swiper-slide .card-img img {
+  object-fit: contain;
 }
 
-.add-quiz-form .btn-primary:hover {
-  
-    background-color: #d96c00;
+.swiper-slide .card-img:has(img[src=""]) {
+  max-height: 400px;
+  position: relative;
+}
+
+.swiper-slide .card-img:has(img[src=""])::before {
+  content: 'Tidak ada gambar yang ditambahkan lagi';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 98%;
+  width: 100%;
+  inset: 2% 0;
+  opacity: 1 !important;
+  position: absolute;
+  background-color: #ededed;
+}
+
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-pagination-bullet {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+  color: #000;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.form-check-input:checked[type=radio] {
+  --bs-form-check-bg-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+}
+
+.form-text {
+  font-size: 12px;
+}
+
+.swiper-pagination-bullet-active {
+  color: #fff;
+  background: var(--color-orange);
+}
+
+.question-title:focus {
+  background-color: var(--bs-body-bg);
+  border-bottom: 1px solid var(--color-orange) !important;
+  outline: 0;
+  box-shadow: 0 0.25rem 0 rgba(var(--color-orange-rgb), 0.25);
+}
+
+.question-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--color-orange);
+}
+
+@media only screen and (max-width: 992px) {
+  .question-title {
+    width: 50% !important;
+  }
+}
+
+.custom-form-file {
+  transition: 0.4s ease;
+}
+
+.custom-form-file:hover{
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+  border-color: var(--color-orange);
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(var(--color-orange-rgb), 0.25);
 }

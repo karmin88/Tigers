@@ -1,39 +1,37 @@
+#hero {
+  height: 78vh;
+}
+
+section {
+  margin: 3.5% 0 !important;
+}
+
+.section-content {
+  box-shadow: var(--bs-box-shadow) !important;
+  border-radius: var(--bs-border-radius-sm) !important;
+  min-height: 400px !important;
+}
+
 .carousel-item > img {
-    height: 400px !important;
+  margin-top: 20px;
 }
 
 .carousel-item {
-    text-align: center;
+  text-align: center;
 }
 
 .carousel-item > img {
-    object-fit: contain;
+  object-fit: contain;
 }
 
 .carousel-caption {
-    z-index: 10000;
-    position: relative;
-    top: 0;
-    left: 0;
-    text-align: center;
+  z-index: 1;
+  position: relative;
+  top: 0;
+  left: 0;
+  text-align: center;
 }
 
 .carousel-caption .rounded-pill {
-    width: min-content;
-}
-
-.hero-svg path{
-  stroke-dasharray: 0;
-  stroke-dashoffset: 0;
-}
-
-.hero-svg path.animate {
-  animation: pathDraw 10s ease forwards;
-}
-
-@keyframes pathDraw {
-  to {
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 0;
-  }
+  width: min-content;
 }

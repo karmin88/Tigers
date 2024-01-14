@@ -36,7 +36,7 @@ const dropzoneConfig = {
           contents().
           find('body');
       iframeBody.html(
-          '    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">\n    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">\n<div class="container-fluid h-100 d-flex justify-content-center align-items-center flex-column my-5">\n    <i class="bi bi-exclamation-triangle-fill text-danger h4"></i>\n    <h1 class="text-center ">PDF tidak ditemui atau telah dipadamkan</h1>\n</div>');
+          '    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">\n    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/fonts/bootstrap-icons.css">\n<div class="container-fluid h-100 d-flex justify-content-center align-items-center flex-column my-5">\n    <i class="bi bi-exclamation-triangle-fill text-danger h4"></i>\n    <h1 class="text-center ">PDF tidak ditemui atau telah dipadamkan</h1>\n</div>');
       iframeBody.css('background-color', 'white');
     }
     if (file.previewElement != null && file.previewElement.parentNode != null) {
@@ -46,7 +46,7 @@ const dropzoneConfig = {
   },
 
   dictDefaultMessage: `
-    <div class=" text-muted">
+    <div class="text-muted d-flex flex-column align-items-center">
         <i class="bi bi-cloud-arrow-up-fill h1"></i>
         <br class="text-muted">Klik atau seret dan laspankan fail di sini untuk dimuatnaik.
         <br>Hanya 1 PDF dan sehingga 5 imej yang dibenarkan untuk setiap bahagian (kurang dari 5Mb)
@@ -69,8 +69,9 @@ const dropzoneConfig = {
 };
 
 const tinyMCEConfig = {
+  language: 'id',
   selector: 'textarea',
-  plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
+  plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
   toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
   tinycomments_mode: 'embedded',
   tinycomments_author: 'Author name',
@@ -141,45 +142,26 @@ $(document).ready(function() {
     addSection(true);
   });
 
-  $('#submit-note').on('click', function(evt) {
-
-    const forms = $('#section-container .section-form');
-    const selectedChap = $('#selected-chap');
-    if (selectedChap.val() === null) {
-      selectedChap[0].setCustomValidity('Please select a chapter.');
-      console.log(selectedChap.val());
-      selectedChap[0].reportValidity();
-      return;
-    } else {
-      selectedChap[0].setCustomValidity('');
-      selectedChap[0].reportValidity();
-    }
-    if (forms.toArray().some(form => !form.reportValidity())) return;
-    let counter = 1;
-    let allSectionFormData = new FormData();
+  document.getElementById('note-form').addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    const allSectionFormData = new FormData(evt.target);
+    const forms = Array.from(document.getElementsByClassName('section-form'));
+    if (forms.some(form => !form.reportValidity())) return;
     allSectionFormData.append('total_section', forms.length);
-    allSectionFormData.append('chapter', selectedChap.val());
-    forms.each(function() {
-      for (value of new FormData(this).values()) {
-        allSectionFormData.append(`s${counter}_data`, value);
+    forms.forEach((elm, index) => {
+      for (value of new FormData(elm).values()) {
+        allSectionFormData.append(`s${index + 1}_data`, value);
       }
-      const dropzone = Dropzone.forElement($(this).find('.dropzone')[0]);
+      const dropzone = Dropzone.forElement($(elm).find('.dropzone')[0]);
       dropzone.files.forEach(
-          file => allSectionFormData.append(`s${counter}_files`, file));
-      counter++;
+          file => allSectionFormData.append(`s${index + 1}_files`, file));
     });
     $.ajax({
       type: 'POST',
-      url: '/teacher_note',
+      url: '/add_note',
       data: allSectionFormData,
       contentType: false,
       processData: false,
     }).then(() => window.location.reload());
-  });
-});
-
-window.addEventListener('load', () => {
-  document.querySelectorAll('.hero-svg path').forEach(function(path) {
-    path.classList.add('animate');
   });
 });

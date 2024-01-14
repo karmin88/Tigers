@@ -1,11 +1,11 @@
 @font-face {
     font-family: Bryndan_write;
-    src: url(/static/font/Bryndan_Write.ttf);
+    src: url(/static/fonts/Bryndan_Write.ttf);
 }
 
 @font-face {
     font-family: More Sugar;
-    src: url(/static/font/more-sugar.regular.ttf);
+    src: url(/static/fonts/more-sugar.regular.ttf);
 }
 
 .header-container {

@@ -1,385 +1,398 @@
 {% extends "base.html" %}
 {% block vendor_stylesheet %}
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 {% endblock %}
 {% block custom_stylesheet %}
-  <link rel="stylesheet" href="/static/css/profile.css">
-  <link rel="stylesheet" href="/static/css/common.css">
+<link rel="stylesheet" href="/static/css/profile.css">
+
 {% endblock %}
-{% block background %}
-  <svg width="100%" height="100%" class="border shadow-md hero-svg" viewBox="0 0 1002.808888888889 564.08"
-       xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-    <rect class="bg" id="bg" x="0" y="0" width="1002.808888888889" height="564.08" fill="#ffffff"></rect>
-    <g transform="rotate(155 501.4044444444445 282.04)">
-      <path id="path1" d="M -334.27 434.08 S -177.13 399.08
-            0.00 434.08 132.27 373.08
-            334.27 434.08 384.54 357.08
-            668.54 434.08 797.81 365.08
-            1002.81 434.08 1004.08 425.08
-            1337.08 434.08 h 110 V 1164.08 H -334.27 Z" fill="#ffac59"></path>
-      <path id="path2" d="M -334.27 155.00 S -177.13 87.50
-            0.00 155.00 157.13 87.50
-            334.27 155.00 491.40 87.50
-            668.54 155.00 825.67 87.50
-            1002.81 155.00 1044.08 54.00
-            1337.08 155.00 h 110 V -600 H -334.27 Z" fill="#f88f6f"></path>
-    </g>
-  </svg>
-{% endblock %}
+
 {% block content %}
-  <div class="container-fluid content mt-5">
-    <div class="row m-5">
-      <div class="col-lg-4">
-        <div class="card shadow rounded-4">
-          <div class="card-body">
-            <div class="d-flex flex-column align-items-center text-center">
-              <button class="border-0 bg-transparent rounded-circle" data-bs-toggle="modal"
-                      data-bs-target="#avatar-form-modal">
-                <img src="{{ profile.seed }}" alt="profile img" class="p-1 bg-orange rounded-circle" width="110"
-                     id="profile-avatar">
-              </button>
-              <div class="mt-3">
-                <h4>{{ profile.username }}</h4>
-                <p class="text-secondary mb-1" id="profession">{{ profile.profession }}</p>
-                <p class="text-muted font-size-sm" id="address">{{ profile.address }}</p>
-                <button class="btn btn-primary">Follow</button>
-                <button class="btn btn-outline-primary">Message</button>
-              </div>
+<div id="hero">
+  <div class="hero-image"></div>
+  <div class="overlay"></div>
+  <div class="row container-fluid h-100 d-flex text-light justify-content-center align-items-center mx-0 pt-5">
+    <div class="col-lg-8 col-md-10 col-sm-12 px-md-0 px-sm-0 text-center mt-5">
+      <div class="h1 display-3" style="font-weight: 900" data-aos="fade-right" data-aos-duration="1000"
+           data-aos-delay="1000">Profile
+      </div>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb fw-semibold justify-content-center">
+          <li class="breadcrumb-item d-inline-block" data-aos="zoom-in" data-aos-duration="1100"
+              data-aos-delay="1000">
+            <a href="/">
+              Laman Utama
+            </a>
+          </li>
+          <li class="breadcrumb-item active text-white" data-aos="zoom-in" data-aos-duration="1200"
+              data-aos-delay="1000">
+            Profile
+          </li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+</div>
+<div class="container-fluid content mt-5">
+  <div class="row m-5">
+    <div class="col-lg-4">
+      <div class="card shadow rounded-4" data-aos="fade-up" data-aos-duration="1100">
+        <div class="card-body">
+          <div class="d-flex flex-column align-items-center text-center">
+            <button class="border-0 bg-transparent rounded-circle" data-bs-toggle="modal"
+                    data-bs-target="#avatar-form-modal">
+              <img src="{{ profile.seed }}" alt="profile img" class="p-1 bg-orange rounded-circle" width="110"
+                   id="profile-avatar">
+            </button>
+            <div class="mt-3">
+              <h4>{{ profile.username }}</h4>
+              <p class="text-secondary mb-1" id="profession">{{ profile.profession }}</p>
+              <p class="text-muted font-size-sm" id="address">{{ profile.address }}</p>
             </div>
-            <hr class="my-4">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item pe-0 pb-1">
-                <div class="row form-group d-flex justify-content-between align-items-center">
-                  <label class="mb-0 h6 col-6 form-label" for="website">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-globe me-2 icon-inline">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <line x1="2" y1="12" x2="22" y2="12"></line>
-                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                    </svg>
-                    Website
-                  </label>
-                  <div class="col-6">
-                    <input type="text" name="website"
-                           class="form-control border-0 text-secondary {% if user %}double-editable{% endif %} focus-out-submit text-end"
-                           value="{{ profile.website }}" readonly></input>
-                  </div>
-                </div>
-              </li>
-              <li class="list-group-item pe-0 pb-1">
-                <div class="row form-group d-flex justify-content-between align-items-center">
-                  <label class="mb-0 h6 col-6 form-label" for="website">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-github me-2 icon-inline">
-                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                    </svg>
-                    Github
-                  </label>
-                  <div class="col-6">
-                    <input type="text" name="github"
-                           class="form-control border-0 text-secondary {% if user %}double-editable{% endif %} focus-out-submit text-end"
-                           value="{{ profile.github }}" readonly></input>
-                  </div>
-                </div>
-              </li>
-              <li class="list-group-item pe-0 pb-1">
-                <div class="row form-group d-flex justify-content-between align-items-center">
-                  <label class="mb-0 h6 col-6 form-label" for="website">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-twitter me-2 icon-inline text-info">
-                      <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                    </svg>
-                    Twitter
-                  </label>
-                  <div class="col-6">
-                    <input type="text" name="twitter"
-                           class="form-control border-0 text-secondary {% if user %}double-editable{% endif %} focus-out-submit text-end"
-                           value="{{ profile.twitter }}" readonly></input>
-                  </div>
-                </div>
-              </li>
-              <li class="list-group-item pe-0 pb-1">
-                <div class="row form-group d-flex justify-content-between align-items-center">
-                  <label class="mb-0 h6 col-6 form-label">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-instagram me-2 icon-inline text-danger">
-                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                    </svg>
-                    Instagram
-                  </label>
-                  <div class="col-6">
-                    <input type="text" name="instagram"
-                           class="form-control border-0 text-secondary {% if user %}double-editable{% endif %} focus-out-submit text-end"
-                           value="{{ profile.instagram }}" readonly></input>
-                  </div>
-                </div>
-              </li>
-              <li class="list-group-item pe-0 mb-2">
-                <div class="row form-group d-flex justify-content-between align-items-center">
-                  <label class="mb-0 h6 col-6 form-label">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-facebook me-2 icon-inline text-primary">
-                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                    </svg>
-                    Facebook
-                  </label>
-                  <div class="col-6">
-                    <input type="text" name="facebook"
-                           class="form-control border-0 text-secondary {% if user %}double-editable{% endif %} focus-out-submit text-end"
-                           value="{{ profile.facebook }}" readonly></input>
-                  </div>
-                </div>
-              </li>
-            </ul>
           </div>
+          <hr class="my-4">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item pe-0 pb-1">
+              <div class="row form-group d-flex justify-content-between align-items-center">
+                <label class="mb-0 h6 col-6 form-label" for="website">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                       class="feather feather-globe me-2 icon-inline">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                  </svg>
+                  Website
+                </label>
+                <div class="col-6">
+                  <input type="text" name="website"
+                         class="form-control border-0 text-secondary {% if user %}double-editable{% endif %} focus-out-submit text-end"
+                         value="{{ profile.website }}" readonly></input>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item pe-0 pb-1">
+              <div class="row form-group d-flex justify-content-between align-items-center">
+                <label class="mb-0 h6 col-6 form-label" for="website">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                       class="feather feather-github me-2 icon-inline">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                  Github
+                </label>
+                <div class="col-6">
+                  <input type="text" name="github"
+                         class="form-control border-0 text-secondary {% if user %}double-editable{% endif %} focus-out-submit text-end"
+                         value="{{ profile.github }}" readonly></input>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item pe-0 pb-1">
+              <div class="row form-group d-flex justify-content-between align-items-center">
+                <label class="mb-0 h6 col-6 form-label" for="website">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                       class="feather feather-twitter me-2 icon-inline text-info">
+                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                  </svg>
+                  Twitter
+                </label>
+                <div class="col-6">
+                  <input type="text" name="twitter"
+                         class="form-control border-0 text-secondary {% if user %}double-editable{% endif %} focus-out-submit text-end"
+                         value="{{ profile.twitter }}" readonly></input>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item pe-0 pb-1">
+              <div class="row form-group d-flex justify-content-between align-items-center">
+                <label class="mb-0 h6 col-6 form-label">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                       class="feather feather-instagram me-2 icon-inline text-danger">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                  Instagram
+                </label>
+                <div class="col-6">
+                  <input type="text" name="instagram"
+                         class="form-control border-0 text-secondary {% if user %}double-editable{% endif %} focus-out-submit text-end"
+                         value="{{ profile.instagram }}" readonly></input>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item pe-0 mb-2">
+              <div class="row form-group d-flex justify-content-between align-items-center">
+                <label class="mb-0 h6 col-6 form-label">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                       class="feather feather-facebook me-2 icon-inline text-primary">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                  </svg>
+                  Facebook
+                </label>
+                <div class="col-6">
+                  <input type="text" name="facebook"
+                         class="form-control border-0 text-secondary {% if user %}double-editable{% endif %} focus-out-submit text-end"
+                         value="{{ profile.facebook }}" readonly></input>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
-      <div class="col-lg-8">
-        <div class="card shadow-lg rounded-4">
-          <div class="card-body py-4 px-5">
-            <div class="container px-4">
-              <div class="row mb-3">
-                <div class="col-sm-3 d-flex align-items-center">
-                  <h6 class="mb-0">Full Name</h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                  <input type="text"
-                         class="form-control text-secondary border-0 {% if user %}double-editable{% endif %} focus-out-submit"
-                         value="{{ profile.full_name }}" name="full_name"
-                         readonly id="full_name">
-                </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="card shadow-lg rounded-4" data-aos="fade-up" data-aos-duration="1100">
+        <div class="card-body py-4 px-5">
+          <div class="container px-4">
+            <div class="row mb-3">
+              <div class="col-sm-3 d-flex align-items-center">
+                <h6 class="mb-0">Full Name</h6>
               </div>
-              <div class="row mb-3 d-flex align-items-center">
-                <div class="col-sm-3">
-                  <h6 class="mb-0">Profession</h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                  <input type="text"
-                         class="form-control text-secondary border-0 {% if user %}double-editable{% endif %} focus-out-submit"
-                         value="{{ profile.profession }}" readonly name="profession"
-                         onfocusout="valueChange('profession', this.value)">
-                </div>
-              </div>
-              <div class="row mb-3 d-flex align-items-center">
-                <div class="col-sm-3">
-                  <h6 class="mb-0">Phone</h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                  <input type="text"
-                         class="form-control text-secondary border-0 {% if user %}double-editable{% endif %} focus-out-submit"
-                         value="{{ profile.phone }}"
-                         readonly name="phone">
-                </div>
-              </div>
-              <div class="row mb-3 d-flex align-items-center">
-                <div class="col-sm-3">
-                  <h6 class="mb-0">Bio</h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                  <input type="text"
-                         class="form-control text-secondary border-0 {% if user %}double-editable{% endif %} focus-out-submit"
-                         value="{{ profile.bio }}"
-                         readonly name="bio">
-                </div>
-              </div>
-              <div class="row mb-3 d-flex align-items-center">
-                <div class="col-sm-3">
-                  <h6 class="mb-0">Address</h6>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                  <input type="text"
-                         class="form-control text-secondary border-0 {% if user %}double-editable{% endif %} focus-out-submit"
-                         value="{{ profile.address }}" readonly name="address" onfocusout="valueChange('address', this.value)">
-                </div>
+              <div class="col-sm-9 text-secondary">
+                <input type="text"
+                       class="form-control text-secondary border-0 {% if user %}double-editable{% endif %} focus-out-submit"
+                       value="{{ profile.full_name }}" name="full_name"
+                       readonly id="full_name">
               </div>
             </div>
-            <div class="card card-body mb-1">
-              <div class="mb-2 ps-2">
-                <h6 class="mb-0">About</h6>
+            <div class="row mb-3 d-flex align-items-center">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Profession</h6>
               </div>
-              <div class="text-secondary">
+              <div class="col-sm-9 text-secondary">
+                <input type="text"
+                       class="form-control text-secondary border-0 {% if user %}double-editable{% endif %} focus-out-submit"
+                       value="{{ profile.profession }}" readonly name="profession"
+                       onfocusout="valueChange('profession', this.value)">
+              </div>
+            </div>
+            <div class="row mb-3 d-flex align-items-center">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Phone</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <input type="text"
+                       class="form-control text-secondary border-0 {% if user %}double-editable{% endif %} focus-out-submit"
+                       value="{{ profile.phone }}"
+                       readonly name="phone">
+              </div>
+            </div>
+            <div class="row mb-3 d-flex align-items-center">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Bio</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <input type="text"
+                       class="form-control text-secondary border-0 {% if user %}double-editable{% endif %} focus-out-submit"
+                       value="{{ profile.bio }}"
+                       readonly name="bio">
+              </div>
+            </div>
+            <div class="row mb-3 d-flex align-items-center">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Address</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <input type="text"
+                       class="form-control text-secondary border-0 {% if user %}double-editable{% endif %} focus-out-submit"
+                       value="{{ profile.address }}" readonly name="address"
+                       onfocusout="valueChange('address', this.value)">
+              </div>
+            </div>
+          </div>
+          <div class="card card-body mb-1">
+            <div class="mb-2 ps-2">
+              <h6 class="mb-0">About</h6>
+            </div>
+            <div class="text-secondary">
                 <textarea type="text"
                           class="form-control text-secondary border-0 {% if user %}double-editable{% endif %} p-2 focus-out-submit"
                           rows="9"
                           name="about"
                           readonly>{{ profile.about }}
                 </textarea>
-              </div>
             </div>
           </div>
         </div>
       </div>
-      {% if profile.role == 'teacher' %}
-        <div class="row m-0 p-0">
-          <div class="col-sm-12">
-            <div class="card shadow rounded-4 py-4 px-5">
-              <div class="card-body">
-                <div class="d-flex align-items-center justify-content-between mb-3" style="height: 20px;">
-                  <h5>Experience</h5>
-                  {% if user %}
-                    <button type="button" class="border-0 p-0 bg-transparent" data-bs-toggle="modal"
-                            data-bs-target="#experience-form-modal">
-                      <i class="bi bi-hover bi-plus-square-fill h4 my-0 text-orange"></i>
-                    </button>
-                  {% endif %}
-                </div>
-                {% if experiences %}
-                  <div class="carousel slide" id="experience-carousel">
-                    <div class="carousel-inner">
-                      {% for experience in experiences %}
-                        {% set color = "blue" if loop.index % 4 == 1 else
-                      "red" if loop.index % 4 == 2 else"yellow" if loop.index % 4 == 3else"green" %}
-                        <div class="carousel-item {% if loop.index0 == 0 %}active{% endif %}">
-                          <article class="postcard light {{ color }}">
-                            {% if user %}
-                              <i onclick="removeExperience({{ experience.id }})"
-                                 class="close h5 bi bi-x-circle-fill bi-hover text-danger top-right"></i>
-                            {% endif %}
-                            <a class="postcard__img_link" href="#">
-                              <img class="postcard__img" src="{{ experience.image_url }}" alt="Image Title"/>
-                            </a>
-                            <div class="postcard__text t-dark">
-                              <h1 class="postcard__title {{ color }}">{{ experience.title }}</h1>
-                              <div class="postcard__subtitle small">
-                                <i class="bi bi-calendar2-plus-fill me-2"></i>{{ experience.formatted_date }}
-                              </div>
-                              <div class="postcard__bar"></div>
-                              <div class="postcard__preview-txt">{{ experience.description }}</div>
-                              <ul class="postcard__tagbox">
-                                {% for tag in experience.tags %}
-                                  <li class="tag__item play {{ color }}"><i class="bi bi-tags-fill me-2"></i>{{ tag }}
-                                  </li>
-                                {% endfor %}
-                              </ul>
-                            </div>
-                          </article>
-                        </div>
-                      {% endfor %}
-                    </div>
-                    {% if experiences | length > 1 %}
-                      <button class="carousel-control-prev" type="button" data-bs-target="#experience-carousel"
-                              data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                      </button>
-                      <button class="carousel-control-next" type="button" data-bs-target="#experience-carousel"
-                              data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                      </button>
-                      </div>
-                    {% endif %}
-                {% endif %}
-                {#              <p>Web Design</p>#}
-                {#              <div class="progress mb-3" style="height: 5px">#}
-                {#                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80"#}
-                {#                     aria-valuemin="0" aria-valuemax="100"></div>#}
-                {#              </div>#}
-              </div>
+    </div>
+    {% if profile.role == 'teacher' %}
+    <div class="row m-0 p-0" data-aos="fade-right" data-aos-duration="1100">
+      <div class="col-sm-12">
+        <div class="card shadow rounded-4 py-4 px-5">
+          <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between mb-3" style="height: 20px;">
+              <h5>Experience</h5>
+              {% if user.id == dummy %}
+              <button type="button" class="border-0 p-0 bg-transparent" data-bs-toggle="modal"
+                      data-bs-target="#experience-form-modal">
+                <i class="bi bi-hover-md bi-plus-square-fill h4 my-0 text-orange"></i>
+              </button>
+              {% endif %}
             </div>
+            {% if experiences %}
+            <div class="carousel slide" id="experience-carousel">
+              <div class="carousel-inner">
+                {% for experience in experiences %}
+                {% set color = "blue" if loop.index % 4 == 1 else
+                "red" if loop.index % 4 == 2 else"yellow" if loop.index % 4 == 3else"green" %}
+                <div class="carousel-item {% if loop.index0 == 0 %}active{% endif %}">
+                  <article class="postcard position-relative light {{ color }}">
+                    {% if user.id == dummy %}
+                    <i onclick="removeExperience({{ experience.id }})"
+                       class="close h5 bi bi-x-circle-fill bi-hover-lg text-danger z-2"
+                       style="position: absolute; top: 5px;right: 5px"></i>
+                    {% endif %}
+                    <a class="postcard__img_link" href="#">
+                      <img class="postcard__img" src="{{ experience.image_url }}" alt="Image Title"/>
+                    </a>
+                    <div class="postcard__text t-dark">
+                      <h1 class="postcard__title h-auto {{ color }}">{{ experience.title }}</h1>
+                      <div class="postcard__subtitle small d-flex align-items-center">
+                        <i class="bi bi-calendar2-plus-fill me-2"></i>
+                        <span class="ms-2">{{ experience.formatted_date }}</span>
+                      </div>
+                      <div class="postcard__bar"></div>
+                      <div class="postcard__preview-txt">{{ experience.description }}</div>
+                      <ul class="postcard__tagbox">
+                        {% for tag in experience.tags %}
+                        <li class="tag__item play {{ color }} d-flex align-items-center"><i class="bi bi-tags-fill ms-2"></i>
+                          <span class="mb-1 ms-1">{{ tag }}</span>
+                        </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  </article>
+                </div>
+                {% endfor %}
+              </div>
+              {% if experiences | length > 1 %}
+              <button class="carousel-control-prev" type="button" data-bs-target="#experience-carousel"
+                      data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#experience-carousel"
+                      data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+            {% endif %}
+            {% endif %}
+            {# <p>Web Design</p>#}
+            {#
+            <div class="progress mb-3" style="height: 5px">#}
+              {#
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" #}
+                   {# aria-valuemin="0" aria-valuemax="100"></div>
+              #}
+              {#
+            </div>
+            #}
           </div>
         </div>
-      {% endif %}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+<form class="modal fade" tabindex="-1" id="avatar-form-modal">
+  <input type="hidden" name="profile-avatar" value="{{ profile.avatar_id }}">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Choose your avatar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body my-2 row">
+        <div class="col-lg-6 col-sm-12 d-lg-flex d-sm-none align-items-center">
+          <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Bear&scale=90&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
+               class="img-fluid rounded-2 shadow" id="current-avatar">
+        </div>
+        <div class=" col-lg-6 col-sm-12 row">
+          {% for avatar in avatars %}
+          <div class="form-check col-3 d-flex align-items-center justify-content-center my-2">
+            <label class="form-check-label">
+              <input type="radio" name="avatar_id"
+                     onchange="changeCurrentAvatar('{{ avatar.seed }}')"
+                     value="{{ avatar.id }}" {% if loop.index0== 0 %}checked{% endif %}>
+              <img src="{{ avatar.seed }}"
+                   alt="avatar"
+                   class="p-1 bg-primary rounded-circle" width="60">
+            </label>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-warning bg-orange text-white">Save changes</button>
+      </div>
     </div>
   </div>
-  <form class="modal fade" tabindex="-1" id="avatar-form-modal">
-    <input type="hidden" name="profile-avatar" value="{{ profile.avatar_id }}">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Choose your avatar</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body my-2 row">
-          <div class="col-lg-6 col-sm-12 d-lg-flex d-sm-none align-items-center">
-            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Bear&scale=90&backgroundColor=b6e3f4,c0aede,d1d4f9,ffd5dc,ffdfbf"
-                 class="img-fluid rounded-2 shadow" id="current-avatar">
-          </div>
-          <div class=" col-lg-6 col-sm-12 row">
-            {% for avatar in avatars %}
-              <div class="form-check col-3 d-flex align-items-center justify-content-center my-2">
-                <label class="form-check-label">
-                  <input type="radio" name="avatar_id"
-                         onchange="changeCurrentAvatar('{{ avatar.seed }}')"
-                         value="{{ avatar.id }}" {% if loop.index0 == 0 %}checked{% endif %}>
-                  <img src="{{ avatar.seed }}"
-                       alt="avatar"
-                       class="p-1 bg-primary rounded-circle" width="60">
-                </label>
-              </div>
-            {% endfor %}
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-warning bg-orange text-white">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </form>
+</form>
 
-  <form class="modal fade" tabindex="-1" id="experience-form-modal">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Add New Experience</h5>
-          <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="mb-3 row">
-            <label class="form-label mb-0" for="image-url">Image URL</label>
-            <div class="row">
-              <div class="col-11">
-                <input type="text" name="image_url" class="form-control" id="image-url" required>
-              </div>
-              <div class="col-1 d-flex justify-content-center">
-                <button type="button" class="btn" id="image-tooltip"><i class="bi bi-eye-fill h5"></i></button>
-              </div>
+<form class="modal fade" tabindex="-1" id="experience-form-modal">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add New Experience</h5>
+        <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3 row">
+          <label class="form-label mb-0" for="image-url">Image URL</label>
+          <div class="row">
+            <div class="col-11">
+              <input type="text" name="image_url" class="form-control" id="image-url" required>
+            </div>
+            <div class="col-1 d-flex justify-content-center">
+              <button type="button" class="btn" id="image-tooltip"><i class="bi bi-eye-fill h5"></i></button>
             </div>
           </div>
-          <div class="mb-3">
-            <label class="form-label w-100">Title
-              <input type="text" name="title" class="form-control" required>
-            </label>
-          </div>
-          <div class="mb-3">
-            <label class="form-label w-100">Description
-              <textarea type="text" name="description" class="form-control" rows="4" required></textarea>
-            </label>
-          </div>
-          <div class="d-flex align-content-center">
-            <div id="tag-container" class="d-flex flex-wrap me-2">
-              <div class="input-group input-group-sm tag me-2 mb-2">
+        </div>
+        <div class="mb-3">
+          <label class="form-label w-100">Title
+            <input type="text" name="title" class="form-control" required>
+          </label>
+        </div>
+        <div class="mb-3">
+          <label class="form-label w-100">Description
+            <textarea type="text" name="description" class="form-control" rows="4" required></textarea>
+          </label>
+        </div>
+        <div class="d-flex align-content-center">
+          <div id="tag-container" class="d-flex flex-wrap me-2">
+            <div class="input-group input-group-sm tag me-2 mb-2">
                 <span class="input-group-append input-group-text bg-body-tertiary border-tertiary-50"><i
                       class="bi bi-tags-fill"></i></span>
-                <input type="text" name="tag" class="form-control bg-body-tertiary double-editable" maxlength="15"
-                       readonly>
-                <button type="button" onclick="removeTag(this)"
-                        class="input-group-prepend input-group-text bg-body-tertiary border-tertiary-50">
-                  <i class="bi bi-x"></i>
-                </button>
-              </div>
+              <input type="text" name="tag" class="form-control bg-body-tertiary double-editable" maxlength="15"
+                     readonly>
+              <button type="button" onclick="removeTag(this)"
+                      class="input-group-prepend input-group-text bg-body-tertiary border-tertiary-50">
+                <i class="bi bi-x"></i>
+              </button>
             </div>
-            <a onclick="addTag()" type="button" class="border-0 p-0 bg-transparent">
-              <i class="bi bi-plus-square-fill h4 my-0 text-orange" id="add-tag"></i>
-            </a>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="reset" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-warning bg-orange text-white">Submit</button>
+          <a onclick="addTag()" type="button" class="border-0 p-0 bg-transparent">
+            <i class="bi bi-plus-square-fill h4 my-0 text-orange" id="add-tag"></i>
+          </a>
         </div>
       </div>
+      <div class="modal-footer">
+        <button type="reset" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-warning bg-orange text-white">Submit</button>
+      </div>
     </div>
-  </form>
+  </div>
+</form>
 {% endblock %}
 {% block custom_script %}
-  <script src="/static/js/profile.js"></script>
+<script src="/static/js/profile.js"></script>
 {% endblock %}

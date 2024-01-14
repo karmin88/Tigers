@@ -1,3 +1,4 @@
+import json
 import os
 from functools import wraps
 from pathlib import Path
@@ -5,12 +6,11 @@ from uuid import uuid4
 
 from flask import render_template, flash, request, session, redirect, url_for, send_from_directory
 from flask_minify import Minify, decorators as minify_decorators
+from sympy import symbols, solve
 from werkzeug.utils import secure_filename
 
+import database as db
 from app import app
-from database import find_user, add_user, add_note, add_note_section, add_section_file, get_notes, get_section_files, \
-    get_avatar, get_profile, set_profile, add_experience, add_tag, get_table_increment, get_experience, \
-    delete_experience
 
 Minify(app=app, passive=True)
 
@@ -20,13 +20,17 @@ def login_required(role=None):
         @wraps(f)
         def decorated_function(*args, **kwargs):
             user = session.get('user', None)
+            session['intended_url'] = request.url
             if user:
                 if role:
                     if role == user['role']:
                         return f(*args, **kwargs)
-                else:
-                    return f(*args, **kwargs)
-            return redirect(url_for('login'))
+                    else:
+                        flash('You do not have the required role to access this page.', 'danger')
+                        return redirect(url_for('index'))
+                return f(*args, **kwargs)
+            else:
+                return redirect(url_for('login'))
 
         return decorated_function
 
@@ -48,9 +52,10 @@ def logout():
 @app.route('/')
 @minify_decorators.minify(html=True, js=True, cssless=True)
 def index():
-    if not session.permanent:
-        session.pop('user', None)
-    return render_template('public-dashboard.html')
+    user = session.get('user', None)
+    session.pop('intended_url', None)
+    total = db.get_tables_length()
+    return render_template('public-dashboard.html', user=user, total=total)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -63,17 +68,18 @@ def login():
         email = request.form.get('email')
         password = request.form.get('password')
         remember = request.form.get('remember')
-        user = find_user(email)
+        user = db.find_user(email)
         if user and user['role'] == role and user['password'] == password:
             for key in ['password', 'created_date']:
                 user.pop(key, None)
             session['user'] = user
+            intended_url = session.pop('intended_url', None)
             session.permanent = remember
-            flash(f"Welcome back, user {user['username']}!", 'success')
-            route = f"{role}_dashboard"
-            return redirect(url_for(route))
+            if remember: app.config['PERMANENT_SESSION_LIFETIME'] = 1200
+            flash(f"Selamat datang, pengguna {user['username']}!", 'success')
+            return redirect(intended_url) if intended_url else redirect(url_for('index'))
         else:
-            flash('Login credentials were not correct!', 'danger')
+            flash('Kelayakan log masuk tidak betul!', 'danger')
     return render_template('login.html')
 
 
@@ -91,66 +97,51 @@ def sign_up():
         if password != retype_password:
             flash('Passwords do not match.', 'danger')
             return render_template('signup.html')
-        user = find_user(email)
+        user = db.find_user(email)
         if user:
             flash('Email already registered.', 'danger')
         else:
-            if add_user(email, username, password, role):
+            if db.add_user(email, username, password, role):
                 flash('User successfully registered.', 'success')
-                return render_template('login.html')
+                return render_template('public-dashboard.html')
             else:
                 flash('Unexpected error has occurred. Please try again.', 'danger')
-    return render_template('signup.html')
+    return render_template('signup.html', signup=True)
 
 
-@app.route('/teacher_dashboard')
+@app.route('/add_note', methods=['GET', 'POST'])
 @login_required(role='teacher')
-@minify_decorators.minify(html=True, js=True, cssless=True)
-def teacher_dashboard():
-    user = session.get('user', None)
-    return render_template('teacher-dashboard.html', user=user)
-
-
-@app.route('/student_dashboard')
-@login_required(role='student')
-@minify_decorators.minify(html=True, js=True, cssless=True)
-def student_dashboard():
-    user = session.get('user', None)
-    return render_template('student-dashboard.html', user=user)
-
-
-@app.route('/teacher_note', methods=['GET', 'POST'])
-@login_required(role='teacher')
-def teacher_note():
+def add_note():
     user = session.get('user', None)
     if request.method == 'POST':
         total_sections = request.form['total_section']
+        title = request.form['title']
         chapter = request.form['chapter']
-        note_id = add_note(chapter, user['id'])
-
+        note_id = db.add_note(chapter, title, user['id'])
+        print(request.form)
         for i in range(int(total_sections)):
             section_data = request.form.getlist(f's{i + 1}_data')
             title = section_data[0]
             description = section_data[1]
-            section_id = add_note_section(i + 1, title, description, note_id)
+            section_id = db.add_note_section(i + 1, title, description, note_id)
 
             for file in request.files.getlist(f's{i + 1}_files'):
                 if allowed_file(file.filename):
                     original_filename = secure_filename(file.filename)
                     unique_filename = make_unique(original_filename)
                     user_dir = f"user_{session.get('user')['id']}"
-                    Path(f"{app.config['UPLOAD_FOLDER']}/{user_dir}").mkdir(exist_ok=True)
-                    file.save(os.path.join(app.config['UPLOAD_FOLDER'], user_dir, unique_filename))
-                    add_section_file(unique_filename, original_filename, section_id)
+                    Path(f"{'notes'}/{user_dir}").mkdir(exist_ok=True)
+                    file.save(os.path.join('notes', user_dir, unique_filename))
+                    db.add_section_file(unique_filename, original_filename, section_id)
     return render_template('add-note.html', user=user)
 
 
-@app.route('/student_note')
+@app.route('/list_note')
 @minify_decorators.minify(html=True, js=True, cssless=True)
 @login_required()
-def student_note():
+def list_note():
     user = session.get('user', None)
-    return render_template('all-notes.html', user=user, notes=get_notes())
+    return render_template('list-notes.html', user=user, notes=db.get_notes())
 
 
 @app.route('/view_note/<int:note_id>')
@@ -159,20 +150,20 @@ def student_note():
 @login_required()
 def view_note(section_no=None, note_id=None):
     user = session.get('user', None)
-    note = get_notes(id=note_id)
+    note = db.get_notes(id=note_id)
     list_section_files = {}
     for section_id in note['section_ids']:
-        sections_files = get_section_files(section_id)
+        sections_files = db.get_section_files(section_id)
         list_section_files[section_id] = [[f['uuid_filename'] for f in sections_files],
                                           [f['original_filename'] for f in sections_files]]
-    return render_template('note.html', user=user, note=get_notes(id=note_id), section_no=section_no,
+    return render_template('note.html', user=user, note=db.get_notes(id=note_id), section_no=section_no,
                            sections_files=list_section_files)
 
 
-@app.route('/request_file/<string:uploader_id>/<string:filename>')
+@app.route('/request_file/<folder>/<string:uploader_id>/<string:filename>')
 @login_required()
-def request_file(uploader_id, filename):
-    return send_from_directory(os.path.join(app.config['UPLOAD_FOLDER'], f"user_{uploader_id}"), filename)
+def request_file(folder, uploader_id, filename):
+    return send_from_directory(os.path.join(folder, f"user_{uploader_id}"), filename)
 
 
 @app.route('/profile')
@@ -180,11 +171,12 @@ def request_file(uploader_id, filename):
 @minify_decorators.minify(html=True, js=True, cssless=True)
 @login_required()
 def profile(user_id=None):
-    user = session.get('user', None) if not user_id else find_user(id=user_id)
-    avatars = get_avatar()
-    profile = get_profile(user_id if user_id else user['id'])
-    experiences = get_experience(user['id'])
-    return render_template('profile.html', user=user if not user_id else None, avatars=avatars, profile=profile, experiences=experiences)
+    user = session.get('user', None) if not user_id else db.find_user(id=user_id)
+    avatars = db.get_avatar()
+    profile = db.get_profile(user_id if user_id else user['id'])
+    experiences = db.get_experience(user['id'])
+    return render_template('profile.html', user=user, dummy=user_id,  avatars=avatars, profile=profile,
+                           experiences=experiences)
 
 
 @app.route('/edit_profile', methods=['POST'])
@@ -195,7 +187,7 @@ def edit_profile():
     print(data)
     type = data[0]
     value = data[1]
-    set_profile(user['id'], type, value)
+    db.set_profile(user['id'], type, value)
     return 'success'
 
 
@@ -207,24 +199,50 @@ def new_experience():
     title = request.form.get('title')
     description = request.form.get('description')
     tags = request.form.getlist('tag')
-    experience_id = get_table_increment('skig3013_project', 'experience')
-    add_experience(image_url, title, description, user['id'])
+    experience_id = db.get_table_increment('skig3013_project', 'experience')
+    db.add_experience(image_url, title, description, user['id'])
     for tag in tags:
-        add_tag(tag, experience_id)
+        db.add_tag(tag, experience_id)
     return 'success'
 
 
 @app.route('/remove_experience', methods=['POST'])
 def remove_experience():
-    delete_experience(request.form.get('id'))
+    db.delete_experience(request.form.get('id'))
     return 'success'
 
 
-@app.route('/chatroom')
+@app.route('/add_quiz', methods=['GET', 'POST'])
+@login_required('teacher')
+def add_quiz():
+    user = session.get('user', None)
+    if request.method == 'POST':
+        total_ques = request.form['total-ques']
+        title = request.form['title']
+        chapter = request.form['chapter']
+        print(chapter)
+        quiz_id = db.add_quiz(chapter, title, user['id'])
+        for i in range(int(total_ques)):
+            question_data = json.loads(request.form[f'q{i}_data'])
+            file = request.files.get(f'q{i}_file', None)
+            unique_filename = None
+            if file and allowed_file(file.filename):
+                original_filename = secure_filename(file.filename)
+                unique_filename = make_unique(original_filename)
+                user_dir = f"user_{session.get('user')['id']}"
+                Path(f"quiz/{user_dir}").mkdir(exist_ok=True)
+                file.save(os.path.join('quiz', user_dir, unique_filename))
+            db.add_question(question_data['question'], json.dumps(question_data['option[]']), question_data['answer'],
+                            quiz_id, unique_filename)
+    return render_template('add-quiz.html', user=user)
+
+
+@app.route('/note/<num>')
 @minify_decorators.minify(html=True, js=True, cssless=True)
 @login_required()
-def chatroom():
-    return render_template('chatroom.html')
+def note(num):
+    user = session.get('user', None)
+    return render_template(f'note{num}.html', user=user)
 
 
 def make_unique(string):
@@ -232,5 +250,64 @@ def make_unique(string):
     return f"{ident}-{string}"
 
 
+@app.route('/list_quiz')
+@minify_decorators.minify(html=True, js=True, cssless=True)
+@login_required()
+def list_quiz():
+    user = session.get('user', None)
+    quizzes = db.get_quiz()
+    return render_template('list_quiz.html', user=user, quizzes=quizzes)
+
+
+@app.route('/memo')
+@minify_decorators.minify(html=True, js=True, cssless=True)
+@login_required()
+def memo():
+    user = session.get('user', None)
+    return render_template('memo.html', user=user)
+
+
+@app.route('/view_quiz/<id>')
+@minify_decorators.minify(html=True, js=True, cssless=True)
+@login_required()
+def view_quiz(id):
+    user = session.get('user', None)
+    quiz = db.get_quiz(id)[0]
+    questions_str = quiz['questions']
+    questions_list = json.loads('[' + questions_str + ']')
+
+    for question in questions_list:
+        options_str = question['options'][0]  # Extract options string
+        options_list = json.loads(options_str)  # Convert options string to list
+        question['options'] = options_list
+
+    quiz['questions'] = questions_list
+    return render_template('quiz.html', user=user, quiz=quiz)
+
+
+@app.route('/quiz/<num>')
+@minify_decorators.minify(html=True, js=True, cssless=True)
+@login_required()
+def quiz(num):
+    user = session.get('user', None)
+    return render_template(f'quiz{num}.html', user=user)
+
+
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
+
+
+from latex2sympy2 import latex2sympy
+
+
+@app.route('/get_math_expr/', methods=['GET'])
+def get_math_expr():
+    try:
+        x = symbols('x')
+        latex = request.args.get('latex')
+        result = latex2sympy(latex)
+        return json.dumps(
+            {'success': True, 'result': str(result).replace('**', '^'), 'yIntercept': str(result.subs(x, 0)),
+             'xIntercept': str(solve(result, x))})
+    except Exception as e:
+        return json.dumps({'success': True, 'error': str(e)})

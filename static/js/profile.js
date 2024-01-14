@@ -140,7 +140,7 @@ imageTooltip.addEventListener('mouseover', function() {
 });
 
 imageTooltip.addEventListener('mouseout', function() {
-  tooltip.hide(); // Fix: Use tooltip.hide() to hide the tooltip
+  tooltip.hide();
 });
 
 window.addEventListener('load', () => {

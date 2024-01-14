@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block vendor_stylesheet %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+{% endblock %}
+
+{% block custom_stylesheet %}
+<link rel="stylesheet" href="/static/css/dashboard.css">
+<link rel="stylesheet" href="/static/css/add_quiz.css">
+{% endblock %}
+{% block content %}
+<div class="container-fluid px-0 mb-5">
+  <div id="hero">
+    <div class="hero-image"></div>
+    <div class="overlay"></div>
+    <div class="row container-fluid h-100 d-flex text-light justify-content-center align-items-center mx-0 pt-5">
+      <div class="col-lg-8 col-md-10 col-sm-12 px-md-0 px-sm-0 text-center mt-5">
+        <div class="h1 display-3" style="font-weight: 900" data-aos="fade-right" data-aos-duration="1000"
+             data-aos-delay="1000">Kuiz
+        </div>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb fw-semibold justify-content-center">
+            <li class="breadcrumb-item d-inline-block" data-aos="zoom-in" data-aos-duration="1000"
+                data-aos-delay="1000">
+              <a href="/">
+                Laman Utama
+              </a>
+            </li>
+            <li class="breadcrumb-item active text-white" aria-current="page">
+              <a href="/list_quiz" class="d-inline-block" data-aos="zoom-in" data-aos-duration="1100"
+                 data-aos-delay="1000">
+                Penilaian
+              </a>
+            </li>
+            <li class="breadcrumb-item active text-white" aria-current="page">
+              <div class="d-inline-block" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="1000">Tambah
+                Kuiz
+              </div>
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="container">
+  <div class="section-title mb-5">Tambah Quiz</div>
+  <div class="row">
+    <div class="col-lg-3 order-lg-1 order-sm-0 text-start text-orange" data-aos="zoom-in" data-aos-duration="1500">
+      <form class="card-body card d-flex flex-column position-sticky shadow-sm" style="top:100px"
+            onsubmit="return submitQuestion(this, event)">
+        <input type="text" placeholder="Tajuk" name="title"
+               class="form-control border-0 border-bottom border-dark border-opacity-50 text-center question-title form-control mb-4"
+               required>
+        <label for="chapter" class="form-label fs-5 mb-2">Bab</label>
+        <select class="form-select mb-2" name="chapter" id="chapter" required>
+          <option value="" selected disabled>Pilih satu bab</option>
+          <option value="3">Tiga</option>
+          <option value="9">Sembilan</option>
+        </select>
+        <hr/>
+        <label for="total-ques" class="form-label fs-5 mb-3">Jumlah Soalan</label>
+        <div class="d-flex flex-row align-items-center mb-4">
+          <input type="range" step="1" min="1" max="15" value="1" placeholder="Jumlah Soalan"
+                 class="form-range pe-2" name="total-ques" id="total-ques"
+                 oninput="document.getElementById('total-quiz').textContent = this.value"
+                 onchange="totalQuizChange(this)" required>
+          <div class="flex-grow-1 d-flex align-items-center">
+            <span id="total-quiz" class="me-2">1</span> Soalan
+          </div>
+        </div>
+        <input type="submit" class="btn btn-orange w-100" value="Hantar">
+      </form>
+    </div >
+    <div class="col-lg-9" data-aos="fade-up" data-aos-duration="1500">
+      <div class="swiper mySwiper shadow">
+        <div class="swiper-wrapper" id="swiper-wrapper">
+          <form class="swiper-slide card pb-5 question">
+            <div class="card-header bg-white fw-bold h5 text-orange question-no">Soalan 1</div>
+            <div class="card-img card-img-top">
+              <img src="" alt="" class="question-img">
+            </div>
+            <div class="card-body pt-4 w-100 text-start">
+              <div class="row mb-3">
+                <div class="col-lg-3">Pilih imej soalan</div>
+                <div class="col-lg-9">
+                  <label class="w-100 custom-form-file rounded-1 overflow-hidden" for="image-0">
+                    <span class="d-flex">
+                      <span class="btn btn-orange rounded-0" style="white-space: nowrap">Pilih imej</span>
+                      <span class="form-control rounded-start-0 rounded-end-0 p-0">
+                        <span class="text-muted ms-2 mb-0 h-100 d-flex align-items-center filename">
+                          Tiada imej yang dipilih
+                        </span>
+                      </span>
+                      <button type="button" class="btn btn-danger rounded-0" onclick="addedImage(this, event)">Buang</button>
+                    </span>
+                  </label>
+                  <input type="file" accept="image/*" name="image" class="d-none" id="image-0"
+                         onchange="addedImage(this, event)">
+                  <div class="form-text">** Mengunggah gambar untuk soalan tidak diwajibkan dan hanya satu gambar setiap
+                    soalan.
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-form-label col-lg-3" for="ques">Soalan</label>
+                <div class="col-lg-9">
+                <textarea class="form-control" name="question" id="ques" placeholder="Masukkan soalan di sini" rows="6"
+                          required></textarea>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label class="col-form-label col-lg-3">
+                <span class="d-flex justify-content-between align-items-center">
+                  Pilihan
+                  <button title="Tambah pilihan" onclick="addOption(this, event)"><span
+                        class="bi bi-hover-sm bi-plus-square-fill text-orange add-option"></span></button>
+                </span>
+                </label>
+                <div class="col-lg-9 option-wrapper">
+                  <div class="input-group mb-2 option">
+                    <div class="input-group-text option-no">Pilihan
+                      <input class="form-check-input m-0 ms-2" type="radio" name="answer" value="0"
+                             title="Pilih sebagai jawapan">
+                    </div>
+                    <input type="text" name="option[]" class="form-control border-end-0" required>
+                    <div class="input-group-text border-start-0 bg-white">
+                      <button type="button" title="remove" onclick="removeOption(this, event)"><span
+                            class="bi bi-x-circle-fill bi-hover-sm text-danger"></span></button>
+                    </div>
+                  </div>
+                  <div class="input-group mb-2 option">
+                    <div class="input-group-text option-no">Pilihan
+                      <input class="form-check-input m-0 ms-2" type="radio" name="answer" value="1"
+                             title="Pilih sebagai jawapan">
+                    </div>
+                    <input type="text" name="option[]" class="form-control border-end-0" required>
+                    <div class="input-group-text border-start-0 bg-white">
+                      <button type="button" title="remove" onclick="removeOption(this, event)"><span
+                            class="bi bi-x-circle-fill bi-hover-sm text-danger"></span></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block vendor_script %}
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+{% endblock %}
+
+{% block custom_script %}
+<script src="/static/js/add-quiz.js"></script>
+{% endblock %}

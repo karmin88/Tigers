@@ -1,7 +1,5 @@
-
-body {
-  width: 100%;
-  height: 100%;
+#hero {
+  height: 78vh;
 }
 
 .tag {
@@ -125,7 +123,7 @@ a, a:hover {
 .postcard {
   flex-wrap: wrap;
   display: flex;
-
+  flex-direction: column;
   box-shadow: 0 4px 21px -12px rgba(0, 0, 0, 0.66);
   border-radius: 10px;
   border: 1px solid rgba(0, 0, 0, 0.10);
@@ -184,10 +182,10 @@ a, a:hover {
   }
 
   .postcard__preview-txt {
-    overflow: hidden;
+    overflow: auto;
     text-overflow: ellipsis;
     text-align: justify;
-    height: 100%;
+    height: min-content!important;
   }
 
   .postcard__tagbox {
@@ -446,4 +444,14 @@ a, a:hover {
   .yellow:nth-child(2n)::before {
     background-image: linear-gradient(80deg, var(--main-yellow-rgb-015), transparent 50%);
   }
+}
+
+.carousel-inner div {
+    height: 400px;
+    object-fit: cover;
+
+}
+
+.postcard__subtitle {
+  height: max-content!important;
 }

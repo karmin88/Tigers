@@ -2,15 +2,24 @@ import json
 
 from app import mysql
 
+query_tables_length = """
+SELECT
+  (SELECT COUNT(*) FROM user WHERE role = 'teacher') AS teacher,
+  (SELECT COUNT(*) FROM user WHERE role = 'student') AS student,
+  (SELECT COUNT(*) FROM note) AS note,
+  (SELECT COUNT(*) FROM quiz) AS quiz;
+"""
+
 insert_user = "INSERT INTO user (email, username, password, role) VALUES (%s, %s, %s, %s)"
 
 query_user = "SELECT * FROM user WHERE email = %s OR id = %s"
 
-insert_note = "INSERT INTO note (chapter, user_id) VALUES (%s, %s)"
+insert_note = "INSERT INTO note (chapter, title, user_id) VALUES (%s, %s, %s)"
 
 query_note = """
 SELECT
     note.id,
+    note.title,
     note.chapter,
     note.uploaded_date,
     note.user_id,
@@ -96,12 +105,53 @@ GROUP BY
 
 delete_experience_stmt = "DELETE FROM experience WHERE id = %s"
 
+insert_quiz = "INSERT INTO quiz (chapter, title, user_id) VALUES (%s, %s, %s)"
+
+insert_question = "INSERT INTO quiz_question (image_path, question, options, answer, quiz_id) VALUES (%s, %s, %s, %s, %s)"
+
+query_question = """
+SELECT
+  quiz.*,
+  COUNT(quiz_question.id) AS total_ques,
+  user.username AS username,
+  avatar.seed AS user_avatar
+FROM quiz
+LEFT JOIN quiz_question ON quiz.id = quiz_question.quiz_id
+LEFT JOIN user ON quiz.user_id = user.id
+LEFT JOIN profile ON user.id = profile.user_id
+LEFT JOIN avatar ON profile.avatar_id = avatar.id
+GROUP BY quiz.id;
+"""
+
+query_one_quiz = """
+SELECT
+    q.id AS id,
+    q.title AS title,
+    q.user_id AS user_id,
+    GROUP_CONCAT(
+        JSON_OBJECT(
+            'question', qu.question,
+            'options', JSON_ARRAY(qu.options),
+            'answer', qu.answer,
+            'image_path', qu.image_path
+        )
+    ) AS questions
+FROM
+    quiz q, quiz_question qu
+WHERE q.id = %s;
+JOIN
+    quiz_question qu ON q.id = qu.quiz_id
+GROUP BY
+    q.id, q.title, q.date, q.user_id;
+"""
+
 
 def execute_statement(statement, *args):
     if statement and args:
         conn = mysql.connection
         try:
             cur = conn.cursor()
+            args = tuple(arg if arg is not None else 'NULL' for arg in args)
             cur.execute(statement, args)
             conn.commit()
             return cur.lastrowid
@@ -131,9 +181,12 @@ def get_table_increment(schema=None, name=None):
     return execute_query(auto_increment_query, False, schema, name)['AUTO_INCREMENT']
 
 
-def add_note(chapter, user_id):
-    if chapter and user_id:
-        return execute_statement(insert_note, chapter, user_id)
+def get_tables_length():
+    return execute_query(query_tables_length, False)
+
+def add_note(chapter, title, user_id):
+    if chapter and title and user_id:
+        return execute_statement(insert_note, chapter, title, user_id)
 
 
 def get_notes(id=None):
@@ -167,6 +220,16 @@ def add_section_file(uuid_filename, original_filename, section_id):
 def get_section_files(id):
     if id:
         return execute_query(query_sections_files, True, id)
+
+
+def add_quiz(chapter, title, user_id):
+    if chapter and title and user_id:
+        return execute_statement(insert_quiz, chapter, title, user_id)
+
+
+def add_question(question, options, answer, quiz_id, path=None):
+    if question and options and answer and quiz_id:
+        return execute_statement(insert_question, path, question, options, answer, quiz_id)
 
 
 def add_user(email=None, username=None, password=None, role=None):
@@ -217,3 +280,10 @@ def get_experience(user_id=None):
 def delete_experience(id=None):
     if id:
         return execute_statement(delete_experience_stmt, id)
+
+
+def get_quiz(id=None):
+    if not id:
+        return execute_query(query_question, True)
+    else:
+        return execute_query(query_one_quiz, True, id)

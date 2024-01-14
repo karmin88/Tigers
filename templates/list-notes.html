@@ -1,0 +1,301 @@
+{% extends "base.html" %}
+
+{% block custom_stylesheet %}
+<link rel="stylesheet" href="/static/css/dashboard.css">
+<link rel="stylesheet" href="/static/css/list-note.css">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0 mb-5">
+  <div id="hero">
+    <div class="hero-image"></div>
+    <div class="overlay"></div>
+    <div class="row container-fluid h-100 d-flex text-light justify-content-center align-items-center mx-0 pt-5">
+      <div class="col-lg-8 col-md-10 col-sm-12 px-md-0 px-sm-0 text-center mt-5">
+        <div class="h1 display-3" style="font-weight: 900" data-aos="fade-right" data-aos-duration="1000"
+             data-aos-delay="1000">Nota
+        </div>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb fw-semibold justify-content-center">
+            <li class="breadcrumb-item d-inline-block" data-aos="zoom-in" data-aos-duration="1000"
+                data-aos-delay="1000">
+              <a href="/">
+                Laman Utama
+              </a>
+            </li>
+            <li class="breadcrumb-item active text-white" data-aos="zoom-in" data-aos-duration="1100"
+                data-aos-delay="1000">
+              Nota
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="container-fluid px-0 mb-0" id="feature-content">
+  <div class="section-title fw-lightbold mb-3 w-100" data-aos="zoom-out" data-aos-duration="1100">Kandungan Utama</div>
+  <div class="section-header mb-5" data-aos="zoom-out" data-aos-duration="1100">
+    Terokai keindahan matematik dengan kandungan pilihan kami
+  </div>
+  <div class="d-flex flex-xl-row flex-sm-column justify-content-center align-items-center wrapper" style="gap: 20px">
+    <div class="d-flex card-container" data-aos="zoom-out" data-aos-duration="1100">
+      <div class="card shadow">
+        <img src="/static/images/chap3-card.png" alt="feature" class="card-img img-fluid">
+        <div class="card-body d-flex flex-column align-items-start">
+          <div class="lead fw-bold text-muted mb-2">Bab 3</div>
+          <div class="text-white text-start h4 fw-bold mb-3">Nilai tempat perpuluhan</div>
+          <div class="text-white d-flex align-items-center"><i class="bi bi-clock"
+                                                               style="margin-right: 5px!important;"></i>
+            <span>15 Oktober 2023</span>
+          </div>
+          <div class="mt-auto text-white row">
+            <div class="col-3">
+              <img class="rounded-circle bg-warning p-1"
+                   src="/static/images/logo.png"
+                   alt="Generic placeholder image" style="max-width:50px">
+            </div>
+            <div class="col-9 text-start">
+              <div>Chong Kar Min</div>
+              <div>Pembangun Konten</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-content card p-4 text-start">
+        <div class="lead fw-semibold mb-3 text-center">Gambaran</div>
+        <div class="lead fw-bold text-muted mb-2">Bab 3: Nilai tempat perpuluhan</div>
+        <div class="text-dark d-flex align-items-center mb-3"><i class="bi bi-clock"
+                                                                 style="margin-right: 5px!important;"></i>
+          <span>15 Oktober 2023</span>
+        </div>
+        <div class="mb-5 small">Pelajari konsep nilai tempat perpuluhan dalam operasi matematika dasar. Gunakan
+          kalkulator
+          interaktif untuk langsung mencoba tambah, tolak, darab, bahagi, dan pembundaran nombor, memperkuat pemahaman
+          Anda secara aktif.
+        </div>
+        <div class="d-flex justify-content-end mb-4">
+          <a href="/note/1" type="button" class="btn btn-orange">Cuba Sekarang</a>
+        </div>
+        <div class="text-dark row mb-4">
+          <div class="col-3">
+            <div class="d-flex justify-content-end">
+              <img class="rounded-circle bg-warning p-1"
+                   src="/static/images/logo.png"
+                   alt="Generic placeholder image" style="max-width:50px">
+            </div>
+          </div>
+          <div class="col-9 text-start">
+            <div>Chong Kar Min</div>
+            <div>Pembangun Konten</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex card-container" data-aos="zoom-out" data-aos-duration="1100">
+      <div class="card d-flex flex-column align-items-start">
+        <img src="/static/images/chat-resource.png" alt="feature" class="card-img img-fluid">
+        <div class="card-body d-flex flex-column align-items-start">
+          <div class="lead fw-bold text-muted mb-2">Bab 9</div>
+          <div class="text-white text-start h4 fw-bold mb-3">Pemfaktoran dan Algebra</div>
+          <div class="text-white d-flex align-items-center"><i class="bi bi-clock"
+                                                               style="margin-right: 5px!important;"></i>
+            <span>30 Oktober 2023</span>
+          </div>
+          <div class="mt-auto text-white row">
+            <div class="col-3">
+              <img class="rounded-circle bg-warning p-1"
+                   src="/static/images/logo.png"
+                   alt="Generic placeholder image" style="max-width:50px">
+            </div>
+            <div class="col-9 text-start">
+              <div>Chong Kar Min</div>
+              <div>Pembangun Konten</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="card-content  card p-4 text-start">
+        <div class=" lead fw-semibold mb-3 text-center">Gambaran</div>
+        <div class="lead fw-bold text-muted mb-2">Bab 9: Pemfaktoran dan Algebra</div>
+        <div class="text-dark d-flex align-items-center mb-3"><i class="bi bi-clock"
+                                                                 style="margin-right: 5px!important;"></i>
+          <span>30 Oktober 2023</span>
+        </div>
+        <div class="mb-5 small">Pelajari konsep nilai tempat perpuluhan dalam operasi matematika dasar. Gunakan
+          kalkulator
+          interaktif untuk langsung mencoba tambah, tolak, darab, bahagi, dan pembundaran nombor, memperkuat pemahaman
+          Anda secara aktif.
+        </div>
+        <div class="d-flex justify-content-end mb-4">
+          <a href="/note/2" type="button" class="btn btn-orange">Cuba Sekarang</a>
+        </div>
+        <div class="text-dark row mb-4">
+          <div class="col-3">
+            <div class="d-flex justify-content-end">
+              <img class="rounded-circle bg-warning p-1"
+                   src="/static/images/logo.png"
+                   alt="Generic placeholder image" style="max-width:50px">
+            </div>
+          </div>
+          <div class="col-9 text-start">
+            <div>Chong Kar Min</div>
+            <div>Pembangun Konten</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container-fluid mt-0 px-0 bg-body-tertiary" id="note-section">
+  <div class="bg-maroon py-5 mb-5">
+    <div class="container text-white text-start fw-bolder fs-1 ">
+      Kandungan Lain-lain
+    </div>
+  </div>
+  <div class="pe-5">
+    <div class="row mx-0" id="content-container">
+      <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white overflow-y-scroll col-md-4 col-sm-12 text-start">
+        <div class="list-group list-group-flush border-bottom mx-4 sidebar lh-base">
+          <button class="list-group-item list-group-item-action list-group-item-light active py-3 filter-button"
+                  data-chapter="0">
+            <strong class="mb-1">Semua Bab</strong>
+            <span class="col-11 mb-1 small">Kandungan untuk semua bab akan dipaparkan di sini.</span>
+          </button>
+          <button class="list-group-item list-group-item-action list-group-item-light py-3 filter-button"
+                  data-chapter="3">
+            <strong class="mb-1">Bab 3: Nilai tempat perpuluhan </strong>
+            <span class="col-10 mb-1 small">Bawah tulis lah (Operasi tambah, tolak, darab, bahagi dan pembundaran nombor)</span>
+          </button>
+          <button class="list-group-item list-group-item-action list-group-item-light py-3 filter-button"
+                  data-chapter="9">
+            <strong class="mb-1">Bab 9: Pemfaktoran dan Algebra</strong>
+            <span class="col-10 mb-1 small">Garis lurus y=mx+c dan kecerunan. Pemfaktoran dalam algebra and penyelesaian
+              persamaan kuadrat
+            </span>
+          </button>
+          <div class="lh-tight card border-1 shadow-sm mt-3">
+            {% if user.role == 'student' %}
+            <div class="card-header">
+              <strong class="mb-1">Cabaran Kursus</strong>
+            </div>
+            <div class="card-body col-10 small">
+              <div>Uji pengetahuan anda tentang kemahiran dalam kursus ini.</div>
+              <a href="/"
+                 class="text-decoration-none link-hover-border-bottom strong border-3 fs-5">Mula Ujian Cabaran</a>
+            </div>
+            {% else %}
+            <div class="card-header">
+              <strong class="mb-1">Sumbangan</strong>
+            </div>
+            <div class="card-body col-10 small">
+              <div>Menyumbang kepada komuniti sebagai peranan guru.</div>
+              <a href="/add_note"
+                 class="text-decoration-none link-hover-border-bottom strong border-3 fs-5">Tambah Nota Anda</a>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-8 col-sm-12" id="note-container">
+        <div class="container py-2 border-bottom">
+          <div class="row">
+            <div class="col-md-5">
+              <div class="d-flex align-items-center h-100">
+                <ol class="breadcrumb my-0">
+                  <li class="breadcrumb-item d-flex align-items-center"><a href="/student_dashboard"><i
+                        class="bi bi-house-door-fill"></i></a></li>
+                  <li class="breadcrumb-item"><a href="#" class="text-hover-underline">Notes</a></li>
+                  <li class="breadcrumb-item"><a id="current-chapter" href="" class="text-hover-underline"></a></li>
+                </ol>
+              </div>
+            </div>
+            <div class="col-md-7">
+              <div class="row gx-2">
+                <div class="col-md-7 col-sm-6">
+                  <div class="input-group">
+                    <span class="input-group-text bg-white"><i class="bi bi-search small"></i></span>
+                    <input class="form-control fuzzy-search rounded-1" type="search"
+                           placeholder="Masukkan teks carian">
+                  </div>
+                </div>
+                <div class="col-md-5 col-sm-6">
+                  <div class="d-flex align-items-center gap-1">
+                    <select class="form-select" id="sort">
+                      <option value="" selected disabled>Susun</option>
+                      <option value="date">Tarikh</option>
+                      <option value="chapter">Bab</option>
+                      <option value="title">Tajuk</option>
+                    </select>
+                    <button type="button" class="btn p-0 ms-3" id="btn-sort"><i class="bi bi-filter h4 text-orange"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid pt-3 overflow-auto px-5" style="height: 500px" id="list-note">
+          <div class="row gy-3 list" id="list">
+            {% for note in notes %}
+            <div class="col-lg-6">
+              <div class="note card card-hover mb-2 card-chap-{{ note.chapter }} text-white text-start">
+                <div class="card-header my-1 d-flex flex-row align-items-center">
+                  <div class="rounded-pill fs-6 fw-bold px-3">
+                    <span class="chapter text-start">Bab {{ note.chapter }}</span>
+                  </div>
+                  <span class="ms-2 fs-5 fw-semibold text-darkorange title overflow-hidden"
+                        style="text-overflow: ellipsis; white-space: nowrap; width: calc(30%)">{{ note.title }}</span>
+                </div>
+                <div class="card-body">
+                  <div class="d-grid text-start" style="grid-template-columns: repeat(2, auto);grid-auto-flow: row">
+                    {% for i in range(note.sections | length) %}
+                    <a href="{{ url_for('view_note', section_no=note.sections[i], note_id=note.id) }}"
+                       class="mb-2 opacity-75 {% if note.chapter == 3 %}text-orange{% else %}text-maroon{% endif %}"
+                       style="z-index: 2;"> {{ note.section_titles[i] }}</a>
+                    {% endfor %}
+                  </div>
+                </div>
+                <div class="card-footer d-flex justify-content-between">
+                  <span class="text-muted" style="z-index: 2">by
+                      <a class=" {% if note.chapter == 3 %}text-orange{% else %}text-maroon{% endif %} username"
+                         href="/profile/{{ note.user_id }}">{{ note.username }}</a>
+                  </span>
+                  <span class="text-muted pt-1 small date">at {{ note.uploaded_date }}</span>
+                </div>
+                <a href="{{ url_for('view_note', section_no=None, note_id=note.id) }}"
+                   class="card-link stretched-link"></a>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+</main>
+{% endblock %}
+{% block vendor_script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
+<script src="https://unpkg.com/scrollreveal"></script>
+
+{% endblock %}
+{% block custom_script %}
+<script defer src="/static/js/list-note.js"></script>
+<script>
+  ScrollReveal().reveal('.note', {
+    interval: 16,
+    origin: 'bottom',
+    distance: '100%',
+    opacity: 0,
+  });
+</script>
+{% endblock %}

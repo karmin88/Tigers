@@ -2,8 +2,14 @@
   scroll-behavior: auto!important;
 }
 
-label, form, .form-select, .form-control {
-    color: #723d00 !important;
+#hero{
+  height: 78vh;
+}
+
+.bi-close {
+  position: absolute;
+  top:-10px;
+  right: -10px;
 }
 
 .dropzone {
@@ -35,17 +41,16 @@ label, form, .form-select, .form-control {
     font-size: calc(1.5rem + 1.7vw);
 }
 
-@keyframes startupAnimation1 {
-  0% {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
+
+.note-title:focus {
+  background-color: var(--bs-body-bg);
+  border-bottom: 1px solid var(--color-orange) !important;
+  outline: 0;
+  box-shadow: 0 0.25rem 0 rgba(var(--color-orange-rgb), 0.25);
 }
 
-.hero-svg path.animate {
-  animation: startupAnimation1 1.5s ease-out forwards;
+.note-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--color-orange);
 }
