@@ -8,7 +8,7 @@ To setup the database, follows the below structure:
 
 ![](database.jpg)
 
-Or simply import the [secure_software.sql](skig3013_project.sql)
+Or simply import the [skig3013_project.sql](skig3013_project.sql)
 
 **_NOTE:_** The app config for database url should be changed according to your own database as follows:
 
