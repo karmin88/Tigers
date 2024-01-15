@@ -1,64 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Smartiger</title>
-  <link href="https://fonts.cdnfonts.com/css/open-sans" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-  <link rel="stylesheet" href="/static/css/style.css">
-  <link rel="stylesheet" href="/static/css/dashboard.css">
-  <link rel="stylesheet" href="/static/css/quiz.css">
-</head>
-<body>
-<!--<div class="preloader-container" id="preloader">-->
-<!--  <div class="loader"><span></span><span></span><span></span><span></span></div>-->
-<!--</div>-->
-<style>.fixed-header {
-  position: fixed;
-  top: -10%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min-content;
-  z-index: 10000
-}
+{% extends "base.html" %}
+{ % block vendor_stylesheet %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+{% endblock %}
 
-.alert {
-  white-space: nowrap;
-  padding: 10px 100px 10px 100px;
-  text-align: center
+{% block custom_stylesheet %}
+<link rel="stylesheet" href="/static/css/dashboard.css">
+<link rel="stylesheet" href="/static/css/quiz.css">
+{% endblock %}
 
-}
-</style>
-<div class="fixed-header" id="flask-message-header"></div>
-<nav class="navbar navbar-dark navbar-expand-lg position-absolute w-100 z-3" id="navbar">
-  <div class="container my-1"><a class="navbar-brand d-flex align-items-center" href="#"><img
-        src="/static/images/logo.png" class="mt-1" alt="logo.png" height="55"><img src="/static/images/logo-text.png"
-                                                                                   class="ms-3" height="50"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-            aria-controls="offcanvasNavbar"><span class="navbar-toggler-icon"></span></button>
-    <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasNavbar"
-         aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header ps-4 pt-3">
-        <div class="offcanvas-title" id="offcanvasNavbarLabel"><img src="/static/images/logo-text.png" class="ms-3"
-                                                                    height="50"></div>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body border-lg-top-0 border-md-top px-5 pt-3">
-        <ul class="navbar-nav flex-grow-1 d-flex align-items-center justify-content-lg-end pe-3">
-          <li class="nav-item"><a class="nav-link link-light " href="/">Laman Utama</a></li>
-          <li class="nav-item"><a class="nav-link link-light " href="/list_note">Bahan</a></li>
-          <li class="nav-item"><a class="nav-link link-light active" href="/list_quiz">Penilaian</a></li>
-          <li class="nav-item"><a class="nav-link link-light " href="/custom_note">Nota</a></li>
-          <li class="nav-item"><a class="nav-link link-light " href="/profile">Profil</a></li>
-          <li class="nav-item"><a class="nav-link link-light" href="/logout">Log Keluar</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</nav>
+{% block content %}
 <div class="container-fluid px-0 mb-5">
   <div id="hero">
     <div class="hero-image"></div>
@@ -79,7 +29,7 @@
               </a>
             </li>
             <li class="breadcrumb-item active text-white" data-aos="zoom-in" data-aos-duration="1200"
-                data-aos-delay="1000"> Quiz
+                data-aos-delay="1000"> Kuiz
             </li>
           </ol>
         </nav>
@@ -98,7 +48,7 @@
         </label>
         <i class="bi bi-info-circle-fill ms-2 text-white bi-hover-md" id="info-strict" data-bs-toggle="tooltip"
            data-bs-placement="top"
-           title="Penyerahan pertama di bawah mod ketat akan direkodkan untuk menilai prestasi."></i>
+           title="Dalam mod ketat, jawapan tidak akan dipaparkan, hanya keputusan akhir yang akan ditunjukkan"></i>
       </div>
       <div class="swiper mySwiper shadow-lg">
         {% if user.role == 'student' %}
@@ -152,7 +102,8 @@
       </div>
       <div class="modal-body">
         <div class="mb-3">Dari <strong class="text-orange">{{ quiz.questions | length }}</strong>
-          soalan, anda menjawab dengan betul pada <strong id="correct" class="text-orange"></strong> soalan.</div>
+          soalan, anda menjawab dengan betul pada <strong id="correct" class="text-orange"></strong> soalan.
+        </div>
         <div class="mb-3">Markah keseluruhan: <strong class="text-orange" id="score"></strong></div>
         <div class="progress">
           <div class="progress-bar progress-bar-striped" role="progressbar" id="scorebar"
@@ -165,28 +116,13 @@
     </div>
   </div>
 </div>
+{% endblock %}
 
-<div class="mt-auto bg-navbar text-white">
-  <div class="container py-4">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center"><p class="col-md-4 mb-0 fw-semibold">
-      &copy; 2023 Smar<span class="text-orange">T</span>iger, Inc</p><a href="/"
-                                                                        class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"><img
-          src="/static/images/logo.png" alt="logo.png" width="45" height="45"></a>
-      <ul class="nav col-md-4 justify-content-end">
-        <li class="nav-item"><a href="/" class="nav-link px-2">Laman Utama</a></li>
-        <li class="nav-item"><a href="/list_note" class="nav-link px-2">Bahan</a></li>
-        <li class="nav-item"><a href="/list_quiz" class="nav-link px-2">Penilaian</a></li>
-        <li class="nav-item"><a href="/custom_note" class="nav-link px-2">Nota</a></li>
-        <li class="nav-item"><a href="/profile" class="nav-link px-2">Profil</a></li>
-      </ul>
-    </footer>
-  </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+{% block vendor_script %}
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+{% endblock %}
+
+{% block custom_script %}
 <script src="/static/js/base.js"></script>
 <script src="/static/js/quiz.js"></script>
-</body>
-</html>
+{% endblock %}
