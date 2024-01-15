@@ -1,104 +1,117 @@
 {% extends "base.html" %}
 
 {% block custom_stylesheet %}
-  <link rel="stylesheet" href="/static/css/dashboard.css">
-  <link rel="stylesheet" href="/static/css/note.css">
+<link rel="stylesheet" href="/static/css/dashboard.css">
+<link rel="stylesheet" href="/static/css/note.css">
 {% endblock %}
 
 
 {% block content %}
-  <div class="container-fluid px-0 mb-5">
-    <div id="hero">
-      <div class="hero-image"></div>
-      <div class="overlay"></div>
-      <div class="row container-fluid h-100 d-flex text-light justify-content-center align-items-center mx-0 pt-5">
-        <div class="col-lg-8 col-md-10 col-sm-12 px-md-0 px-sm-0 text-center mt-5">
-          <div class="h1 display-3" style="font-weight: 900">Nota</div>
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb fw-semibold justify-content-center">
-              <li class="breadcrumb-item"><a href="#">LAMAN UTARA</a></li>
-              <li class="breadcrumb-item active  text-white" aria-current="page">NOTA
-              </li>
-            </ol>
-          </nav>
+<div class="container-fluid px-0 mb-5">
+  <div id="hero">
+    <div class="hero-image"></div>
+    <div class="overlay"></div>
+    <div class="row container-fluid h-100 d-flex text-light justify-content-center align-items-center mx-0 pt-5">
+      <div class="col-lg-8 col-md-10 col-sm-12 px-md-0 px-sm-0 text-center mt-5">
+        <div class="h1 display-3" style="font-weight: 900" data-aos="fade-right" data-aos-duration="1000"
+             data-aos-delay="1000">Nota
         </div>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb fw-semibold justify-content-center">
+            <li class="breadcrumb-item d-inline-block" data-aos="zoom-in" data-aos-duration="1000"
+                data-aos-delay="1000"><a href="/"> Laman Utama </a></li>
+            <li class="breadcrumb-item active text-white" data-aos="zoom-in" data-aos-duration="1100"
+                data-aos-delay="1000">
+              <a href="/list_note">
+                Penilaian
+              </a>
+            </li>
+            <li class="breadcrumb-item active text-white" data-aos="zoom-in" data-aos-duration="1200"
+                data-aos-delay="1000"> {{ note.title }}
+            </li>
+          </ol>
+        </nav>
       </div>
     </div>
   </div>
-  <div class="container-fluid mx-0">
-    {% for i in range(note.sections | length) %}
-      {% set uuid_img_files, uuid_pdf = sections_files[note.section_ids[i]][0] | partition_pdf %}
-      {% set ori_img_files, ori_pdf  = sections_files[note.section_ids[i]][1] | partition_pdf %}
-      <section id="section-{{ note.sections[i] }}" class="py-5 {% if loop.index % 2 == 0 %}bg-body-tertiary{% endif %}">
-        <div class="section-title mb-5"> Section {{ note.sections[i] }}</div>
-        <div class="row gx-4 gy-5">
-          <div class="{% if uuid_img_files | length  > 0 %}col-lg-6{% else %} col-lg-12 {% endif %}">
-            <div class="p-4 lh-base border shadow h-100 text-start section-content">
-              {{ note.section_descriptions[i] | safe }}
-            </div>
-          </div>
-          {% if uuid_img_files | length  > 0 %}
-            <div class="col-lg-6">
-              <div id="section-carousel-{{ i }}"
-                   class="carousel carousel-dark h-100 shadow border section-content"
-                   data-bs-interval="false">
-                <div class="carousel-inner container-fluid">
-                  {% for j in range(uuid_img_files | length) %}
-                    <div class="carousel-item {% if loop.index0 == 0 %}active{% endif %} flex-column"
-                         style="padding-left: 10%; padding-right: 10%">
-                      <img src="{{ url_for('request_file', folder='notes', uploader_id=note.user_id, filename=uuid_img_files[j]) }}"
-                           class="img-fluid" alt="{{ ori_img_files[j] }}">
-                      <div class="carousel-caption d-flex justify-content-center">
-                        <h5 class="bg-orange rounded-pill px-3 py-2 text-white">{{ ori_img_files[j] }}</h5>
-                      </div>
-                    </div>
-                  {% endfor %}
-                </div>
-                <button class="carousel-control-prev" type="button"
-                        data-bs-target="#section-carousel-{{ i }}"
-                        data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button"
-                        data-bs-target="#section-carousel-{{ i }}"
-                        data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-            </div>
-          {% endif %}
-          {% if uuid_pdf | length  > 0 %}
-            <div class="col-lg-12">
-              <div class="ratio ratio-21x9 section-content shadow overflow-hidden">
-                {% set uuid_img, uuid_pdf = sections_files[note.section_ids[i]][0] | partition_pdf %}
-                <iframe class="embed-responsive-item w-100 h-100"
-                        src="{{ url_for('request_file', folder='note', uploader_id= note.user_id, filename = uuid_pdf[0]) }}"></iframe>
-              </div>
-            </div>
-          {% endif %}
+</div>
+<div class="container-fluid mx-0">
+  {% for i in range(note.sections | length) %}
+  {% set uuid_img_files, uuid_pdf = sections_files[note.section_ids[i]][0] | partition_pdf %}
+  {% set ori_img_files, ori_pdf = sections_files[note.section_ids[i]][1] | partition_pdf %}
+  <section id="section-{{ note.sections[i] }}" class="py-5 {% if loop.index % 2 == 0 %}bg-body-tertiary{% endif %}">
+    <div class="section-title mb-5"> Section {{ note.sections[i] }}</div>
+    <div class="row gx-4 gy-5">
+      <div class="{% if uuid_img_files | length  > 0 %}col-lg-6{% else %} col-lg-12 {% endif %}">
+        <div class="p-4 lh-base border shadow h-100 text-start section-content">
+          {{ note.section_descriptions[i] | safe }}
         </div>
-      </section>
-    {% endfor %}
-  </div>
+      </div>
+      {% if uuid_img_files | length > 0 %}
+      <div class="col-lg-6">
+        <div id="section-carousel-{{ i }}"
+             class="carousel carousel-dark h-100 shadow border section-content"
+             data-bs-interval="false">
+          <div class="carousel-inner container-fluid">
+            {% for j in range(uuid_img_files | length) %}
+            <div class="carousel-item {% if loop.index0 == 0 %}active{% endif %} flex-column"
+                 style="padding-left: 10%; padding-right: 10%">
+              <img src="{{ url_for('request_file', folder='notes', uploader_id=note.user_id, filename=uuid_img_files[j]) }}"
+                   class="img-fluid" alt="{{ ori_img_files[j] }}">
+              <div class="carousel-caption d-flex justify-content-center">
+                <h5 class="bg-orange rounded-pill px-3 py-2 text-white">{{ ori_img_files[j] }}</h5>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <button class="carousel-control-prev" type="button"
+                  data-bs-target="#section-carousel-{{ i }}"
+                  data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button"
+                  data-bs-target="#section-carousel-{{ i }}"
+                  data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      {% endif %}
+      {% if uuid_pdf | length > 0 %}
+      <div class="col-lg-12">
+        <div class="ratio ratio-21x9 section-content shadow overflow-hidden">
+          {% set uuid_img, uuid_pdf = sections_files[note.section_ids[i]][0] | partition_pdf %}
+          <iframe class="embed-responsive-item w-100 h-100"
+                  src="{{ url_for('request_file', folder='note', uploader_id= note.user_id, filename = uuid_pdf[0]) }}"></iframe>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+  {% endfor %}
+</div>
 {% endblock %}
 {% block custom_script %}
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.hero-svg path').forEach(function(path) { path.classList.add('animate');});
-      var sectionNo = {{ section_no }};
-      if (sectionNo) {
-        var sectionElement = document.getElementById('section-' + sectionNo);
-        if (sectionElement) {
-          window.scrollTo({
-            top: sectionElement.getBoundingClientRect().top +
-                window.pageYOffset -
-                70,
-            behavior: 'smooth',
-          });
-        }
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.hero-svg path').forEach(function(path) { path.classList.add('animate');});
+    var sectionNo = {
+    { section_no; }
+  }
+    ;
+    if (sectionNo) {
+      var sectionElement = document.getElementById('section-' + sectionNo);
+      if (sectionElement) {
+        window.scrollTo({
+          top: sectionElement.getBoundingClientRect().top +
+              window.pageYOffset -
+              70,
+          behavior: 'smooth',
+        });
       }
-    });
-  </script>
+    }
+  });
+</script>
 {% endblock %}
