@@ -273,6 +273,13 @@
               </div>
             </div>
             {% endfor %}
+            {% if notes | length == 0 %}
+            <div class="col-lg-12">
+              <div class="card card-body d-flex justify-content-center align-items-center shadow text-muted" style="height: 200px">
+                Tidak ada nota yang tersedia untuk anda kunjungi pada masa ini.
+              </div>
+            </div>
+            {% endif %}
           </div>
         </div>
       </div>
