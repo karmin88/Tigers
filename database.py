@@ -74,7 +74,7 @@ WHERE
     p.user_id = %s;
 """
 
-create_profile_stmt = "INSERT INTO profile user_id = %s"
+create_profile_stmt = "INSERT INTO profile (user_id) VALUES (%s)"
 
 edit_profile = "UPDATE profile SET {column} = %s WHERE user_id = %s"
 
@@ -233,9 +233,9 @@ def add_question(question, options, answer, quiz_id, path=None):
 
 
 def add_user(email=None, username=None, password=None, role=None):
-    user_id = get_table_increment('skig3013_project', 'user')
     if email and username and password and role:
-        return execute_statement(insert_user, email, username, password, role) and execute_statement(
+        user_id = execute_statement(insert_user, email, username, password, role)
+        return execute_statement(
             create_profile_stmt, user_id)
 
 

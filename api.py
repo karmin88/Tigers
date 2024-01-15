@@ -92,20 +92,16 @@ def sign_up():
         email = request.form.get('email')
         username = request.form.get('username')
         password = request.form.get('password')
-        retype_password = request.form.get('retype-password')
         role = request.form.get('role')
-        if password != retype_password:
-            flash('Passwords do not match.', 'danger')
-            return render_template('signup.html')
         user = db.find_user(email)
         if user:
-            flash('Email already registered.', 'danger')
+            flash('Emel sudah didaftarkan.', 'danger')
         else:
             if db.add_user(email, username, password, role):
-                flash('User successfully registered.', 'success')
-                return render_template('public-dashboard.html')
+                flash('Anda telah berjaya mendaftar.', 'success')
+                return redirect(url_for('login'))
             else:
-                flash('Unexpected error has occurred. Please try again.', 'danger')
+                flash('Ralat yang tidak dijangka telah berlaku. Sila cuba lagi.', 'danger')
     return render_template('signup.html', signup=True)
 
 
