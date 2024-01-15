@@ -461,7 +461,7 @@ document.addEventListener('DOMContentLoaded', function() {
               intro: 'Pilih operator dengan mengklik ini.',
               position: 'right',
             }, {
-              title: 'Langkah 65',
+              title: 'Langkah 5',
               element: document.querySelector('#calculate'),
               intro: 'Klik di sini untuk mengira hasil.',
               position: 'right',
