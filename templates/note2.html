@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block vendor_stylesheet %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1-a/mathquill.css">
 {% endblock %}
 
@@ -560,14 +561,14 @@
             <div class="row">
               <div class="col-lg-3">
                 <label class="form-label mb-4">Masukkan persamaan</label>
-                <span id="math-field" class="form-control mb-5 p-3"></span>
+                <span id="math-field" class="form-control mb-3 p-3 border"></span>
                 <p class="mb-4 row">
-                  <label for="x-intercept" class="col-sm-5 col-form-label">Pintasan-X:</label>
-                  <span class="col-sm-7"><input id="x-intercept" class="form-control" readonly></span>
+                <div class="col-sm-5 col-form-label">Pintasan-X:</div>
+                <span class="col-sm-7"><span id="x-intercept" class="form-control">0</span></span>
                 </p>
                 <p class="mb-4 row">
-                  <label for="x-intercept" class="col-sm-5 col-form-label">Pintasan-Y:</label>
-                  <span class="col-sm-7"><input id="y-intercept" class="form-control" readonly></span>
+                <div class="col-sm-5 col-form-label">Pintasan-Y:</div>
+                <span class="col-sm-7"><span id="y-intercept" class="form-control">0</span></span>
                 </p>
               </div>
               <div class="col-lg-9">
@@ -587,18 +588,28 @@
 {% block vendor_script %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1-a/mathquill.min.js"></script>
 <script src="https://mauriciopoppe.github.io/function-plot/js/function-plot.js"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@scicave/math-latex-parser/lib/bundle.min.js"></script>
+<!--<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>-->
 
 {% endblock %}
 
 {% block custom_script %}
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 <script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-    },
-  };
+  document.addEventListener('DOMContentLoaded', function() {
+    renderMathInElement(document.body, {
+      // customised options
+      // • auto-render specific keys, e.g.:
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\(', right: '\\)', display: false},
+        {left: '\\[', right: '\\]', display: true},
+      ],
+      // • rendering keys, e.g.:
+      throwOnError: false,
+    });
+  });
 </script>
 <script src="/static/js/note2.js"></script>
 {% endblock %}

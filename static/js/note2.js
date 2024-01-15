@@ -144,8 +144,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (resp.success) {
               result = resp.result;
               plot(resp.result, '#plot');
-              document.getElementById('y-intercept').value = resp.yIntercept;
-              document.getElementById('x-intercept').value = resp.xIntercept;
+              katex.render(String(resp.xIntercept), document.getElementById('x-intercept'), { throwOnError: false})
+              katex.render(String(resp.yIntercept), document.getElementById('y-intercept'), { throwOnError: false})
             }
           },
           error: function(jqXHR, textStatus, errorThrown) {

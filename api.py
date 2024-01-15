@@ -294,6 +294,7 @@ def allowed_file(filename):
 
 
 from latex2sympy2 import latex2sympy
+import sympy as sym
 
 
 @app.route('/get_math_expr/', methods=['GET'])
@@ -302,8 +303,10 @@ def get_math_expr():
         x = symbols('x')
         latex = request.args.get('latex')
         result = latex2sympy(latex)
+        xIntercept = str(sym.latex(solve(result, x)))
+        yIntercept = str(sym.latex(result.subs(x, 0)))
         return json.dumps(
-            {'success': True, 'result': str(result).replace('**', '^'), 'yIntercept': str(result.subs(x, 0)),
-             'xIntercept': str(solve(result, x))})
+            {'success': True, 'result': str(result).replace('**', '^'), 'yIntercept': yIntercept,
+             'xIntercept': xIntercept})
     except Exception as e:
         return json.dumps({'success': True, 'error': str(e)})
