@@ -84,7 +84,7 @@
         <div class="ratio ratio-21x9 section-content shadow overflow-hidden">
           {% set uuid_img, uuid_pdf = sections_files[note.section_ids[i]][0] | partition_pdf %}
           <iframe class="embed-responsive-item w-100 h-100"
-                  src="{{ url_for('request_file', folder='note', uploader_id= note.user_id, filename = uuid_pdf[0]) }}"></iframe>
+                  src="{{ url_for('request_file', folder='notes', uploader_id= note.user_id, filename = uuid_pdf[0]) }}"></iframe>
         </div>
       </div>
       {% endif %}
