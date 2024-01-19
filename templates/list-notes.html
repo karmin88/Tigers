@@ -247,7 +247,7 @@
               <div class="note card card-hover mb-2 card-chap-{{ note.chapter }} text-white text-start">
                 <div class="card-header my-1 d-flex flex-row align-items-center">
                   <div class="rounded-pill fs-6 fw-bold px-3">
-                    <span class="chapter text-start">Bab {{ note.chapter }}</span>
+                    <span class="text-start">Bab <span class="chapter">{{ note.chapter }}</span></span>
                   </div>
                   <span class="ms-2 fs-5 fw-semibold text-darkorange title overflow-hidden"
                         style="text-overflow: ellipsis; white-space: nowrap; width: calc(30%)">{{ note.title }}</span>
@@ -266,7 +266,7 @@
                       <a class=" {% if note.chapter == 3 %}text-orange{% else %}text-maroon{% endif %} username"
                          href="/profile/{{ note.user_id }}">{{ note.username }}</a>
                   </span>
-                  <span class="text-muted pt-1 small date">at {{ note.uploaded_date }}</span>
+                  <span class="text-muted pt-1 small">at <span class="date">{{ note.uploaded_date }}</span></span>
                 </div>
                 <a href="{{ url_for('view_note', section_no=None, note_id=note.id) }}"
                    class="card-link stretched-link"></a>
