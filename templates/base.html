@@ -44,7 +44,8 @@
             aria-controls="offcanvasNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="offcanvas h-100 offcanvas-end bg-dark align-self-end d-flex justify-content-end" tabindex="-1" id="offcanvasNavbar"
+    <div class="offcanvas h-100 offcanvas-end bg-dark align-self-end d-flex justify-content-end" tabindex="-1"
+         id="offcanvasNavbar"
          aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header ps-4 pt-3">
         <div class="offcanvas-title" id="offcanvasNavbarLabel">
@@ -55,38 +56,38 @@
       <div class="offcanvas-body border-lg-top-0 border-md-top mb-2">
         <ul class="navbar-nav flex-grow-1 d-flex align-items-center justify-content-lg-end">
           {% if not user %}
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('sign_up') }}">Daftar</a>
-            </li>
-            <li class="nav-item me-0">
-              <a class="nav-link" href="{{ url_for('login') }}">
-                <span class="me-1">Log Masuk</span>
-                <i class="bi bi-box-arrow-in-right"></i></a>
-            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('sign_up') }}">Daftar</a>
+          </li>
+          <li class="nav-item me-0">
+            <a class="nav-link" href="{{ url_for('login') }}">
+              <span class="me-1">Log Masuk</span>
+              <i class="bi bi-box-arrow-in-right"></i></a>
+          </li>
           {% else %}
-            <li class="nav-item">
-              <a class="nav-link link-light {% if request.path == '/' %}active{% endif %}"
-                 href="/">Laman Utama</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link link-light {% if 'note' in request.path %}active{% endif %}"
-                 href="/list_note">Nota</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link link-light {% if 'quiz' in request.path %}active{% endif %}"
-                 href="/list_quiz">Penilaian</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link link-light {% if '/memo' in request.path %}active{% endif %}" href="/memo">Memo</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link link-light {% if '/profile' in request.path %}active{% endif %}"
-                 href="/profile">Profil</a>
-            </li>
-            <li class="nav-ite me-md-0 me-sm-auto">
-              <a class="nav-link link-light" href="/logout">Log
-                Keluar</a>
-            </li>
+          <li class="nav-item">
+            <a class="nav-link link-light {% if request.path == '/' %}active{% endif %}"
+               href="/">Laman Utama</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-light {% if 'note' in request.path %}active{% endif %}"
+               href="/list_note">Nota</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-light {% if 'quiz' in request.path %}active{% endif %}"
+               href="/list_quiz">Penilaian</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-light {% if '/memo' in request.path %}active{% endif %}" href="/memo">Memo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link link-light {% if '/profile/{{user.id}}' in request.path %}active{% endif %}"
+               href="/profile/{{user.id}}">Profil</a>
+          </li>
+          <li class="nav-ite me-md-0 me-sm-auto">
+            <a class="nav-link link-light" href="/logout">Log
+              Keluar</a>
+          </li>
           {% endif %}
         </ul>
       </div>
@@ -100,37 +101,119 @@
 
 <!-- Footer -->
 <div class="mt-auto bg-navbar text-white">
-  <div class="container py-4">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center">
-      <p class="col-md-4 mb-0 fw-semibold">&copy; 2023 Smar<span
-            class="text-orange">T</span>iger, Inc</p>
+  <!-- Remove the container if you want to extend the Footer to full width. -->
+  <div class="container mt-5 py-5">
 
-      <a href="/"
-         class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+    <!-- Footer -->
+    <footer class="text-center text-lg-start text-white">
+
+      <!-- Section: Links  -->
+      <div class="text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            <h6 class="text-uppercase fw-bold">Smartiger</h6>
+            <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto bg-orange"
+                  style="width: 60px; height: 2px"
+            />
+            <p>
+              Silent Math Genius memberdayakan pelajar kurang upaya pendengaran dalam matematik melalui
+              platform dalam talian dengan bahan pembelajaran dan latihan interaktif.
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold">Pautan bahagian</h6>
+            <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto bg-orange"
+                  style="width: 60px; height: 2px"
+            />
+            {% if not user %}
+            <p>
+              <a href="#!" class="text-white nav-link">Daftar</a>
+            </p>
+            <p>
+              <a href="#!" class="text-white nav-link">Log Masuk</a>
+            </p>
+            {% else %}
+            <p>
+              <a href="#!" class="text-white nav-link">Laman Utama</a>
+            </p>
+            <p>
+              <a href="#!" class="text-white nav-link">Nota</a>
+            </p>
+            <p>
+              <a href="#!" class="text-white nav-link">Penilaian</a>
+            </p>
+            <p>
+              <a href="#!" class="text-white nav-link">Memo</a>
+            </p>
+            <p>
+              <a href="#!" class="text-white nav-link">Profil</a>
+            </p>
+            {% endif %}
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-4">
+            <!-- Links -->
+
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold">Hubungi</h6>
+            <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto bg-orange"
+                  style="width: 60px; height: 2px"
+            />
+            <p><i class="bi bi-house-fill d-inline-block" style="margin-right: 1em!important;"></i>Sintok, 06010 Bukit
+              Kayu Hitam, Kedah</p>
+            <p><i class="bi bi-envelope-at-fill d-inline-block" style="margin-right: 1em!important;"></i>servicedesk@uum.edu.my
+            </p>
+            <p><i class="bi bi-github d-inline-block" style="margin-right: 1em!important;"></i>Tigers</p>
+            <p><i class="bi bi-telephone-forward-fill d-inline-block" style="margin-right: 1em!important;"></i>+04-928
+              4000</p>
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold">Pandangan</h6>
+            <hr
+                  class="mb-4 mt-0 d-inline-block mx-auto bg-orange"
+                  style="width: 60px; height: 2px"
+            />
+            <div class="bg-white p-1 rounded-2">
+              <img src="/static/images/qrcode.png" class="img-fluid">
+            </div>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+      <!-- Section: Links  -->
+
+      <!-- Copyright -->
+      <div
+            class="text-center p-3 d-flex flex-column justify-content-center align-items-center"
+            style="background-color: rgba(0, 0, 0, 0.2)"
+      >
+         <a href="/"
+         class="mb-2">
         <img src="/static/images/logo.png" alt="logo.png" width="45" height="45">
       </a>
-
-      <ul class="nav col-md-4 justify-content-end">
-        {% if not user %}
-        <li class="nav-item"><a href="/sign_up" class="nav-link px-2">Daftar</a>
-        </li>
-        <li class="nav-item"><a href="/login" class="nav-link px-2">Log
-          Masuk</a></li>
-        {% else %}
-        <li class="nav-item"><a href="/"
-                                class="nav-link px-2">Laman
-          Utama</a></li>
-        <li class="nav-item"><a href="/list_note"
-                                class="nav-link px-2">Bahan</a></li>
-        <li class="nav-item"><a href="/list_quiz" class="nav-link px-2">Penilaian</a>
-        </li>
-        <li class="nav-item"><a href="/memo" class="nav-link px-2">Nota</a>
-        </li>
-        <li class="nav-item"><a href="/profile" class="nav-link px-2">Profil</a>
-        </li>
-        {% endif %}
-      </ul>
+        <div>&copy; 2023 Smar<span class="text-orange">T</span>iger, Inc</div>
+      </div>
+      <!-- Copyright -->
     </footer>
+    <!-- Footer -->
+
   </div>
 </div>
 
