@@ -263,13 +263,15 @@
                       perpuluhan bagi dua nombor yang didarabkan.
                     </p>
                     <p class="text-center mb-3">
-                      \begin{align*}
+                      $$
+                      \begin{align}
                       32.03& && \hbox{(1 t.p )} \\
                       \times\underline{\phantom{00000}1.2}& && \hbox{(2 t.p )}\\
                       6406&\\
                       +\underline{\phantom{00)}3203\phantom{0}}& \\
                       \underline{\phantom{00}38.436}& && \hbox{(3 t.p)}
-                      \end{align*}
+                      \end{align}
+                      $$
                     </p>
                   </section>
                   <section class="card card-body flex-grow-1 flex-basis-0">
@@ -519,7 +521,8 @@
             </div>
           </div>
         </article>
-        <nav class="card position-sticky table-of-content" data-aos="zoom-in" data-aos-duration="1500" style="top:100px; z-index: 0">
+        <nav class="card position-sticky table-of-content" data-aos="zoom-in" data-aos-duration="1500"
+             style="top:100px; z-index: 0">
           <h1 class="fw-bold fs-6 text-maroon card-header">Jadual Kandungan</h1>
           <div class="card-body">
             <ul>
@@ -746,26 +749,19 @@
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.1/Sortable.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 <script src="https://unpkg.com/intro.js/intro.js"></script>
+<script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 {% endblock %}
 
 {% block custom_script %}
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    renderMathInElement(document.body, {
-      // customised options
-      // • auto-render specific keys, e.g.:
-      delimiters: [
-        {left: '$$', right: '$$', display: true},
-        {left: '$', right: '$', display: false},
-        {left: '\\(', right: '\\)', display: false},
-        {left: '\\[', right: '\\]', display: true},
-      ],
-      // • rendering keys, e.g.:
-      throwOnError: false,
-    });
-  });
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+    },
+  };
 </script>
 <script type="module" src="/static/js/note1.js"></script>
 {% endblock %}

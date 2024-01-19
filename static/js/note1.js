@@ -166,14 +166,18 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="d-flex flex-column flex-wrap gap-2 m-3 align-items-center operators">
         <button type="button" class="btn btn-orange operator">+</button>
         <button type="button" class="btn btn-orange operator">-</button>
-        <button type="button" class="btn btn-orange operator">*</button>
-        <button type="button" class="btn btn-orange operator">/</button>
+        <button type="button" class="btn btn-orange operator">\\times</button>
+        <button type="button" class="btn btn-orange operator">\\div</button>
       </div>
     `,
 
   });
 
-  popover._element.addEventListener('inserted.bs.popover', function() {
+  popover._element.addEventListener('inserted.bs.popover', function(evt) {
+    for (let op of document.getElementsByClassName(
+        'operators').item(0).children) {
+      katex.render(op.textContent, op);
+    }
     document.querySelectorAll('.operators .operator').forEach((elm) => {
       elm.addEventListener('click',
           function() {
