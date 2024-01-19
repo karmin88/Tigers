@@ -114,7 +114,6 @@ def add_note():
         title = request.form['title']
         chapter = request.form['chapter']
         note_id = db.add_note(chapter, title, user['id'])
-        print(request.form)
         for i in range(int(total_sections)):
             section_data = request.form.getlist(f's{i + 1}_data')
             title = section_data[0]
@@ -162,16 +161,16 @@ def request_file(folder, uploader_id, filename):
     return send_from_directory(os.path.join(folder, f"user_{uploader_id}"), filename)
 
 
-@app.route('/profile')
 @app.route('/profile/<string:user_id>')
 @minify_decorators.minify(html=True, js=True, cssless=True)
 @login_required()
 def profile(user_id=None):
-    user = session.get('user', None) if not user_id else db.find_user(id=user_id)
+    current_user = session.get('user', None)
+    target_user = db.find_user(id=user_id)
     avatars = db.get_avatar()
-    profile = db.get_profile(user_id if user_id else user['id'])
-    experiences = db.get_experience(user['id'])
-    return render_template('profile.html', user=user, dummy=user_id,  avatars=avatars, profile=profile,
+    profile = db.get_profile(user_id)
+    experiences = db.get_experience(user_id)
+    return render_template('profile.html', user=current_user, profile_user=target_user,  avatars=avatars, profile=profile,
                            experiences=experiences)
 
 
@@ -180,7 +179,6 @@ def profile(user_id=None):
 def edit_profile():
     user = session.get('user', None)
     data = request.form.to_dict().popitem()
-    print(data)
     type = data[0]
     value = data[1]
     db.set_profile(user['id'], type, value)
@@ -216,7 +214,6 @@ def add_quiz():
         total_ques = request.form['total-ques']
         title = request.form['title']
         chapter = request.form['chapter']
-        print(chapter)
         quiz_id = db.add_quiz(chapter, title, user['id'])
         for i in range(int(total_ques)):
             question_data = json.loads(request.form[f'q{i}_data'])
