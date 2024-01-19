@@ -4,7 +4,6 @@
 {% endblock %}
 {% block custom_stylesheet %}
 <link rel="stylesheet" href="/static/css/profile.css">
-
 {% endblock %}
 
 {% block content %}
@@ -33,10 +32,10 @@
     </div>
   </div>
 </div>
-<div class="container-fluid content mt-5">
-  <div class="row m-5">
+<div class="container content my-5">
+  <div class="row">
     <div class="col-lg-4">
-      <div class="card shadow rounded-4" data-aos="fade-up" data-aos-duration="1100">
+      <div class="card shadow rounded-4 mb-0 h-100" data-aos="fade-up" data-aos-duration="1100">
         <div class="card-body">
           <div class="d-flex flex-column align-items-center text-center">
             <button class="border-0 bg-transparent rounded-circle" data-bs-toggle="modal"
@@ -65,8 +64,8 @@
                   Website
                 </label>
                 <div class="col-6">
-                  <input type="text" name="website"
-                         class="form-control border-0 text-secondary {% if user %}double-editable{% endif %} focus-out-submit text-end"
+                  <input type="text" name="website" id="website"
+                         class="form-control border-0 text-secondary {% if user.id == profile_user.id %}double-editable{% endif %} focus-out-submit text-end"
                          value="{{ profile.website }}" readonly></input>
                 </div>
               </div>
@@ -83,14 +82,14 @@
                 </label>
                 <div class="col-6">
                   <input type="text" name="github"
-                         class="form-control border-0 text-secondary {% if user %}double-editable{% endif %} focus-out-submit text-end"
+                         class="form-control border-0 text-secondary {% if user.id == profile_user.id %}double-editable{% endif %} focus-out-submit text-end"
                          value="{{ profile.github }}" readonly></input>
                 </div>
               </div>
             </li>
             <li class="list-group-item pe-0 pb-1">
               <div class="row form-group d-flex justify-content-between align-items-center">
-                <label class="mb-0 h6 col-6 form-label" for="website">
+                <label class="mb-0 h6 col-6 form-label" for="twitter">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                        class="feather feather-twitter me-2 icon-inline text-info">
@@ -99,8 +98,8 @@
                   Twitter
                 </label>
                 <div class="col-6">
-                  <input type="text" name="twitter"
-                         class="form-control border-0 text-secondary {% if user %}double-editable{% endif %} focus-out-submit text-end"
+                  <input type="text" name="twitter" id="twitter"
+                         class="form-control border-0 text-secondary {% if user.id == profile_user.id %}double-editable{% endif %} focus-out-submit text-end"
                          value="{{ profile.twitter }}" readonly></input>
                 </div>
               </div>
@@ -119,7 +118,7 @@
                 </label>
                 <div class="col-6">
                   <input type="text" name="instagram"
-                         class="form-control border-0 text-secondary {% if user %}double-editable{% endif %} focus-out-submit text-end"
+                         class="form-control border-0 text-secondary {% if user.id == profile_user.id %}double-editable{% endif %} focus-out-submit text-end"
                          value="{{ profile.instagram }}" readonly></input>
                 </div>
               </div>
@@ -136,7 +135,7 @@
                 </label>
                 <div class="col-6">
                   <input type="text" name="facebook"
-                         class="form-control border-0 text-secondary {% if user %}double-editable{% endif %} focus-out-submit text-end"
+                         class="form-control border-0 text-secondary {% if user.id == profile_user.id %}double-editable{% endif %} focus-out-submit text-end"
                          value="{{ profile.facebook }}" readonly></input>
                 </div>
               </div>
@@ -146,8 +145,8 @@
       </div>
     </div>
     <div class="col-lg-8">
-      <div class="card shadow-lg rounded-4" data-aos="fade-up" data-aos-duration="1100">
-        <div class="card-body py-4 px-5">
+      <div class="card shadow rounded-4 h-100" data-aos="fade-up" data-aos-duration="1100">
+        <div class="card-body pt-4 pb-1 px-5">
           <div class="container px-4">
             <div class="row mb-3">
               <div class="col-sm-3 d-flex align-items-center">
@@ -155,7 +154,7 @@
               </div>
               <div class="col-sm-9 text-secondary">
                 <input type="text"
-                       class="form-control text-secondary border-0 {% if user %}double-editable{% endif %} focus-out-submit"
+                       class="form-control text-secondary border-0 {% if user.id == profile_user.id %}double-editable{% endif %} focus-out-submit"
                        value="{{ profile.full_name }}" name="full_name"
                        readonly id="full_name">
               </div>
@@ -166,7 +165,7 @@
               </div>
               <div class="col-sm-9 text-secondary">
                 <input type="text"
-                       class="form-control text-secondary border-0 {% if user %}double-editable{% endif %} focus-out-submit"
+                       class="form-control text-secondary border-0 {% if user.id == profile_user.id %}double-editable{% endif %} focus-out-submit"
                        value="{{ profile.profession }}" readonly name="profession"
                        onfocusout="valueChange('profession', this.value)">
               </div>
@@ -177,7 +176,7 @@
               </div>
               <div class="col-sm-9 text-secondary">
                 <input type="text"
-                       class="form-control text-secondary border-0 {% if user %}double-editable{% endif %} focus-out-submit"
+                       class="form-control text-secondary border-0 {% if user.id == profile_user.id %}double-editable{% endif %} focus-out-submit"
                        value="{{ profile.phone }}"
                        readonly name="phone">
               </div>
@@ -188,7 +187,7 @@
               </div>
               <div class="col-sm-9 text-secondary">
                 <input type="text"
-                       class="form-control text-secondary border-0 {% if user %}double-editable{% endif %} focus-out-submit"
+                       class="form-control text-secondary border-0 {% if user.id == profile_user.id %}double-editable{% endif %} focus-out-submit"
                        value="{{ profile.bio }}"
                        readonly name="bio">
               </div>
@@ -199,7 +198,7 @@
               </div>
               <div class="col-sm-9 text-secondary">
                 <input type="text"
-                       class="form-control text-secondary border-0 {% if user %}double-editable{% endif %} focus-out-submit"
+                       class="form-control text-secondary border-0 {% if user.id == profile_user.id %}double-editable{% endif %} focus-out-submit"
                        value="{{ profile.address }}" readonly name="address"
                        onfocusout="valueChange('address', this.value)">
               </div>
@@ -211,7 +210,7 @@
             </div>
             <div class="text-secondary">
                 <textarea type="text"
-                          class="form-control text-secondary border-0 {% if user %}double-editable{% endif %} p-2 focus-out-submit"
+                          class="form-control text-secondary border-0 {% if user.id == profile_user.id %}double-editable{% endif %} p-2 focus-out-submit"
                           rows="9"
                           name="about"
                           readonly>{{ profile.about }}
@@ -221,87 +220,143 @@
         </div>
       </div>
     </div>
-    {% if profile.role == 'teacher' %}
-    <div class="row m-0 p-0" data-aos="fade-right" data-aos-duration="1100">
-      <div class="col-sm-12">
-        <div class="card shadow rounded-4 py-4 px-5">
-          <div class="card-body">
-            <div class="d-flex align-items-center justify-content-between mb-3" style="height: 20px;">
-              <h5>Experience</h5>
-              {% if user.id == dummy %}
-              <button type="button" class="border-0 p-0 bg-transparent" data-bs-toggle="modal"
-                      data-bs-target="#experience-form-modal">
-                <i class="bi bi-hover-md bi-plus-square-fill h4 my-0 text-orange"></i>
-              </button>
-              {% endif %}
-            </div>
-            {% if experiences %}
-            <div class="carousel slide" id="experience-carousel">
-              <div class="carousel-inner">
-                {% for experience in experiences %}
-                {% set color = "blue" if loop.index % 4 == 1 else
-                "red" if loop.index % 4 == 2 else"yellow" if loop.index % 4 == 3else"green" %}
-                <div class="carousel-item {% if loop.index0 == 0 %}active{% endif %}">
-                  <article class="postcard position-relative light {{ color }}">
-                    {% if user.id == dummy %}
-                    <i onclick="removeExperience({{ experience.id }})"
-                       class="close h5 bi bi-x-circle-fill bi-hover-lg text-danger z-2"
-                       style="position: absolute; top: 5px;right: 5px"></i>
-                    {% endif %}
-                    <a class="postcard__img_link" href="#">
-                      <img class="postcard__img" src="{{ experience.image_url }}" alt="Image Title"/>
-                    </a>
-                    <div class="postcard__text t-dark">
-                      <h1 class="postcard__title h-auto {{ color }}">{{ experience.title }}</h1>
-                      <div class="postcard__subtitle small d-flex align-items-center">
-                        <i class="bi bi-calendar2-plus-fill me-2"></i>
-                        <span class="ms-2">{{ experience.formatted_date }}</span>
-                      </div>
-                      <div class="postcard__bar"></div>
-                      <div class="postcard__preview-txt">{{ experience.description }}</div>
-                      <ul class="postcard__tagbox">
-                        {% for tag in experience.tags %}
-                        <li class="tag__item play {{ color }} d-flex align-items-center"><i class="bi bi-tags-fill ms-2"></i>
-                          <span class="mb-1 ms-1">{{ tag }}</span>
-                        </li>
-                        {% endfor %}
-                      </ul>
-                    </div>
-                  </article>
-                </div>
-                {% endfor %}
-              </div>
-              {% if experiences | length > 1 %}
-              <button class="carousel-control-prev" type="button" data-bs-target="#experience-carousel"
-                      data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#experience-carousel"
-                      data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
+  </div>
+  {% if user.role == 'teacher' %}
+  <div class="row mt-5" data-aos="fade-right" data-aos-duration="1100">
+    <div class="col-sm-12">
+      <div class="card shadow rounded-4 py-4 px-5">
+        <div class="card-body">
+          <div class="d-flex align-items-center justify-content-between mb-3" style="height: 20px;">
+            <h5>Experience</h5>
+            {% if user.id == profile_user.id %}
+            <button type="button" class="border-0 p-0 bg-transparent" data-bs-toggle="modal"
+                    data-bs-target="#experience-form-modal">
+              <i class="bi bi-hover-md bi-plus-square-fill h4 my-0 text-orange"></i>
+            </button>
             {% endif %}
-            {% endif %}
-            {# <p>Web Design</p>#}
-            {#
-            <div class="progress mb-3" style="height: 5px">#}
-              {#
-              <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" #}
-                   {# aria-valuemin="0" aria-valuemax="100"></div>
-              #}
-              {#
-            </div>
-            #}
           </div>
+          {% if experiences %}
+          <div class="carousel slide" id="experience-carousel">
+            <div class="carousel-inner">
+              {% for experience in experiences %}
+              {% set color = "blue" if loop.index % 4 == 1 else
+              "red" if loop.index % 4 == 2 else"yellow" if loop.index % 4 == 3else"green" %}
+              <div class="carousel-item {% if loop.index0 == 0 %}active{% endif %}">
+                <article class="postcard position-relative light {{ color }}">
+                  {% if user.id == profile_user.id %}
+                  <i onclick="removeExperience('{{ experience.id }}')"
+                     class="close h5 bi bi-x-circle-fill bi-hover-lg text-danger z-2"
+                     style="position: absolute; top: 5px;right: 5px"></i>
+                  {% endif %}
+                  <a class="postcard__img_link" href="#">
+                    <img class="postcard__img" src="{{ experience.image_url }}" alt="Image Title"/>
+                  </a>
+                  <div class="postcard__text t-dark">
+                    <h1 class="postcard__title h-auto {{ color }}">{{ experience.title }}</h1>
+                    <div class="postcard__subtitle small d-flex align-items-center">
+                      <i class="bi bi-calendar2-plus-fill me-2"></i>
+                      <span class="ms-2">{{ experience.formatted_date }}</span>
+                    </div>
+                    <div class="postcard__bar"></div>
+                    <div class="postcard__preview-txt">{{ experience.description }}</div>
+                    <ul class="postcard__tagbox">
+                      {% for tag in experience.tags %}
+                      <li class="tag__item play {{ color }} d-flex align-items-center"><i
+                            class="bi bi-tags-fill ms-2"></i>
+                        <span class="mb-1 ms-1">{{ tag }}</span>
+                      </li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </article>
+              </div>
+              {% endfor %}
+            </div>
+            {% if experiences | length > 1 %}
+            <button class="carousel-control-prev" type="button" data-bs-target="#experience-carousel"
+                    data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#experience-carousel"
+                    data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+            {% endif %}
+          </div>
+          {% endif %}
+          {# <p>Web Design</p>#}
+          {#
+          <div class="progress mb-3" style="height: 5px">#}
+            {#
+            <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" #}
+                 {# aria-valuemin="0" aria-valuemax="100"></div>
+            #}
+            {#
+          </div>
+          #}
         </div>
       </div>
     </div>
-    {% endif %}
   </div>
+  <form class="modal fade" tabindex="-1" id="experience-form-modal">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Add New Experience</h5>
+          <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3 row">
+            <label class="form-label mb-0" for="image-url">Image URL</label>
+            <div class="row">
+              <div class="col-11">
+                <input type="text" name="image_url" class="form-control" id="image-url" required>
+              </div>
+              <div class="col-1 d-flex justify-content-center">
+                <button type="button" class="btn" id="image-tooltip"><i class="bi bi-eye-fill h5"></i></button>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label w-100">Title
+              <input type="text" name="title" class="form-control" required>
+            </label>
+          </div>
+          <div class="mb-3">
+            <label class="form-label w-100">Description
+              <textarea type="text" name="description" class="form-control" rows="4" required></textarea>
+            </label>
+          </div>
+          <div class="d-flex align-content-center">
+            <div id="tag-container" class="d-flex flex-wrap me-2">
+              <div class="input-group input-group-sm tag me-2 mb-2">
+                <span class="input-group-append input-group-text bg-body-tertiary border-tertiary-50"><i
+                      class="bi bi-tags-fill"></i></span>
+                <input type="text" name="tag" class="form-control bg-body-tertiary double-editable" maxlength="15"
+                       readonly>
+                <button type="button" onclick="removeTag(this)"
+                        class="input-group-prepend input-group-text bg-body-tertiary border-tertiary-50">
+                  <i class="bi bi-x"></i>
+                </button>
+              </div>
+            </div>
+            <a onclick="addTag()" type="button" class="border-0 p-0 bg-transparent">
+              <i class="bi bi-plus-square-fill h4 my-0 text-orange" id="add-tag"></i>
+            </a>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="reset" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-warning bg-orange text-white">Submit</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  {% endif %}
 </div>
+{% if user.id == profile_user.id %}
 <form class="modal fade" tabindex="-1" id="avatar-form-modal">
   <input type="hidden" name="profile-avatar" value="{{ profile.avatar_id }}">
   <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -337,61 +392,7 @@
     </div>
   </div>
 </form>
-
-<form class="modal fade" tabindex="-1" id="experience-form-modal">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add New Experience</h5>
-        <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="mb-3 row">
-          <label class="form-label mb-0" for="image-url">Image URL</label>
-          <div class="row">
-            <div class="col-11">
-              <input type="text" name="image_url" class="form-control" id="image-url" required>
-            </div>
-            <div class="col-1 d-flex justify-content-center">
-              <button type="button" class="btn" id="image-tooltip"><i class="bi bi-eye-fill h5"></i></button>
-            </div>
-          </div>
-        </div>
-        <div class="mb-3">
-          <label class="form-label w-100">Title
-            <input type="text" name="title" class="form-control" required>
-          </label>
-        </div>
-        <div class="mb-3">
-          <label class="form-label w-100">Description
-            <textarea type="text" name="description" class="form-control" rows="4" required></textarea>
-          </label>
-        </div>
-        <div class="d-flex align-content-center">
-          <div id="tag-container" class="d-flex flex-wrap me-2">
-            <div class="input-group input-group-sm tag me-2 mb-2">
-                <span class="input-group-append input-group-text bg-body-tertiary border-tertiary-50"><i
-                      class="bi bi-tags-fill"></i></span>
-              <input type="text" name="tag" class="form-control bg-body-tertiary double-editable" maxlength="15"
-                     readonly>
-              <button type="button" onclick="removeTag(this)"
-                      class="input-group-prepend input-group-text bg-body-tertiary border-tertiary-50">
-                <i class="bi bi-x"></i>
-              </button>
-            </div>
-          </div>
-          <a onclick="addTag()" type="button" class="border-0 p-0 bg-transparent">
-            <i class="bi bi-plus-square-fill h4 my-0 text-orange" id="add-tag"></i>
-          </a>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="reset" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-warning bg-orange text-white">Submit</button>
-      </div>
-    </div>
-  </div>
-</form>
+{% endif %}
 {% endblock %}
 {% block custom_script %}
 <script src="/static/js/profile.js"></script>
