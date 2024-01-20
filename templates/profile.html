@@ -227,7 +227,7 @@
       <div class="card shadow rounded-4 py-4 px-5">
         <div class="card-body">
           <div class="d-flex align-items-center justify-content-between mb-3" style="height: 20px;">
-            <h5>Experience</h5>
+            <h5>Pengalaman</h5>
             {% if user.id == profile_user.id %}
             <button type="button" class="border-0 p-0 bg-transparent" data-bs-toggle="modal"
                     data-bs-target="#experience-form-modal">
@@ -304,12 +304,12 @@
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Add New Experience</h5>
+          <h5 class="modal-title">Tambah Pengalaman Baru</h5>
           <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="mb-3 row">
-            <label class="form-label mb-0" for="image-url">Image URL</label>
+            <label class="form-label mb-0" for="image-url">URL Gambar</label>
             <div class="row">
               <div class="col-11">
                 <input type="text" name="image_url" class="form-control" id="image-url" required>
@@ -320,12 +320,12 @@
             </div>
           </div>
           <div class="mb-3">
-            <label class="form-label w-100">Title
+            <label class="form-label w-100">Tajuk
               <input type="text" name="title" class="form-control" required>
             </label>
           </div>
           <div class="mb-3">
-            <label class="form-label w-100">Description
+            <label class="form-label w-100">Deskripsi
               <textarea type="text" name="description" class="form-control" rows="4" required></textarea>
             </label>
           </div>
@@ -348,8 +348,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="reset" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-warning bg-orange text-white">Submit</button>
+          <button type="reset" class="btn btn-danger" data-bs-dismiss="modal">Tutup</button>
+          <button type="submit" class="btn btn-warning bg-orange text-white">Hantar</button>
         </div>
       </div>
     </div>
@@ -362,7 +362,7 @@
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Choose your avatar</h5>
+        <h5 class="modal-title">Pilih avatar anda</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body my-2 row">
@@ -386,8 +386,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-warning bg-orange text-white">Save changes</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tutup</button>
+        <button type="submit" class="btn btn-warning bg-orange text-white">Hantar perubahan</button>
       </div>
     </div>
   </div>
