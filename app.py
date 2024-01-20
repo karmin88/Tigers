@@ -7,6 +7,8 @@ app = Flask(__name__, static_folder='static', template_folder='templates')
 
 # app.secret_key = secrets.token_hex(32)
 app.secret_key = 'skig'
+
+app.config['SESSION_REFRESH_EACH_REQUEST'] = True
 app.config['PERMANENT_SESSION_LIFETIME'] = 120
 
 # Database connection setup
