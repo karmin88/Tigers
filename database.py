@@ -273,7 +273,10 @@ def get_experience(user_id=None):
     if user_id:
         results = execute_query(query_experience, True, user_id)
         for row in results:
-            row['tags'] = json.loads(row['tags'])
+            try:
+                row['tags'] = json.loads(row['tags'])
+            except Exception as e:
+                row['tags'] = []
         return results
 
 
