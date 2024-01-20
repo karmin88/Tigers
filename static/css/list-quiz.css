@@ -300,7 +300,7 @@ span:has(span.date) {
 
   & .username {
     position: relative;
-    z-index: 10!important;
+    z-index: 10 !important;
   }
 
   &.card-chap-3 .img-user {
@@ -341,4 +341,25 @@ span:has(span.date) {
 .input-group-text:has(.bi-search) + input {
   z-index: 0 !important;
   padding-left: 40px;
+}
+
+.title, .date, .username {
+  display: inline-block !important;
+  text-align: start;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title {
+  width: 50%;
+}
+
+.date {
+  width: 100%;
+  font-size: 12px;
+}
+
+.username {
+  width: calc(100%);
 }

@@ -44,17 +44,24 @@
 <main>
   <section class="my-5 mb-0 px-0">
     <header>
-      <div class="section-title mb-3" data-aos="zoom-out" data-aos-duration="1100">Ujian yang disediakan oleh profesional kami</div>
-      <div class="section-header" data-aos="zoom-out" data-aos-duration="1100">Cuba sendiri dengan pelbagai jenis ujian yang menarik.</div>
+      <div class="section-title mb-3" data-aos="zoom-out" data-aos-duration="1100">Ujian yang disediakan oleh
+        profesional kami
+      </div>
+      <div class="section-header" data-aos="zoom-out" data-aos-duration="1100">Cuba sendiri dengan pelbagai jenis ujian
+        yang menarik.
+      </div>
     </header>
     <div class="row g-0 section-content-quiz">
       <div class="col-lg-6 d-lg-flex d-md-none">
         <div class="our-content">
           <div class="text-white d-flex flex-column w-100 h-100 align-items-start justify-content-center"
                style="padding-left: 10%;">
-            <div class="h1 fw-bold display-4 text-start"><span class="text-orange display-1 fw-bolder" data-aos="fade-right" data-aos-duration="1100">Uji</span> Minda
+            <div class="h1 fw-bold display-4 text-start"><span class="text-orange display-1 fw-bolder"
+                                                               data-aos="fade-right" data-aos-duration="1100">Uji</span>
+              Minda
               <br> & <span
-                    class="text-orange display-1 fw-bolder" data-aos="fade-right" data-aos-duration="1100">Cabar </span> Diri<br/> Anda
+                    class="text-orange display-1 fw-bolder" data-aos="fade-right" data-aos-duration="1100">Cabar </span>
+              Diri<br/> Anda
             </div>
           </div>
         </div>
@@ -217,16 +224,23 @@
                     </div>
                   </div>
                 </div>
-                <div class="card-footer d-flex justify-content-between align-items-center">
-                  <div class="d-flex align-items-center">
-                    <i class="bi bi-clock"></i>
-                    <span class="ms-2 date">{{ quiz.date }}</span>
-                  </div>
-                  <div>
-                    <img
-                          src="{{ quiz.user_avatar }}"
-                          class="img-fluid rounded-circle img-user" width="30" height="30">
-                    <span class="ms-2 small"><a href="/profile/{{quiz.user_id}}" class="username text-decoration-underline z-3">{{ quiz.username }}</a></span>
+                <div class="card-footer">
+                  <div class="row gx-3 h-100">
+                    <div class="col-6">
+                      <div class="d-flex align-items-center justify-content-start ms-2 h-100">
+                        <i class="bi bi-clock"></i>
+                        <span class="ms-2 date">{{ quiz.date }}</span>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="d-flex align-items-center justify-content-start h-100">
+                        <img
+                              src="{{ quiz.user_avatar }}"
+                              class="img-fluid rounded-circle img-user" width="30" height="30">
+                        <a href="/profile/{{quiz.user_id}}"
+                           class="username text-decoration-underline z-3 ms-2 small">{{ quiz.username }}</a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

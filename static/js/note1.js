@@ -164,10 +164,10 @@ document.addEventListener('DOMContentLoaded', function() {
     sanitize: false,
     content: `
       <div class="d-flex flex-column flex-wrap gap-2 m-3 align-items-center operators">
-        <button type="button" class="btn btn-orange operator">+</button>
-        <button type="button" class="btn btn-orange operator">-</button>
-        <button type="button" class="btn btn-orange operator">\\times</button>
-        <button type="button" class="btn btn-orange operator">\\div</button>
+        <button type="button" class="btn btn-orange operator" data-value="+">+</button>
+        <button type="button" class="btn btn-orange operator" data-value="-">-</button>
+        <button type="button" class="btn btn-orange operator" data-value="*">\\times</button>
+        <button type="button" class="btn btn-orange operator" data-value="/">\\div</button>
       </div>
     `,
 
@@ -182,6 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
       elm.addEventListener('click',
           function() {
             operator.innerHTML = elm.innerHTML;
+            operator.dataset.value = elm.dataset.value
           });
     });
   });
@@ -212,8 +213,7 @@ document.addEventListener('DOMContentLoaded', function() {
     try {
       const firstNum = getValueFromElements(firstRowNum.children);
       const secondNum = getValueFromElements(secondRowNum.children);
-      const op = operator.innerHTML;
-
+      const op = operator.dataset.value;
       if (isNaN(firstNum) || isNaN(secondNum)) {
         throw new Error('Invalid input: Please provide valid numbers.');
       }
