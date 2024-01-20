@@ -137,10 +137,10 @@ SELECT
         )
     ) AS questions
 FROM
-    quiz q, quiz_question qu
-WHERE q.id = %s;
+    quiz q
 JOIN
     quiz_question qu ON q.id = qu.quiz_id
+WHERE q.id = %s
 GROUP BY
     q.id, q.title, q.date, q.user_id;
 """
