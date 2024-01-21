@@ -55,12 +55,6 @@ if (experienceFormModal) {
     }
   }
 
-  function editProfileRequest(data) {
-    return $.ajax({
-      type: 'POST', url: '/edit_profile', data: data,
-    });
-  }
-
   const imageTooltip = document.getElementById('image-tooltip');
   const imageUrl = document.getElementById('image-url');
   const tooltip = new bootstrap.Tooltip(imageTooltip, {
@@ -144,6 +138,12 @@ document.getElementById('avatar-form-modal').
       }
       $(form).modal('hide');
     });
+
+function editProfileRequest(data) {
+  return $.ajax({
+    type: 'POST', url: '/edit_profile', data: data,
+  });
+}
 
 
 

@@ -195,9 +195,8 @@ document.getElementById('start-quiz').addEventListener('click', (evt) => {
         filter((elm) => elm.classList.contains('answer')).length;
     let score = correntAnswer / 10;
     document.getElementById('correct').textContent = correntAnswer;
-    document.getElementById('score').textContent = (score / 10) * 100 + '%';
+    document.getElementById('score').textContent = (score) * 100 + '%';
     let scorebar = document.getElementById('scorebar');
-    scorebar.style.width = score * 100 + '%';
     scorebar.classList.remove('bg-danger', 'bg-warning', 'bg-info',
         'bg-success');
     if (score <= 0.25) {
@@ -209,7 +208,7 @@ document.getElementById('start-quiz').addEventListener('click', (evt) => {
     } else {
       scorebar.classList.add('bg-success');
     }
-    scorebar.style.width = score * 100 + '%';
+    scorebar.style.width = (score * 100) + '%';
     let resultModal = new bootstrap.Modal(
         document.getElementById('result-modal'), {focus: false});
     resultModal.show();
