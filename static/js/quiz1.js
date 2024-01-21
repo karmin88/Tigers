@@ -129,7 +129,7 @@ let progressBar = document.querySelector('#quiz-timer .progress-bar');
 
 let quizSwiper = new Swiper('.quiz', {
   autoplay: {
-    delay: 30000,
+    delay: 60000,
     stopOnLastSlide: true,
   },
 });
@@ -150,9 +150,9 @@ document.getElementById('start-quiz').addEventListener('click', (evt) => {
     if (remainingTime % 1 === 0) {
       progressBar.style.width = percentage * 100 + '%';
       progressBar.textContent = remainingTime + 's';
-      if (remainingTime <= 10) {
+      if (remainingTime <= 20) {
         progressBar.style.backgroundColor = 'var(--bs-danger)';
-      } else if (remainingTime <= 20) {
+      } else if (remainingTime <= 40) {
         progressBar.style.backgroundColor = ('var(--bs-warning)');
       }
     }
@@ -176,7 +176,7 @@ document.getElementById('start-quiz').addEventListener('click', (evt) => {
   function resetProgress() {
     progressBar.style.width = '100%';
     progressBar.style.backgroundColor = 'var(--bs-success)';
-    progressBar.textContent = '30s';
+    progressBar.textContent = '60s';
   }
 
   document.getElementById('next').addEventListener('click', (evt) => {
