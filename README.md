@@ -1,5 +1,7 @@
 # Group Tigers (Smartiger)
-Project - Silent Math Genius
+Project - Silent Math Genius 
+<br>A web database application for deaf-mute and hearing-impaired students in mathematics education 
+<br>(Nilai tempat perpuluhan & Pemfaktoran dan algebra)
 
 ## Setup Project
 
